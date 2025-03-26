@@ -1,0 +1,9 @@
+Location = M:
+ contrast        estimate    SE  df z.ratio p.value
+ Coney - Graysby    -3.01 0.638 Inf  -4.713  <.0001
+
+Location = T:
+ contrast        estimate    SE  df z.ratio p.value
+ Coney - Graysby    -5.40 0.942 Inf  -5.733  <.0001
+
+Results are given on the log odds ratio (not the response) scale. 
