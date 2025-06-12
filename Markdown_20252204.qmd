@@ -1,0 +1,1355 @@
+---
+title: "Results"
+format: 
+  html:
+    toc: true            # Adds a table of contents
+    toc-depth: 5         # Sets TOC depth to 3 levels
+    number-sections: FALSE # Enables numbered sections
+editor: visual
+---
+
+```{r - load libraries}
+#| include: false
+#| echo: false
+
+library(tidyverse)
+library(viridis)
+library(ggpubr)
+library(gt)
+#Models libraries
+library(mgcv)
+library(glmmTMB)
+
+# library(gam)
+# library(gamm4)
+# library(nlme)
+
+#Model check libraries
+library(visreg)
+library(DHARMa)
+library(performance)
+library(lsmeans)
+library(emmeans)
+library(multcomp)
+library(multcompView)
+library(MuMIn)
+library(ggeffects)
+
+# Load required packages
+library(MASS)
+```
+
+```{r - load data}
+#| echo: false
+#| include: false
+
+# Load Data ----------------------------------------------------------------
+
+snapper = read_csv("data/snapper.csv") |> 
+  mutate(Common = as.factor(Common),
+         Location = as.factor(Location))
+grouper = read_csv("data/grouper.csv") |> 
+   mutate(Common = as.factor(Common),
+         Location = as.factor(Location))# not including Nassau grouper
+gs = read_csv("data/groupersnapper_pivot.csv") |> 
+   mutate(Common = as.factor(Common),
+         Location = as.factor(Location))#For occurrence analysis
+
+### For Rugosity ###
+
+#Only top grouper and snapper
+
+snapper_abundance_r = read_csv("data/snapper_abundance_r.csv") |> 
+   mutate(Common = as.factor(Common),
+         Location = as.factor(Location))
+grouper_abundance_r = read_csv("data/grouper_abundance_r.csv") |> 
+   mutate(Common = as.factor(Common),
+         Location = as.factor(Location))
+snapper_occurrence_r = read_csv("data/snapper_occurrence_r.csv") |> 
+   mutate(Common = as.factor(Common),
+         Location = as.factor(Location))
+grouper_occurrence_r = read_csv("data/grouper_occurrence_r.csv") |> 
+   mutate(Common = as.factor(Common),
+         Location = as.factor(Location))
+
+### For P cover ###
+
+pcover = read_csv("data/old/pcover.csv")
+```
+
+# Q1 Species Differences Abundance - MaxN
+
+## Snapper
+
+### Snappers model check
+
+```{r - Model Comparison}
+#| echo: TRUE
+
+glm_snap_MaxN.nb <- glmmTMB(MaxN ~ Common, data = snapper, family = nbinom2)
+
+glmm_nb <- glmmTMB(MaxN ~ Common + (1 | Site), data = snapper, family = nbinom2)
+
+glm_snap_MaxN.poi <- glmmTMB(MaxN ~ Common, family = poisson(link = "log"), data = snapper)
+
+
+```
+
+```{r - Model checks1}
+#| echo: TRUE
+
+
+check_model(glm_snap_MaxN.nb) 
+
+
+
+```
+
+**Selecting this model as the best fit:**
+
+```{r - Model checks2}
+check_model(glmm_nb) 
+
+summary(glmm_nb)
+car::Anova(glmm_nb, test = "Chisq")
+
+```
+
+```{r - Model remove}
+#| echo: false
+#| include: false
+
+#nb model better than poisson
+rm(glm_snap_MaxN.poi,glm_snap_MaxN.nb)
+
+```
+
+### MaxN Snapper Pairwise
+
+```{r - Snapper Model Pairwise Comparisons}
+#| echo: FALSE
+#| include: TRUE
+
+
+gg.snapper.MaxN = ggpredict(glmm_nb, terms = c("Common")) |> 
+  rename(Common = x, MaxN = predicted)
+
+
+em_snapper_MaxN = emmeans(glmm_nb, "Common")
+pairwise_snapper = pairs(em_snapper_MaxN, simple = "Common") |> 
+  as.data.frame()
+
+pairwise_snapper <- pairwise_snapper %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+pairwise_snapper %>%
+  gt() %>%
+  tab_header(
+    title = "Pairwise Comparisons of MaxN by Species (GLMM. SNAPPER)"
+  ) %>%
+  fmt_number(
+    columns = c(Estimate, SE, z_ratio, p_value),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Comparison = "Comparison",
+    Estimate = "Difference",
+    SE = "SE",
+    df = "df",
+    z_ratio = "z",
+    p_value = "p-value"
+  ) %>%
+  tab_options(
+    table.font.size = "small"
+  ) %>%
+  tab_spanner(
+    label = "Statistics",
+    columns = c(Estimate, SE, df, z_ratio, p_value)
+  )
+
+
+
+```
+
+### MaxN Snapper Plot
+
+```{r - Snapper Model Pairwise Comparisons Plot}
+#| echo: FALSE
+
+meanmodel_means_cld = cld(object = em_snapper_MaxN,
+                          adjust = "bonf",
+                          Letters = letters,
+                          sort = F,
+                          alpha = 0.05) |> 
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+#Merging fitted models with unique groups code
+custom_colors1 <- c("#FEE08B","#E69F00","#009E73", "#56B4E9","#0072B2")  # color blind friendly
+
+gg.snapper.MaxN2 = left_join(gg.snapper.MaxN, meanmodel_means_cld, by = "Common")
+
+snapper_MaxN = ggplot(gg.snapper.MaxN2, aes(Common, MaxN, fill = Common), colour = "black")+
+  geom_col()+
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0, color = "black")+
+  geom_text(aes(label = code, y = conf.high + 0.5), size = 5)+
+  labs(x = "Snapper Species", y = "MaxN")+
+  scale_fill_manual(values = custom_colors1) +  # Use the custom color palette
+  # scale_x_continuous(breaks = c(0, 5, 10, 15, 20, 25, 30)) +
+  theme(axis.text = element_text(size = 14, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", colour = "black"),
+        panel.grid.major = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1))
+snapper_MaxN
+```
+
+## Grouper
+
+### Poisson model
+
+```{r - Model Comparison2}
+#| echo: TRUE
+#| include: TRUE
+
+grouper$Common = as.factor(grouper$Common)
+
+glm_grp_MaxN.nb <- glm.nb(MaxN ~ Common, 
+                           data = grouper)
+
+glm_grp_MaxN.poi <- glmmTMB(MaxN ~ Common , 
+                        family = poisson(link = "log"), 
+                        data = grouper)
+
+glmm_grp_MaxN_nb <- glmmTMB(MaxN ~ Common + (1 | Site), 
+                             family = nbinom2(), 
+                             data = grouper)
+
+glmm_grp_MaxN_poi <- glmmTMB(MaxN ~ Common + (1 | Site), 
+                              family = poisson(link = "log"), 
+                              data = grouper)
+
+compare_performance(glm_grp_MaxN.poi,glmm_grp_MaxN_poi, 
+                    glm_grp_MaxN.nb, glmm_grp_MaxN_nb)
+
+check_model(glm_grp_MaxN.poi) # Model diagnostics
+
+summary(glm_grp_MaxN.poi)
+car::Anova(glm_grp_MaxN.poi, test = "Chisq")
+
+
+```
+
+### MaxN Grouper Pairwise
+
+```{r - Model grouper pairwise}
+#| echo: FALSE
+#| include: TRUE
+
+gg.grouper.MaxN = ggpredict(glm_grp_MaxN.poi, terms = c("Common"))  %>% 
+  rename(Common = x, MaxN = predicted)
+
+
+em_grouper_MaxN = emmeans(glm_grp_MaxN.poi, "Common")
+
+pairwise_grouper = pairs(em_grouper_MaxN, simple = "Common") |> 
+  as.data.frame()
+
+pairwise_grouper <- pairwise_grouper %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+pairwise_grouper %>%
+  gt() %>%
+  tab_header(
+    title = "Pairwise Comparisons of MaxN by Species ( GROUPER)"
+  ) %>%
+  fmt_number(
+    columns = c(Estimate, SE, z_ratio, p_value),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Comparison = "Comparison",
+    Estimate = "Difference",
+    SE = "SE",
+    df = "df",
+    z_ratio = "z",
+    p_value = "p-value"
+  ) %>%
+  tab_options(
+    table.font.size = "small"
+  ) %>%
+  tab_spanner(
+    label = "Statistics",
+    columns = c(Estimate, SE, df, z_ratio, p_value)
+  )
+
+```
+
+### MaxN Grouper Plot
+
+```{r - Grouper Model Pairwise Comparisons Plot}
+#| echo: FALSE
+#| include: TRUE
+
+meanmodel_means_cld2 = cld(object = em_grouper_MaxN,
+                           adjust = "bonf",
+                           Letters = letters,
+                           sort = F,
+                           alpha = 0.05) |> 
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+
+gg.grouper.MaxN2 = left_join(gg.grouper.MaxN, meanmodel_means_cld2, by = "Common")
+
+g_colors1 <- c("#5AB4AC","#F46D43","#B5A1D3")
+
+grouper_MaxN = ggplot(gg.grouper.MaxN2, aes(Common, MaxN, fill = Common), colour = "black") +
+  geom_col() +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0, color = "black") +
+  geom_text(aes(label = code, y = conf.high + 0.2), size = 5) +
+  labs(x = "Grouper Species", y = "MaxN") +
+  scale_fill_manual(values = g_colors1) +  # Use the custom color palette
+  # scale_x_discrete(labels = c("Graysby", "Red Hind", "Coney")) +
+  theme(
+    axis.text = element_text(size = 14, face = "bold", colour = "black"),
+    axis.title = element_text(size = 16, face = "bold", colour = "black"),
+    plot.title = element_text(size = 16, face = "bold", colour = "black"),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black"),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+grouper_MaxN
+
+
+```
+
+## Panel Plot
+
+```{r - snap_group_ggarrange}
+#| echo: FALSE
+#| include: TRUE
+
+ggarrange(snapper_MaxN, grouper_MaxN,
+          labels = c('a)','b)'),
+          ncol = 2, vjust = 1, align = "h")
+
+```
+
+# Q2: Occurrence
+
+## Snapper
+
+### Model Selection
+
+```{r - snapper occurence}
+#| echo: TRUE
+#| include: TRUE
+
+snapper_oc <- gs |>
+  filter(Common %in% c("Yellowtail", "Lane", "Mahogany", "Schoolmaster", "Mutton"))
+
+
+# Fit GLM (binomial) for snapper occurrence
+glm_snap_occur <- glm(PA ~ Common, family = binomial(link = "logit"), data = snapper_oc)
+check_model(glm_snap_occur)   # Model diagnostics
+summary(glm_snap_occur)
+anova(glm_snap_occur, test = "Chisq")
+
+```
+
+
+### Occurrence Pairwise
+
+```{r - snapper occurence pairwise}
+#| echo: FALSE
+#| include: TRUE
+
+gg.snapper.occ = ggpredict(glm_snap_occur, terms = "Common") |>
+  rename(Common = x, Occurrence = predicted)
+
+em_snapper_occ = emmeans(glm_snap_occur, "Common")
+
+pairwise_snapper_occ = pairs(em_snapper_occ, simple = "Common") |> 
+  as.data.frame()
+
+pairwise_snapper_occ = pairwise_snapper_occ %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+pairwise_snapper_occ %>%
+  gt() %>%
+  tab_header(
+    title = "Pairwise Comparisons of Occurence by Species (Snapper)"
+  ) %>%
+  fmt_number(
+    columns = c(Estimate, SE, z_ratio, p_value),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Comparison = "Comparison",
+    Estimate = "Difference",
+    SE = "SE",
+    df = "df",
+    z_ratio = "z",
+    p_value = "p-value"
+  ) %>%
+  tab_options(
+    table.font.size = "small"
+  ) %>%
+  tab_spanner(
+    label = "Statistics",
+    columns = c(Estimate, SE, df, z_ratio, p_value)
+  )
+
+
+```
+
+### Occurrence Plot
+
+```{r - snapper occurence plot}
+#| echo: FALSE
+#| include: TRUE
+
+meanmodel_means_cld_occ <- cld(em_snapper_occ,
+                               adjust = "bonf",
+                               Letters = letters,
+                               sort = FALSE,
+                               alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+# Merge predicted values with CLD letters
+gg.snapper.occ2 <- left_join(gg.snapper.occ, meanmodel_means_cld_occ, by = "Common")
+
+# Create the Snapper Occurrence Plot
+snapper_occ_plot <- ggplot(gg.snapper.occ2, aes(Common, Occurrence, fill = Common), colour = "black") +
+  geom_col() +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0, color = "black") +
+  geom_text(aes(label = code, y = conf.high + 0.05), size = 5) +
+  labs(x = "Snapper Species", y = "Predicted Probability \n of Occurrence") +
+  scale_fill_manual(values = custom_colors1) +
+  theme(axis.text = element_text(size = 14, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", colour = "black"),
+        panel.grid.major = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        legend.position = "none")
+
+snapper_occ_plot
+
+```
+
+## Grouper
+
+### Model Selection
+
+```{r - grouper occurence}
+#| echo: TRUE
+#| include: TRUE
+
+grouper_oc <- gs |>
+  filter(Common %in% c("Graysby", "Red Hind", "Coney"))
+
+# Fit GLM (binomial) for grouper occurrence
+glm_grouper_occur <- glm(PA ~ Common, family = binomial(link = "logit"), data = grouper_oc)
+check_model(glm_grouper_occur)
+summary(glm_grouper_occur)
+anova(glm_grouper_occur, test = "Chisq")
+
+```
+
+### Occurrence Pairwise
+
+```{r - grouper occurence pairwise}
+#| echo: FALSE
+#| include: TRUE
+
+
+gg.grouper.occ <- ggpredict(glm_grouper_occur, terms = "Common") |>
+  rename(Common = x, Occurrence = predicted)
+
+# Pairwise comparisons for grouper occurrence
+em_grouper_occ = emmeans(glm_grouper_occur, "Common")
+
+pairwise_grouper_occ = pairs(em_grouper_occ, simple = "Common") |> 
+  as.data.frame()
+
+pairwise_grouper_occ = pairwise_grouper_occ %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+pairwise_grouper_occ %>%
+  gt() %>%
+  tab_header(
+    title = "Pairwise Comparisons of Occurence by Species (Grouper)"
+  ) %>%
+  fmt_number(
+    columns = c(Estimate, SE, z_ratio, p_value),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Comparison = "Comparison",
+    Estimate = "Difference",
+    SE = "SE",
+    df = "df",
+    z_ratio = "z",
+    p_value = "p-value"
+  ) %>%
+  tab_options(
+    table.font.size = "small"
+  ) %>%
+  tab_spanner(
+    label = "Statistics",
+    columns = c(Estimate, SE, df, z_ratio, p_value)
+  )
+
+```
+
+
+### Occurrence Plot
+
+```{r - grouper occurence plot}
+#| echo: FALSE
+#| include: TRUE
+
+
+meanmodel_means_cld_occ_grp <- cld(em_grouper_occ,
+                                   adjust = "bonf",
+                                   Letters = letters,
+                                   sort = FALSE,
+                                   alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+# Merge predicted values with CLD letters
+gg.grouper.occ2 <- left_join(gg.grouper.occ, meanmodel_means_cld_occ_grp, by = "Common")
+
+# Create the Grouper Occurrence Plot
+grouper_occ_plot <- ggplot(gg.grouper.occ2, aes(Common, Occurrence, fill = Common), colour = "black") +
+  geom_col() +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0, color = "black") +
+  geom_text(aes(label = code, y = conf.high + 0.05), size = 5) +
+  labs(x = "Grouper Species", y = "Predicted Probability \n of Occurrence") +
+  scale_fill_manual(values = g_colors1) +
+  theme(axis.text = element_text(size = 14, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", colour = "black"),
+        panel.grid.major = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        legend.position = "none")
+
+grouper_occ_plot
+
+```
+
+## Panel Plot
+
+```{r - snap_group_ggarrange2}
+#| echo: FALSE
+#| include: TRUE
+
+
+ggarrange(snapper_occ_plot, grouper_occ_plot,
+          labels = c('a)', 'b)'),
+          ncol = 1, vjust = 1, align = "v")
+
+```
+
+
+## Occurence by Location
+
+### Snapper
+
+```{r - snapper occurence by location}
+#| echo: TRUE
+#| include: TRUE
+
+# Fit a GLM including Location as an interaction
+glm_snap_occur_loc <- glm(PA ~ Common * Location, 
+                          family = binomial(link = "logit"), 
+                          data = snapper_oc)
+
+summary(glm_snap_occur_loc)
+
+check_model(glm_snap_occur_loc)
+
+anova(glm_snap_occur_loc, test = "Chisq")
+
+```
+
+### Snapper Occurrence by Location Pairwise
+
+```{r - snapper occurence by location pairwise}
+#| echo: FALSE
+#| include: TRUE
+
+gg.snapper.occ_loc <- ggpredict(glm_snap_occur_loc, terms = c("Common", "Location")) |>
+  rename(Common = x, Occurrence = predicted, Location = group)
+
+em_snap_occur_loc <- emmeans(glm_snap_occur_loc, ~ Common | Location)
+
+
+
+# Common
+pairwise_snapper_occloc = pairs(em_snap_occur_loc, simple = "Common") |>
+  as.data.frame() %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    Group = "Common",  # add a column so we can tell them apart later
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+# Location
+pairwise_snapper_lococc = pairs(em_snap_occur_loc, simple = "Location") |>
+  as.data.frame() %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    Group = "Location", # again, add a group label
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+pairwise_combined = bind_rows(pairwise_snapper_occloc, pairwise_snapper_lococc)
+
+pairwise_combined %>%
+  gt(groupname_col = "Group") %>%  # <-- this will automatically group by "Common" and "Location"
+  tab_header(
+    title = "Pairwise Comparisons of Snapper Occurrence"
+  ) %>%
+  fmt_number(
+    columns = c(Estimate, SE, z_ratio, p_value),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Comparison = "Comparison",
+    Estimate = "Difference",
+    SE = "SE",
+    df = "df",
+    z_ratio = "z",
+    p_value = "p-value"
+  ) %>%
+  tab_options(
+    table.font.size = "small"
+  ) %>%
+  tab_spanner(
+    label = "Statistics",
+    columns = c(Estimate, SE, df, z_ratio, p_value)
+  )
+
+
+
+```
+
+
+### Snapper Occurrence by Location Plot
+
+```{r - snapper occurence by location plot}
+#| echo: FALSE
+#| include: TRUE
+
+# Get compact letter displays for significance groups
+cld_snap_occur_loc <- cld(em_snap_occur_loc,
+                          adjust = "bonf",
+                          Letters = letters,
+                          sort = FALSE,
+                          alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+# Merge the CLD letters with the predicted values
+gg.snapper.occ_loc2 <- left_join(gg.snapper.occ_loc, cld_snap_occur_loc, 
+                                 by = c("Common", "Location"))
+
+
+gg.snapper.occ_loc2 = gg.snapper.occ_loc2 |> 
+  mutate(Location = case_when(Location == "M" ~ "Maguey",Location == "T" ~ "Tampico", TRUE ~ Location),
+         code = case_when(Location == "Tampico" & Common == "Yellowtail" ~ "*", TRUE ~ code)) |> 
+  drop_na()
+
+# Create the Snapper Occurrence Plot by Location
+snapper_occ_loc_plot <- ggplot(gg.snapper.occ_loc2, aes(Common, Occurrence, fill = Common), colour = "black") +
+  geom_col() +
+  geom_errorbar(data = subset(gg.snapper.occ_loc2, !(Common == "Yellowtail" & Location == "Tampico")),
+                aes(ymin = conf.low, ymax = conf.high),
+                width = 0,
+                color = "black") +
+  geom_text(aes(label = code, y = conf.high + 0.05), size = 5) +
+  scale_fill_manual(values = custom_colors1) +
+  facet_wrap(~ Location) +
+  labs(x = "Snapper Species", y = "Predicted Probability \n of Occurrence") +
+  theme(axis.text = element_text(size = 14, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", colour = "black"),
+        panel.grid.major = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        legend.position = "none",
+        strip.text = element_text(size = 12, face = "bold", colour = "black"),
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+snapper_occ_loc_plot
+
+```
+
+## Grouper
+
+### Model Selection
+
+```{r - grouper occurence by location}
+#| echo: TRUE
+#| include: TRUE
+
+# Fit a GLM including Location as an interaction
+glm_grouper_occur_loc <- glm(PA ~ Common * Location, 
+                             family = binomial(link = "logit"), 
+                             data = grouper_oc)
+
+check_model(glm_grouper_occur_loc) # Model diagnostics
+#plot(glm_grouper_occur_loc)
+summary(glm_grouper_occur_loc)
+anova(glm_grouper_occur_loc, test = "Chisq")
+
+
+```
+
+### Grouper Occurrence by Location Pairwise
+
+```{r - grouper occurence by location pairwise}
+#| echo: FALSE
+#| include: TRUE
+
+
+# Generate predictions
+gg.grouper.occ_loc <- ggpredict(glm_grouper_occur_loc, terms = c("Common", "Location"))|>
+  rename(Common = x, Occurrence = predicted, Location = group)
+
+# Pairwise comparisons within each Location
+em_grouper_occur_loc <- emmeans(glm_grouper_occur_loc, ~ Common | Location)
+
+# Common comparisons (within Location)
+pairwise_grouper_occloc_common <- pairs(em_grouper_occur_loc, simple = "Common") |>
+  as.data.frame() %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    Group = "Common (within Location)",
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+# Location comparisons (within Common)
+pairwise_grouper_occloc_loc <- pairs(em_grouper_occur_loc, simple = "Location") |>
+  as.data.frame() %>%
+  rename(
+    Comparison = contrast,
+    Estimate = estimate,
+    SE = SE,
+    df = df,
+    z_ratio = z.ratio,
+    p_value = p.value
+  ) %>%
+  mutate(
+    Group = "Location (within Common)",
+    p_value = signif(p_value, 4),
+    Estimate = round(Estimate, 3),
+    SE = round(SE, 2),
+    z_ratio = round(z_ratio, 3)
+  )
+
+# Combine both sets of pairwise comparisons
+pairwise_grouper_combined <- bind_rows(pairwise_grouper_occloc_common, pairwise_grouper_occloc_loc)
+
+# Create gt summary table
+pairwise_grouper_combined %>%
+  gt(groupname_col = "Group") %>%
+  tab_header(
+    title = "Pairwise Comparisons of Grouper Occurrence"
+  ) %>%
+  fmt_number(
+    columns = c(Estimate, SE, z_ratio, p_value),
+    decimals = 3
+  ) %>%
+  cols_label(
+    Comparison = "Comparison",
+    Estimate = "Difference",
+    SE = "SE",
+    df = "df",
+    z_ratio = "z",
+    p_value = "p-value"
+  ) %>%
+  tab_options(
+    table.font.size = "small"
+  ) %>%
+  tab_spanner(
+    label = "Statistics",
+    columns = c(Estimate, SE, df, z_ratio, p_value)
+  )
+
+
+
+```
+
+
+### Grouper Occurrence by Location Plot
+
+```{r - grouper occurence by location plot}
+#| echo: FALSE
+#| include: TRUE
+
+# Obtain CLD letters for grouper
+cld_grouper_occur_loc <- cld(em_grouper_occur_loc,
+                             adjust = "bonf",
+                             Letters = letters,
+                             sort = FALSE,
+                             alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+# Merge CLD letters with predictions
+gg.grouper.occ_loc2 <- left_join(gg.grouper.occ_loc, cld_grouper_occur_loc, 
+                                 by = c("Common", "Location"))
+
+
+gg.grouper.occ_loc2 = gg.grouper.occ_loc2 |> 
+  mutate(Location = case_when(Location == "M" ~ "Maguey",Location == "T" ~ "Tampico", TRUE ~ Location)) |> 
+  drop_na()
+
+# Create the Grouper Occurrence Plot by Location
+grouper_occ_loc_plot <- ggplot(gg.grouper.occ_loc2, aes(Common, Occurrence, fill = Common), colour = "black") +
+  geom_col() +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0, color = "black") +
+  geom_text(aes(label = code, y = conf.high + 0.05), size = 5) +
+  labs(x = "Grouper Species", y = "Predicted Probability \n of Occurrence") +
+  scale_fill_manual(values = g_colors1) +
+  facet_wrap(~ Location) +
+  theme(axis.text = element_text(size = 14, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        plot.title = element_text(size = 16, face = "bold", colour = "black"),
+        panel.grid.major = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        legend.position = "none",
+        strip.text = element_text(size = 12, face = "bold", colour = "black"))
+grouper_occ_loc_plot
+
+
+
+```
+
+## Panel Plot
+
+```{r - snap_group_ggarrange4}
+#| echo: FALSE
+#| include: TRUE
+
+# Optionally, combine and save the plots
+ggarrange(snapper_occ_loc_plot, grouper_occ_loc_plot,
+          labels = c('a)', 'b)'),
+          ncol = 1, vjust = 1, align = "v")
+
+```
+
+# Rugosity Analysis
+
+## Abundance by Rugosity
+
+### Snapper Abundance 
+
+```{r - snap abundance rugosity}
+#| echo: TRUE
+#| include: TRUE
+
+snapper_abundance_r$Common = as.factor(snapper_abundance_r$Common)
+
+#Location was not necessary for the model after dredging
+
+snapp_maxn_nb <- glmmTMB(MaxN ~ Avg_rugosity + Common  + (1 | Site), family = nbinom2,data = snapper_abundance_r)
+
+car::Anova(snapp_maxn_nb) 
+
+```
+
+```{r snap abun rugosity pred}
+#| echo: FALSE
+#| include: TRUE
+snapp_maxn_commonpreds <- ggpredict(snapp_maxn_nb, terms = c("Common")) %>% 
+  rename(Common = x, MaxN = predicted) 
+
+em_snapp_maxn <- emmeans(snapp_maxn_nb, ~ Common)
+pairs(em_snapp_maxn, simple = "Common")
+
+cld_snapp_maxn <- cld(em_snapp_maxn, 
+                      Letters = letters,
+                      adjust = "bonf", 
+                      sort = FALSE, 
+                      alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+gg.snapp_maxn = left_join(snapp_maxn_commonpreds, cld_snapp_maxn, by = c("Common"))
+
+snappcommon_pred = ggplot(gg.snapp_maxn, aes(x = Common, y = MaxN, fill = Common)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = code), vjust = -0.5, size = 3) +
+  labs(title = "Snapper Abundance (MaxN) by Species",
+       x = "Species",
+       y = "MaxN") +
+  scale_fill_manual(values = custom_colors1[c(1, 4)])+
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+snapp_maxn_rugopreds = ggpredict(snapp_maxn_nb, terms = c("Avg_rugosity [1:2.5 by = 0.05]"))
+
+snaprugo_pred = ggplot(snapp_maxn_rugopreds, aes(x = x, y = predicted)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#FC8D62", alpha = 0.3) +
+  geom_line( linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Snapper Abundance (MaxN) by Rugosity",
+       x = "Rugosity",
+       y = "MaxN")
+
+ggarrange(snappcommon_pred, snaprugo_pred,
+          labels = c('a)', 'b)'),
+          ncol = 2, vjust = 1, align = "v")
+
+```
+
+### Grouper Abundance 
+
+I had to switch to compois as there was some underdispersion. This made it a lot better. Then I dredged. The top two models were all the terms and without location. With all the terms rugosity had a minimal effect. Without location rugosity had a larger effect so I went with that since that is the focus of this section.
+
+```{r - Grouper abundance rugosity}
+#| echo: TRUE
+#| include: TRUE
+
+grouper_abundance_r$Common = as.factor(grouper_abundance_r$Common)
+
+grouper_maxn_pois_r = glmmTMB(MaxN ~ Avg_rugosity  + Common  + (1 | Site), family = compois(), data = grouper_abundance_r)
+
+summary(grouper_maxn_pois_r)
+
+car::Anova(grouper_maxn_pois_r)
+```
+
+```{r grouper abun rugosity pred}
+#| echo: FALSE
+#| include: TRUE
+
+grouper_maxn_preds_r <- ggpredict(grouper_maxn_pois_r, terms = c("Common")) %>% 
+  rename(Common = x, MaxN = predicted)
+
+em_grouper_maxn_r <- emmeans(grouper_maxn_pois_r, ~ Common)
+pairs(em_grouper_maxn_r, simple = "Common")
+
+cld_grouper_maxn_r <- cld(em_grouper_maxn_r, 
+                        Letters = letters,
+                        adjust = "bonf", 
+                        sort = FALSE, 
+                        alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+gg.grouper_maxn_r = left_join(grouper_maxn_preds_r, cld_grouper_maxn_r, by = c("Common"))
+
+groupercommon_pred = ggplot(gg.grouper_maxn_r, aes(x = Common, y = MaxN, fill = Common)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = code), vjust = -0.5, size = 3) +
+  labs(title = "Grouper Abundance (MaxN) by Species",
+       x = "Species",
+       y = "MaxN") +
+  scale_fill_manual(values = g_colors1[c(1, 2, 3)])+
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+grouper_maxn_rugopreds = ggpredict(grouper_maxn_pois_r, terms = c("Avg_rugosity [1:2.5 by = 0.05]"))
+
+grouper_rugo_pred = ggplot(grouper_maxn_rugopreds, aes(x = x, y = predicted)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#FC8D62", alpha = 0.3) +
+  geom_line( linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Grouper Abundance (MaxN) by Rugosity",
+       x = "Rugosity",
+       y = "MaxN")
+
+
+ggarrange(groupercommon_pred, grouper_rugo_pred,
+          labels = c('a)', 'b)'),
+          ncol = 2, vjust = 1, align = "v")
+
+```
+
+## Occurrence by Rugosity
+
+### Snapper Occurrence
+
+```{r - snapper occurrence rugosity}
+#| echo: TRUE
+#| include: TRUE
+
+snapper_occurrence_r$Common = as.factor(snapper_occurrence_r$Common)
+snapp_occur_binom = glmmTMB(PA ~ Avg_rugosity  + Common  + (1 | Site), family = binomial, data = snapper_occurrence_r)
+
+summary(snapp_occur_binom)
+
+car::Anova(snapp_occur_binom)
+
+```
+
+```{r snap occur rugosity pred}
+#| echo: FALSE
+#| include: TRUE
+
+snapp_paoccur_preds = ggpredict(snapp_occur_binom, terms = c("Common")) %>% 
+  rename(Common = x, Occurrence = predicted)
+
+em_snapp_paoccur = emmeans(snapp_occur_binom, ~ Common)
+pairs(em_snapp_paoccur, simple = "Common")
+
+cld_snapp_paoccur = cld(em_snapp_paoccur, 
+                      Letters = letters,
+                      adjust = "bonf", 
+                      sort = FALSE, 
+                      alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+gg.snapp_paoccur = left_join(snapp_paoccur_preds, cld_snapp_paoccur, by = c("Common"))
+
+snappcommon_paoccur = ggplot(gg.snapp_paoccur, aes(x = Common, y = Occurrence, fill = Common)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = code), vjust = -0.5, size = 3) +
+  labs(title = "Snapper Occurrence by Species",
+       x = "Species",
+       y = "Occurrence") +
+  scale_fill_manual(values = custom_colors1[c(1, 4)])+
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+snapp_parugopreds = ggpredict(snapp_occur_binom, terms = c("Avg_rugosity [1:2.5 by = 0.05]"))
+
+snap_pa_rugo_pred = ggplot(snapp_parugopreds, aes(x = x, y = predicted)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#FC8D62", alpha = 0.3) +
+  geom_line( linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Snapper Occurrence by Rugosity",
+       x = "Rugosity",
+       y = "Occurrence")
+
+
+ggarrange(snappcommon_paoccur, snap_pa_rugo_pred,
+          labels = c('a)', 'b)'),
+          ncol = 2, vjust = 1, align = "v")
+
+test3 = as.data.frame(gg.snapp_paoccur)
+test3
+test4 = as.data.frame(snapp_parugopreds)
+test4
+
+test5 = ggpredict(snapp_occur_binom, terms = c("Avg_rugosity [1:2.5 by = 0.05]", "Common")) |>
+  rename(Rugosity = x, Occurrence = predicted, Common = group)
+
+ggplot(test5, aes(x = Rugosity, y = Occurrence, color = Common, fill = Common)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.2, color = NA) +
+  geom_line(linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Grouper Occurrence by Rugosity",
+       x = "Rugosity",
+       y = "Probability of Occurrence")
+
+
+```
+
+
+### Grouper Occurrence
+
+```{r - grouper occurrence rugosity}
+#| echo: TRUE
+#| include: TRUE
+
+grouper_occurrence_r$Common = as.factor(grouper_occurrence_r$Common)
+grouper_occur_binom = glmmTMB(PA ~ Avg_rugosity + Common  + (1 | Site), family = binomial, data = grouper_occurrence_r)
+summary(grouper_occur_binom)
+car::Anova(grouper_occur_binom)
+```
+
+```{r grouper occur rugosity pred}
+#| echo: FALSE
+#| include: TRUE
+
+grouper_paoccur_preds = ggpredict(grouper_occur_binom, terms = c("Common")) %>% 
+  rename(Common = x, Occurrence = predicted)
+
+em_grouper_paoccur = emmeans(grouper_occur_binom, ~ Common)
+pairs(em_grouper_paoccur, simple = "Common")
+
+cld_grouper_paoccur = cld(em_grouper_paoccur, 
+                      Letters = letters,
+                      adjust = "bonf", 
+                      sort = FALSE, 
+                      alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
+
+gg.grouper_paoccur = left_join(grouper_paoccur_preds, cld_grouper_paoccur, by = c("Common"))
+
+groupercommon_paoccur = ggplot(gg.grouper_paoccur, aes(x = Common, y = Occurrence, fill = Common)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = code), vjust = -0.5, size = 3) +
+  labs(title = "Grouper Occurrence by Species",
+       x = "Species",
+       y = "Occurrence") +
+  scale_fill_manual(values = g_colors1[c(1, 2, 3)])+
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+grouper_parugopreds = ggpredict(grouper_occur_binom, terms = c("Avg_rugosity [1:2.5 by = 0.05]"))
+
+grouper_pa_rugo_pred = ggplot(grouper_parugopreds, aes(x = x, y = predicted)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#FC8D62", alpha = 0.3) +
+  geom_line( linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Grouper Occurrence by Rugosity",
+       x = "Rugosity",
+       y = "Occurrence")
+
+grouper_parugopreds = ggpredict(grouper_occur_binom, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |> 
+  rename(Rugosity = x, Occurrence = predicted)
+
+
+ggarrange(groupercommon_paoccur, grouper_pa_rugo_pred,
+          labels = c('a)', 'b)'),
+          ncol = 2, vjust = 1, align = "v")
+
+test = as.data.frame(gg.grouper_paoccur)
+
+test2 = as.data.frame(grouper_parugopreds)
+
+
+test3 = ggpredict(grouper_occur_binom, terms = c("Avg_rugosity [1:2.5 by = 0.05]", "Common")) |>
+  rename(Rugosity = x, Occurrence = predicted, Common = group)
+
+ggplot(test3, aes(x = Rugosity, y = Occurrence, color = Common, fill = Common)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.2, color = NA) +
+  geom_line(linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Grouper Occurrence by Rugosity",
+       x = "Rugosity",
+       y = "Probability of Occurrence")
+```
+
+
+# %Cover & Seascape Metrics
+
+Lots of issues with this. Only showing grouper abundance, specifically Graysby
+
+```{r - cover seascape metrics data}
+#| echo: FALSE
+#| include: FALSE
+
+grouper_abundance_r = read_csv("data/grouper_abundance_r.csv") |> 
+  dplyr::select(-SitePlot) |> 
+  rename(SitePlot = SitePlotNew) 
+
+
+pcover = read_csv("data/old/pcover.csv") |> 
+  mutate(Pcover = Pcover*100,
+         Plot = str_pad(Plot, width = 2, side = "left", pad = "0"),
+         Site = str_pad(Site, width = 2, side = "left", pad = "0")) |>
+  unite("SitePlot", Location, Site, Plot, sep = "", remove = FALSE) |> 
+  filter(Category %in% c("coral", "gorgonian", "algae", "sponge","sand-rubble"),
+         Period == "baseline") |> 
+  dplyr::select(-Period, -Year,-Location,-Site,-Plot) 
+
+lsmetrics = read_csv("data/lsmetrics.csv")
+
+dft = left_join(grouper_abundance_r, pcover, by = c("SitePlot")) 
+
+dft_wide = dft |> 
+  pivot_wider(
+    names_from = Category,
+    values_from = Pcover
+  ) |> 
+  dplyr::select(-14) |> 
+  drop_na() |> 
+  rename(
+    sand = "sand-rubble") |> 
+  left_join(lsmetrics, by = c("SitePlot"))
+
+df_gray_O = dft_wide |> 
+  filter(Common == "Graysby") 
+
+```
+
+First for rugosity, location and %covers
+```{r - cover seascape metrics model}
+#| echo: TRUE
+#| include: TRUE
+
+grayA1 = glmmTMB(MaxN ~ Avg_rugosity + Location +  coral + gorgonian + sand + sponge + algae  + (1 | Site), family = poisson(), data = df_gray_O)
+check_model(grayA1)
+
+options(na.action = "na.fail") # Set na.action to fail for dredge
+dr_invT = dredge(grayA1) |> 
+  filter(delta < 4)
+
+top = which.min(dr_invT$df)
+
+top_invT = get.models(dr_invT, subset = top)[[1]]
+
+summary(top_invT)
+
+grayA1 = glmmTMB(MaxN ~ sand + (1 | Site), family = poisson(), data = df_gray_O) #only good one
+
+
+```
+
+Now for pland - landscape metrics, didnt use pd cause it was too correlated with pland
+
+```{r - cover seascape metrics model pland}
+#| echo: TRUE
+#| include: TRUE
+
+grayA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass
+                   + (1|Site), data = df_gray_O, family = poisson())
+
+check_model(grayA2) # Model diagnostics, looks okayish
+
+dr_invT = dredge(grayA2) |> 
+  filter(delta < 4)
+
+top = which.min(dr_invT$df)
+
+top_invT = get.models(dr_invT, subset = top)[[1]]
+
+summary(top_invT)#None
+
+
+```
+
+Now using distance tos hore, mangrove, inlket and mpa
+
+```{r - distances}
+#| echo: TRUE
+#| include: TRUE
+
+grayA3 = glmmTMB(MaxN ~ mpa_distance + mang + land + inlet, data = df_gray_O, family = nbinom2())
+check_model(grayA3) # Model diagnostics, looks okayish
+
+dr_invT = dredge(grayA3) |> 
+  filter(delta < 4)
+
+top = which.min(dr_invT$df)
+
+top_invT = get.models(dr_invT, subset = top)[[1]]
+
+summary(top_invT)
+
+#using mangroves only 
+```
+
+Now the Global Model
+
+```{r - global model}
+#| echo: TRUE
+#| include: TRUE
+
+grayAF1 = glmmTMB(MaxN ~ sand + mang , data = df_gray_O, family = nbinom2(link = "sqrt"))
+grayAF2 = glmmTMB(MaxN ~ sand + mang  + (1|Site), data = df_gray_O, family = nbinom2(link = "sqrt"))
+AIC(grayAF1, grayAF2) # AIC comparison, grayAF2 is better
+
+check_model(grayAF2) # Model diagnostics, looks okayish
+summary(grayAF2) # Model coefficients
+
+
+
+```

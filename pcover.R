@@ -14,8 +14,6 @@ pcover <- pcover %>%
     Location = trimws(Location)
   )
 
-# (Optional) Create a SitePlot column in pcover if it helps in cross-checking
-pcover<- read_excel("/Users/christinenation/Desktop/Rproject/pcover.xlsx")
 
 pcover <- pcover %>%
   mutate(Site = str_pad(Site, width = 2, pad = "0"),

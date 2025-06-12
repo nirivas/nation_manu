@@ -1,0 +1,2771 @@
+Year,Location,Site,Plot,Category,Pcover,Period
+2021,M,10,81,coral,0.005278592,baseline
+2021,M,10,81,gorgonian,0.004340176,baseline
+2021,M,10,81,algae,0.037888563,baseline
+2021,M,10,81,other,0.007859238,baseline
+2021,M,10,81,sponge,0.02111437,baseline
+2021,M,10,81,sand-rubble,0.914017595,baseline
+2021,M,10,81,tools,0.009501466,baseline
+2021,M,10,82,coral,0.006382979,baseline
+2021,M,10,82,gorgonian,0.001654846,baseline
+2021,M,10,82,algae,0.024113475,baseline
+2021,M,10,82,other,7.09E-04,baseline
+2021,M,10,82,sponge,0.011583924,baseline
+2021,M,10,82,sand-rubble,0.947044917,baseline
+2021,M,10,82,tools,0.008510638,baseline
+2021,M,10,83,coral,0.007844947,baseline
+2021,M,10,83,gorgonian,0.016705122,baseline
+2021,M,10,83,algae,0.135394555,baseline
+2021,M,10,83,other,0.011444393,baseline
+2021,M,10,83,sponge,0.012275035,baseline
+2021,M,10,83,sand-rubble,0.798338717,baseline
+2021,M,10,83,tools,0.017628057,baseline
+2021,M,10,83,zoanthid,3.69E-04,baseline
+2021,M,10,84,coral,0.002039911,baseline
+2021,M,10,84,gorgonian,0.003370288,baseline
+2021,M,10,84,algae,0.13578714,baseline
+2021,M,10,84,other,0.007184035,baseline
+2021,M,10,84,sponge,0.022527716,baseline
+2021,M,10,84,sand-rubble,0.82075388,baseline
+2021,M,10,84,tools,0.007716186,baseline
+2021,M,10,84,zoanthid,6.21E-04,baseline
+2021,M,12,53,coral,0.00562201,baseline
+2021,M,12,53,gorgonian,0.015430622,baseline
+2021,M,12,53,algae,0.15992823,baseline
+2021,M,12,53,other,0.003588517,baseline
+2021,M,12,53,sponge,0.011961722,baseline
+2021,M,12,53,sand-rubble,0.780143541,baseline
+2021,M,12,53,tools,0.023205742,baseline
+2021,M,12,53,zoanthid,1.20E-04,baseline
+2021,M,12,54,coral,0.007083825,baseline
+2021,M,12,54,gorgonian,0.020306966,baseline
+2021,M,12,54,algae,0.206493506,baseline
+2021,M,12,54,other,0.007201889,baseline
+2021,M,12,54,sponge,0.032113341,baseline
+2021,M,12,54,sand-rubble,0.694923259,baseline
+2021,M,12,54,tools,0.031641086,baseline
+2021,M,12,54,zoanthid,2.36E-04,baseline
+2021,M,12,55,coral,0.004938272,baseline
+2021,M,12,55,gorgonian,0.011111111,baseline
+2021,M,12,55,algae,0.154320988,baseline
+2021,M,12,55,other,0.002116402,baseline
+2021,M,12,55,sponge,0.010582011,baseline
+2021,M,12,55,sand-rubble,0.807936508,baseline
+2021,M,12,55,seagrass,1.76E-04,baseline
+2021,M,12,55,tools,0.008818342,baseline
+2021,M,12,56,coral,0.00801564,baseline
+2021,M,12,56,gorgonian,0.01769306,baseline
+2021,M,12,56,algae,0.241642229,baseline
+2021,M,12,56,other,0.005474096,baseline
+2021,M,12,56,sponge,0.085923754,baseline
+2021,M,12,56,sand-rubble,0.628739003,baseline
+2021,M,12,56,tools,0.012316716,baseline
+2021,M,12,56,zoanthid,1.96E-04,baseline
+2021,M,15,61,coral,0.011494253,baseline
+2021,M,15,61,gorgonian,0.036637931,baseline
+2021,M,15,61,algae,0.615086207,baseline
+2021,M,15,61,other,0.004166667,baseline
+2021,M,15,61,sponge,0.008908046,baseline
+2021,M,15,61,sand-rubble,0.294827586,baseline
+2021,M,15,61,tools,0.02887931,baseline
+2021,M,15,62,coral,0.008308895,baseline
+2021,M,15,62,gorgonian,0.015542522,baseline
+2021,M,15,62,algae,0.394721408,baseline
+2021,M,15,62,other,0.009286413,baseline
+2021,M,15,62,sponge,0.115053763,baseline
+2021,M,15,62,sand-rubble,0.435581623,baseline
+2021,M,15,62,tools,0.021309873,baseline
+2021,M,15,62,zoanthid,1.96E-04,baseline
+2021,M,15,63,coral,0.014639906,baseline
+2021,M,15,63,gorgonian,0.052774498,baseline
+2021,M,15,63,algae,0.355371901,baseline
+2021,M,15,63,other,0.00377804,baseline
+2021,M,15,63,sponge,0.039905549,baseline
+2021,M,15,63,sand-rubble,0.525029516,baseline
+2021,M,15,63,tools,0.008382527,baseline
+2021,M,15,63,zoanthid,1.18E-04,baseline
+2021,M,15,64,coral,0.01446281,baseline
+2021,M,15,64,gorgonian,0.03815427,baseline
+2021,M,15,64,algae,0.129889807,baseline
+2021,M,15,64,other,0.002066116,baseline
+2021,M,15,64,sponge,0.026859504,baseline
+2021,M,15,64,sand-rubble,0.778099174,baseline
+2021,M,15,64,tools,0.010192837,baseline
+2021,M,15,64,zoanthid,2.75E-04,baseline
+2021,M,17,89,coral,0.006363636,baseline
+2021,M,17,89,gorgonian,0.021477273,baseline
+2021,M,17,89,algae,0.109431818,baseline
+2021,M,17,89,other,0.005,baseline
+2021,M,17,89,sponge,0.054090909,baseline
+2021,M,17,89,sand-rubble,0.787954545,baseline
+2021,M,17,89,tools,0.015340909,baseline
+2021,M,17,89,zoanthid,3.41E-04,baseline
+2021,M,17,90,coral,0.005182257,baseline
+2021,M,17,90,gorgonian,0.011067194,baseline
+2021,M,17,90,algae,0.215898112,baseline
+2021,M,17,90,other,0.006587615,baseline
+2021,M,17,90,sponge,0.03407993,baseline
+2021,M,17,90,sand-rubble,0.706807202,baseline
+2021,M,17,90,tools,0.02002635,baseline
+2021,M,17,90,zoanthid,3.51E-04,baseline
+2021,M,17,91,coral,0.009309091,baseline
+2021,M,17,91,gorgonian,0.009454545,baseline
+2021,M,17,91,algae,0.067490909,baseline
+2021,M,17,91,other,0.008581818,baseline
+2021,M,17,91,sponge,0.052945455,baseline
+2021,M,17,91,sand-rubble,0.844072727,baseline
+2021,M,17,91,tools,0.007854545,baseline
+2021,M,17,91,zoanthid,2.91E-04,baseline
+2021,M,17,92,coral,0.002624672,baseline
+2021,M,17,92,gorgonian,0.004724409,baseline
+2021,M,17,92,algae,0.087664042,baseline
+2021,M,17,92,other,0.008661417,baseline
+2021,M,17,92,sponge,0.020734908,baseline
+2021,M,17,92,sand-rubble,0.85511811,baseline
+2021,M,17,92,tools,0.020209974,baseline
+2021,M,17,92,zoanthid,2.62E-04,baseline
+2021,M,28,73,coral,0.012655971,baseline
+2021,M,28,73,gorgonian,0.061497326,baseline
+2021,M,28,73,algae,0.492513369,baseline
+2021,M,28,73,other,0.071836007,baseline
+2021,M,28,73,sponge,0.008377897,baseline
+2021,M,28,73,sand-rubble,0.307664884,baseline
+2021,M,28,73,seagrass,5.35E-04,baseline
+2021,M,28,73,tools,0.044919786,baseline
+2021,M,28,74,coral,0.006561859,baseline
+2021,M,28,74,gorgonian,0.018865345,baseline
+2021,M,28,74,algae,0.465481887,baseline
+2021,M,28,74,other,0.002870813,baseline
+2021,M,28,74,sponge,0.082980178,baseline
+2021,M,28,74,sand-rubble,0.365413534,baseline
+2021,M,28,74,seagrass,0.008749146,baseline
+2021,M,28,74,tools,0.048530417,baseline
+2021,M,28,74,zoanthid,5.47E-04,baseline
+2021,M,28,76,coral,0.010514541,baseline
+2021,M,28,76,gorgonian,0.052796421,baseline
+2021,M,28,76,algae,0.082997763,baseline
+2021,M,28,76,other,0.001565996,baseline
+2021,M,28,76,sponge,0.055704698,baseline
+2021,M,28,76,sand-rubble,0.768680089,baseline
+2021,M,28,76,seagrass,2.24E-04,baseline
+2021,M,28,76,tools,0.027516779,baseline
+2021,M,38,57,coral,0.002412281,baseline
+2021,M,38,57,gorgonian,0.001973684,baseline
+2021,M,38,57,algae,0.283991228,baseline
+2021,M,38,57,other,8.77E-04,baseline
+2021,M,38,57,sponge,0.053070175,baseline
+2021,M,38,57,sand-rubble,0.64627193,baseline
+2021,M,38,57,tools,0.011403509,baseline
+2021,M,38,58,coral,0.00816777,baseline
+2021,M,38,58,gorgonian,0.007505519,baseline
+2021,M,38,58,algae,0.166445916,baseline
+2021,M,38,58,other,0.001545254,baseline
+2021,M,38,58,sponge,0.072406181,baseline
+2021,M,38,58,sand-rubble,0.735761589,baseline
+2021,M,38,58,seagrass,0.001324503,baseline
+2021,M,38,58,tools,0.006843267,baseline
+2021,M,38,59,coral,0.008080808,baseline
+2021,M,38,59,gorgonian,0.014141414,baseline
+2021,M,38,59,algae,0.307474747,baseline
+2021,M,38,59,other,0.006868687,baseline
+2021,M,38,59,sponge,0.038383838,baseline
+2021,M,38,59,sand-rubble,0.605656566,baseline
+2021,M,38,59,seagrass,0.002222222,baseline
+2021,M,38,59,tools,0.017171717,baseline
+2021,M,38,60,coral,0.010338681,baseline
+2021,M,38,60,gorgonian,0.018300654,baseline
+2021,M,38,60,algae,0.564468212,baseline
+2021,M,38,60,other,0.033392751,baseline
+2021,M,38,60,sponge,0.008199643,baseline
+2021,M,38,60,sand-rubble,0.338799762,baseline
+2021,M,38,60,seagrass,0.002376708,baseline
+2021,M,38,60,tools,0.024004753,baseline
+2021,M,38,60,zoanthid,1.19E-04,baseline
+2021,M,43,65,coral,0.013203463,baseline
+2021,M,43,65,gorgonian,0.024350649,baseline
+2021,M,43,65,algae,0.448701299,baseline
+2021,M,43,65,other,0.006926407,baseline
+2021,M,43,65,sponge,0.00508658,baseline
+2021,M,43,65,sand-rubble,0.481277056,baseline
+2021,M,43,65,seagrass,7.58E-04,baseline
+2021,M,43,65,tools,0.01969697,baseline
+2021,M,43,66,coral,0.003892944,baseline
+2021,M,43,66,gorgonian,0.023114355,baseline
+2021,M,43,66,algae,0.272749392,baseline
+2021,M,43,66,other,0.001703163,baseline
+2021,M,43,66,sponge,0.043552311,baseline
+2021,M,43,66,sand-rubble,0.643309002,baseline
+2021,M,43,66,tools,0.011678832,baseline
+2021,M,43,67,coral,0.004691358,baseline
+2021,M,43,67,gorgonian,0.024691358,baseline
+2021,M,43,67,algae,0.318765432,baseline
+2021,M,43,67,other,9.88E-04,baseline
+2021,M,43,67,sponge,0.036296296,baseline
+2021,M,43,67,sand-rubble,0.602716049,baseline
+2021,M,43,67,seagrass,4.94E-04,baseline
+2021,M,43,67,tools,0.011358025,baseline
+2021,M,43,68,coral,0.00960961,baseline
+2021,M,43,68,gorgonian,0.022522523,baseline
+2021,M,43,68,algae,0.321621622,baseline
+2021,M,43,68,other,0.006306306,baseline
+2021,M,43,68,sponge,0.020720721,baseline
+2021,M,43,68,sand-rubble,0.605105105,baseline
+2021,M,43,68,seagrass,0.002402402,baseline
+2021,M,43,68,tools,0.011711712,baseline
+2021,M,45,85,coral,0.011948052,baseline
+2021,M,45,85,gorgonian,0.004675325,baseline
+2021,M,45,85,algae,0.134415584,baseline
+2021,M,45,85,other,0.008441558,baseline
+2021,M,45,85,sponge,0.026493506,baseline
+2021,M,45,85,sand-rubble,0.808051948,baseline
+2021,M,45,85,tools,0.005974026,baseline
+2021,M,45,87,coral,0.008941878,baseline
+2021,M,45,87,gorgonian,0.002086438,baseline
+2021,M,45,87,algae,0.150422255,baseline
+2021,M,45,87,other,0.00615996,baseline
+2021,M,45,87,sponge,0.070640835,baseline
+2021,M,45,87,sand-rubble,0.746150025,baseline
+2021,M,45,87,tools,0.015201192,baseline
+2021,M,45,87,zoanthid,3.97E-04,baseline
+2021,M,45,88,coral,0.004288499,baseline
+2021,M,45,88,gorgonian,0.003703704,baseline
+2021,M,45,88,algae,0.177582846,baseline
+2021,M,45,88,other,0.001364522,baseline
+2021,M,45,88,sponge,0.065302144,baseline
+2021,M,45,88,sand-rubble,0.712280702,baseline
+2021,M,45,88,tools,0.035477583,baseline
+2021,M,48,49,coral,0.003284072,baseline
+2021,M,48,49,gorgonian,0.012643678,baseline
+2021,M,48,49,algae,0.281773399,baseline
+2021,M,48,49,other,0.003119869,baseline
+2021,M,48,49,sponge,0.01182266,baseline
+2021,M,48,49,sand-rubble,0.667816092,baseline
+2021,M,48,49,tools,0.01954023,baseline
+2021,M,48,51,coral,0.007246377,baseline
+2021,M,48,51,gorgonian,0.020471014,baseline
+2021,M,48,51,algae,0.307608696,baseline
+2021,M,48,51,other,0.002173913,baseline
+2021,M,48,51,sponge,0.038043478,baseline
+2021,M,48,51,sand-rubble,0.616304348,baseline
+2021,M,48,51,seagrass,3.62E-04,baseline
+2021,M,48,51,tools,0.007789855,baseline
+2021,M,48,52,coral,0.004166667,baseline
+2021,M,48,52,gorgonian,0.014341085,baseline
+2021,M,48,52,algae,0.275678295,baseline
+2021,M,48,52,other,8.72E-04,baseline
+2021,M,48,52,sponge,0.021802326,baseline
+2021,M,48,52,sand-rubble,0.664922481,baseline
+2021,M,48,52,tools,0.018217054,baseline
+2021,M,73,77,coral,0.026486014,baseline
+2021,M,73,77,gorgonian,0.038286713,baseline
+2021,M,73,77,algae,0.15541958,baseline
+2021,M,73,77,other,0.027534965,baseline
+2021,M,73,77,sponge,0.074388112,baseline
+2021,M,73,77,sand-rubble,0.663461538,baseline
+2021,M,73,77,tools,0.0125,baseline
+2021,M,73,77,zoanthid,0.001923077,baseline
+2021,M,73,78,coral,0.015272727,baseline
+2021,M,73,78,gorgonian,0.060121212,baseline
+2021,M,73,78,algae,0.204606061,baseline
+2021,M,73,78,other,0.013333333,baseline
+2021,M,73,78,sponge,0.102787879,baseline
+2021,M,73,78,sand-rubble,0.569454545,baseline
+2021,M,73,78,tools,0.024848485,baseline
+2021,M,73,78,zoanthid,0.009575758,baseline
+2021,M,73,79,coral,0.008823529,baseline
+2021,M,73,79,gorgonian,0.045588235,baseline
+2021,M,73,79,algae,0.132189542,baseline
+2021,M,73,79,other,0.005882353,baseline
+2021,M,73,79,sponge,0.052941176,baseline
+2021,M,73,79,sand-rubble,0.743954248,baseline
+2021,M,73,79,tools,0.010620915,baseline
+2021,M,74,93,coral,0.003747398,baseline
+2021,M,74,93,gorgonian,0.00111034,baseline
+2021,M,74,93,algae,0.156696738,baseline
+2021,M,74,93,other,0.023594726,baseline
+2021,M,74,93,sponge,0.011519778,baseline
+2021,M,74,93,sand-rubble,0.784455239,baseline
+2021,M,74,93,tools,0.018320611,baseline
+2021,M,74,93,zoanthid,5.55E-04,baseline
+2021,M,74,94,coral,0.008977273,baseline
+2021,M,74,94,gorgonian,0.004318182,baseline
+2021,M,74,94,algae,0.22875,baseline
+2021,M,74,94,other,0.030795455,baseline
+2021,M,74,94,sponge,0.030568182,baseline
+2021,M,74,94,sand-rubble,0.675227273,baseline
+2021,M,74,94,tools,0.02125,baseline
+2021,M,74,94,zoanthid,1.14E-04,baseline
+2021,M,74,95,coral,0.010167131,baseline
+2021,M,74,95,gorgonian,0.006406685,baseline
+2021,M,74,95,algae,0.100835655,baseline
+2021,M,74,95,other,0.011420613,baseline
+2021,M,74,95,sponge,0.051810585,baseline
+2021,M,74,95,sand-rubble,0.813927577,baseline
+2021,M,74,95,tools,0.003064067,baseline
+2021,M,74,95,zoanthid,0.002367688,baseline
+2021,M,74,96,coral,0.009177592,baseline
+2021,M,74,96,gorgonian,0.004171633,baseline
+2021,M,74,96,algae,0.077353993,baseline
+2021,M,74,96,other,0.02693683,baseline
+2021,M,74,96,sponge,0.019189511,baseline
+2021,M,74,96,sand-rubble,0.850417163,baseline
+2021,M,74,96,tools,0.012038141,baseline
+2021,M,74,96,zoanthid,7.15E-04,baseline
+2021,M,8,69,coral,0.015920398,baseline
+2021,M,8,69,gorgonian,0.027363184,baseline
+2021,M,8,69,algae,0.132587065,baseline
+2021,M,8,69,other,0.0039801,baseline
+2021,M,8,69,sponge,0.089054726,baseline
+2021,M,8,69,sand-rubble,0.71318408,baseline
+2021,M,8,69,seagrass,7.46E-04,baseline
+2021,M,8,69,tools,0.017164179,baseline
+2021,M,8,70,coral,0.012600536,baseline
+2021,M,8,70,gorgonian,0.031769437,baseline
+2021,M,8,70,algae,0.192091153,baseline
+2021,M,8,70,other,0.003485255,baseline
+2021,M,8,70,sponge,0.033512064,baseline
+2021,M,8,70,sand-rubble,0.720107239,baseline
+2021,M,8,70,tools,0.006434316,baseline
+2021,M,8,71,coral,0.01679198,baseline
+2021,M,8,71,gorgonian,0.060902256,baseline
+2021,M,8,71,algae,0.188471178,baseline
+2021,M,8,71,other,5.01E-04,baseline
+2021,M,8,71,sponge,0.097493734,baseline
+2021,M,8,71,sand-rubble,0.608270677,baseline
+2021,M,8,71,tools,0.027568922,baseline
+2021,M,8,72,coral,0.017746326,baseline
+2021,M,8,72,gorgonian,0.036690256,baseline
+2021,M,8,72,algae,0.146325531,baseline
+2021,M,8,72,other,0.002939575,baseline
+2021,M,8,72,sponge,0.025694066,baseline
+2021,M,8,72,sand-rubble,0.739793141,baseline
+2021,M,8,72,tools,0.030811105,baseline
+2021,T,1,14,coral,0.02288961,baseline
+2021,T,1,14,gorgonian,0.033279221,baseline
+2021,T,1,14,algae,0.364448052,baseline
+2021,T,1,14,other,0.003409091,baseline
+2021,T,1,14,sponge,0.00762987,baseline
+2021,T,1,14,sand-rubble,0.529383117,baseline
+2021,T,1,14,tools,0.038961039,baseline
+2021,T,1,15,coral,0.019409283,baseline
+2021,T,1,15,gorgonian,0.022362869,baseline
+2021,T,1,15,algae,0.098945148,baseline
+2021,T,1,15,other,6.33E-04,baseline
+2021,T,1,15,sponge,0.068565401,baseline
+2021,T,1,15,sand-rubble,0.777848101,baseline
+2021,T,1,15,tools,0.012236287,baseline
+2021,T,1,16,coral,0.026683502,baseline
+2021,T,1,16,gorgonian,0.054461279,baseline
+2021,T,1,16,algae,0.141666667,baseline
+2021,T,1,16,other,0.004545455,baseline
+2021,T,1,16,sponge,0.12020202,baseline
+2021,T,1,16,sand-rubble,0.633417508,baseline
+2021,T,1,16,tools,0.019023569,baseline
+2021,T,20,9,coral,0.036124402,baseline
+2021,T,20,9,gorgonian,0.074401914,baseline
+2021,T,20,9,algae,0.378229665,baseline
+2021,T,20,9,other,0.008971292,baseline
+2021,T,20,9,sponge,0.009449761,baseline
+2021,T,20,9,sand-rubble,0.439473684,baseline
+2021,T,20,9,tools,0.053110048,baseline
+2021,T,20,9,zoanthid,2.39E-04,baseline
+2021,T,20,10,coral,0.04368071,baseline
+2021,T,20,10,gorgonian,0.08481153,baseline
+2021,T,20,10,algae,0.392461197,baseline
+2021,T,20,10,other,0.010532151,baseline
+2021,T,20,10,sponge,0.011862528,baseline
+2021,T,20,10,sand-rubble,0.393791574,baseline
+2021,T,20,10,tools,0.06286031,baseline
+2021,T,20,11,coral,0.03118779,baseline
+2021,T,20,11,gorgonian,0.026675514,baseline
+2021,T,20,11,algae,0.467285999,baseline
+2021,T,20,11,other,0.005043132,baseline
+2021,T,20,11,sponge,0.00796284,baseline
+2021,T,20,11,sand-rubble,0.422428666,baseline
+2021,T,20,11,tools,0.039416058,baseline
+2021,T,20,12,coral,0.014346591,baseline
+2021,T,20,12,gorgonian,0.035653409,baseline
+2021,T,20,12,algae,0.464488636,baseline
+2021,T,20,12,other,0.021164773,baseline
+2021,T,20,12,sponge,0.008522727,baseline
+2021,T,20,12,sand-rubble,0.403977273,baseline
+2021,T,20,12,tools,0.051846591,baseline
+2021,T,22,33,coral,0.01546841,baseline
+2021,T,22,33,gorgonian,0.040740741,baseline
+2021,T,22,33,algae,0.180392157,baseline
+2021,T,22,33,other,0.002178649,baseline
+2021,T,22,33,sponge,0.14248366,baseline
+2021,T,22,33,sand-rubble,0.578649237,baseline
+2021,T,22,33,tools,0.040087146,baseline
+2021,T,22,34,coral,0.010176991,baseline
+2021,T,22,34,gorgonian,0.036578171,baseline
+2021,T,22,34,algae,0.261946903,baseline
+2021,T,22,34,other,0.002064897,baseline
+2021,T,22,34,sponge,0.136578171,baseline
+2021,T,22,34,sand-rubble,0.525368732,baseline
+2021,T,22,34,seagrass,1.47E-04,baseline
+2021,T,22,34,tools,0.027138643,baseline
+2021,T,22,35,coral,0.020945946,baseline
+2021,T,22,35,gorgonian,0.036036036,baseline
+2021,T,22,35,algae,0.347972973,baseline
+2021,T,22,35,other,0.005855856,baseline
+2021,T,22,35,sponge,0.123648649,baseline
+2021,T,22,35,sand-rubble,0.441216216,baseline
+2021,T,22,35,seagrass,2.25E-04,baseline
+2021,T,22,35,tools,0.024099099,baseline
+2021,T,22,36,coral,0.019831224,baseline
+2021,T,22,36,gorgonian,0.037763713,baseline
+2021,T,22,36,algae,0.37257384,baseline
+2021,T,22,36,sponge,0.131434599,baseline
+2021,T,22,36,sand-rubble,0.407383966,baseline
+2021,T,22,36,seagrass,0.002531646,baseline
+2021,T,22,36,tools,0.028481013,baseline
+2021,T,23,45,coral,0.012686567,baseline
+2021,T,23,45,gorgonian,0.009950249,baseline
+2021,T,23,45,algae,0.165174129,baseline
+2021,T,23,45,other,0.004975124,baseline
+2021,T,23,45,sponge,0.099004975,baseline
+2021,T,23,45,sand-rubble,0.657462687,baseline
+2021,T,23,45,tools,0.050746269,baseline
+2021,T,23,46,coral,0.005586592,baseline
+2021,T,23,46,gorgonian,0.001117318,baseline
+2021,T,23,46,algae,0.084543762,baseline
+2021,T,23,46,other,0.001117318,baseline
+2021,T,23,46,sponge,0.015642458,baseline
+2021,T,23,46,sand-rubble,0.881750466,baseline
+2021,T,23,46,tools,0.010242086,baseline
+2021,T,23,47,coral,0.015733333,baseline
+2021,T,23,47,gorgonian,0.0048,baseline
+2021,T,23,47,algae,0.2544,baseline
+2021,T,23,47,other,0.002666667,baseline
+2021,T,23,47,sponge,0.0384,baseline
+2021,T,23,47,sand-rubble,0.670133333,baseline
+2021,T,23,47,seagrass,0.001066667,baseline
+2021,T,23,47,tools,0.0128,baseline
+2021,T,23,48,coral,0.006028369,baseline
+2021,T,23,48,gorgonian,0.001950355,baseline
+2021,T,23,48,algae,0.09787234,baseline
+2021,T,23,48,other,0.001595745,baseline
+2021,T,23,48,sponge,0.012943262,baseline
+2021,T,23,48,sand-rubble,0.865957447,baseline
+2021,T,23,48,tools,0.013652482,baseline
+2021,T,24,29,coral,0.046380471,baseline
+2021,T,24,29,gorgonian,0.11473064,baseline
+2021,T,24,29,algae,0.27996633,baseline
+2021,T,24,29,other,0.005218855,baseline
+2021,T,24,29,sponge,0.227272727,baseline
+2021,T,24,29,sand-rubble,0.255976431,baseline
+2021,T,24,29,tools,0.070286195,baseline
+2021,T,24,29,zoanthid,1.68E-04,baseline
+2021,T,24,30,coral,0.025555556,baseline
+2021,T,24,30,gorgonian,0.048888889,baseline
+2021,T,24,30,algae,0.300833333,baseline
+2021,T,24,30,other,5.56E-04,baseline
+2021,T,24,30,sponge,0.116388889,baseline
+2021,T,24,30,sand-rubble,0.454722222,baseline
+2021,T,24,30,tools,0.053055556,baseline
+2021,T,24,31,coral,0.014047619,baseline
+2021,T,24,31,gorgonian,0.023333333,baseline
+2021,T,24,31,algae,0.398809524,baseline
+2021,T,24,31,other,0.001904762,baseline
+2021,T,24,31,sponge,0.024761905,baseline
+2021,T,24,31,sand-rubble,0.523333333,baseline
+2021,T,24,31,tools,0.013809524,baseline
+2021,T,24,32,coral,0.020437956,baseline
+2021,T,24,32,gorgonian,0.03892944,baseline
+2021,T,24,32,algae,0.29026764,baseline
+2021,T,24,32,other,0.002189781,baseline
+2021,T,24,32,sponge,0.088321168,baseline
+2021,T,24,32,sand-rubble,0.544038929,baseline
+2021,T,24,32,tools,0.015815085,baseline
+2021,T,26,41,coral,0.009408773,baseline
+2021,T,26,41,gorgonian,0.01207883,baseline
+2021,T,26,41,algae,0.258105531,baseline
+2021,T,26,41,other,0.006230134,baseline
+2021,T,26,41,sponge,0.075651621,baseline
+2021,T,26,41,sand-rubble,0.601525747,baseline
+2021,T,26,41,tools,0.036999364,baseline
+2021,T,26,42,coral,0.008738548,baseline
+2021,T,26,42,gorgonian,0.013530655,baseline
+2021,T,26,42,algae,0.129386892,baseline
+2021,T,26,42,other,0.004651163,baseline
+2021,T,26,42,sponge,0.134038055,baseline
+2021,T,26,42,sand-rubble,0.701761804,baseline
+2021,T,26,42,tools,0.007892882,baseline
+2021,T,26,43,coral,0.007654321,baseline
+2021,T,26,43,gorgonian,0.005432099,baseline
+2021,T,26,43,algae,0.170864198,baseline
+2021,T,26,43,other,0.003209877,baseline
+2021,T,26,43,sponge,0.097037037,baseline
+2021,T,26,43,sand-rubble,0.689876543,baseline
+2021,T,26,43,tools,0.025925926,baseline
+2021,T,26,44,coral,0.012363636,baseline
+2021,T,26,44,gorgonian,0.012654545,baseline
+2021,T,26,44,algae,0.107781818,baseline
+2021,T,26,44,other,0.003781818,baseline
+2021,T,26,44,sponge,0.086545455,baseline
+2021,T,26,44,sand-rubble,0.765236364,baseline
+2021,T,26,44,tools,0.011636364,baseline
+2021,T,35,1,coral,0.007328605,baseline
+2021,T,35,1,gorgonian,0.001182033,baseline
+2021,T,35,1,algae,0.439007092,baseline
+2021,T,35,1,other,7.09E-04,baseline
+2021,T,35,1,sponge,0.012293144,baseline
+2021,T,35,1,sand-rubble,0.525295508,baseline
+2021,T,35,1,seagrass,0.001182033,baseline
+2021,T,35,1,tools,0.013002364,baseline
+2021,T,35,2,coral,0.006832298,baseline
+2021,T,35,2,gorgonian,0.004968944,baseline
+2021,T,35,2,algae,0.413043478,baseline
+2021,T,35,2,other,0.001035197,baseline
+2021,T,35,2,sponge,0.039544513,baseline
+2021,T,35,2,sand-rubble,0.526501035,baseline
+2021,T,35,2,seagrass,2.07E-04,baseline
+2021,T,35,2,tools,0.007867495,baseline
+2021,T,35,3,coral,0.003584229,baseline
+2021,T,35,3,gorgonian,0.001075269,baseline
+2021,T,35,3,algae,0.393548387,baseline
+2021,T,35,3,other,3.58E-04,baseline
+2021,T,35,3,sponge,0.020250896,baseline
+2021,T,35,3,sand-rubble,0.574731183,baseline
+2021,T,35,3,tools,0.006451613,baseline
+2021,T,35,4,coral,0.013589503,baseline
+2021,T,35,4,gorgonian,0.008809747,baseline
+2021,T,35,4,algae,0.423617619,baseline
+2021,T,35,4,other,0.014714152,baseline
+2021,T,35,4,sponge,0.007122774,baseline
+2021,T,35,4,sand-rubble,0.49737582,baseline
+2021,T,35,4,tools,0.033458294,baseline
+2021,T,35,4,zoanthid,0.00131209,baseline
+2021,T,37,17,coral,0.005811966,baseline
+2021,T,37,17,gorgonian,0.014017094,baseline
+2021,T,37,17,algae,0.240683761,baseline
+2021,T,37,17,other,0.001196581,baseline
+2021,T,37,17,sponge,0.123076923,baseline
+2021,T,37,17,sand-rubble,0.595042735,baseline
+2021,T,37,17,tools,0.02017094,baseline
+2021,T,37,18,coral,0.018157182,baseline
+2021,T,37,18,gorgonian,0.031165312,baseline
+2021,T,37,18,algae,0.327642276,baseline
+2021,T,37,18,other,0.003523035,baseline
+2021,T,37,18,sponge,0.08699187,baseline
+2021,T,37,18,sand-rubble,0.471544715,baseline
+2021,T,37,18,tools,0.06097561,baseline
+2021,T,37,19,coral,0.016931217,baseline
+2021,T,37,19,gorgonian,0.064285714,baseline
+2021,T,37,19,algae,0.371957672,baseline
+2021,T,37,19,other,0.001058201,baseline
+2021,T,37,19,sponge,0.111904762,baseline
+2021,T,37,19,sand-rubble,0.361904762,baseline
+2021,T,37,19,seagrass,2.65E-04,baseline
+2021,T,37,19,tools,0.071693122,baseline
+2021,T,37,20,coral,0.020614035,baseline
+2021,T,37,20,gorgonian,0.067105263,baseline
+2021,T,37,20,algae,0.163596491,baseline
+2021,T,37,20,sponge,0.149122807,baseline
+2021,T,37,20,sand-rubble,0.563596491,baseline
+2021,T,37,20,tools,0.035964912,baseline
+2021,T,39,37,coral,0.009615385,baseline
+2021,T,39,37,gorgonian,0.026602564,baseline
+2021,T,39,37,algae,0.228846154,baseline
+2021,T,39,37,other,0.001282051,baseline
+2021,T,39,37,sponge,0.029487179,baseline
+2021,T,39,37,sand-rubble,0.692307692,baseline
+2021,T,39,37,tools,0.011858974,baseline
+2021,T,39,38,coral,0.012101911,baseline
+2021,T,39,38,gorgonian,0.048195329,baseline
+2021,T,39,38,algae,0.186199575,baseline
+2021,T,39,38,other,2.12E-04,baseline
+2021,T,39,38,sponge,0.095329087,baseline
+2021,T,39,38,sand-rubble,0.648195329,baseline
+2021,T,39,38,tools,0.009766454,baseline
+2021,T,39,39,coral,0.018666667,baseline
+2021,T,39,39,gorgonian,0.043238095,baseline
+2021,T,39,39,algae,0.267619048,baseline
+2021,T,39,39,other,0.004,baseline
+2021,T,39,39,sponge,0.111619048,baseline
+2021,T,39,39,sand-rubble,0.537142857,baseline
+2021,T,39,39,tools,0.017714286,baseline
+2021,T,39,40,coral,0.020068318,baseline
+2021,T,39,40,gorgonian,0.040819812,baseline
+2021,T,39,40,algae,0.273099915,baseline
+2021,T,39,40,other,0.001878736,baseline
+2021,T,39,40,sponge,0.047907771,baseline
+2021,T,39,40,sand-rubble,0.606404782,baseline
+2021,T,39,40,tools,0.009735269,baseline
+2021,T,39,40,zoanthid,8.54E-05,baseline
+2021,T,4,5,coral,0.01486631,baseline
+2021,T,4,5,gorgonian,0.050802139,baseline
+2021,T,4,5,algae,0.569625668,baseline
+2021,T,4,5,other,0.002887701,baseline
+2021,T,4,5,sponge,0.011550802,baseline
+2021,T,4,5,sand-rubble,0.319572193,baseline
+2021,T,4,5,tools,0.030588235,baseline
+2021,T,4,5,zoanthid,1.07E-04,baseline
+2021,T,4,6,coral,0.026801802,baseline
+2021,T,4,6,gorgonian,0.108108108,baseline
+2021,T,4,6,algae,0.384009009,baseline
+2021,T,4,6,sponge,0.06981982,baseline
+2021,T,4,6,sand-rubble,0.354054054,baseline
+2021,T,4,6,seagrass,2.25E-04,baseline
+2021,T,4,6,tools,0.056981982,baseline
+2021,T,4,7,coral,0.041975309,baseline
+2021,T,4,7,gorgonian,0.101481481,baseline
+2021,T,4,7,algae,0.339012346,baseline
+2021,T,4,7,sponge,0.225185185,baseline
+2021,T,4,7,sand-rubble,0.258024691,baseline
+2021,T,4,7,tools,0.034320988,baseline
+2021,T,4,8,coral,0.023628692,baseline
+2021,T,4,8,gorgonian,0.077004219,baseline
+2021,T,4,8,algae,0.275527426,baseline
+2021,T,4,8,other,2.11E-04,baseline
+2021,T,4,8,sponge,0.175527426,baseline
+2021,T,4,8,sand-rubble,0.420464135,baseline
+2021,T,4,8,tools,0.027637131,baseline
+2021,T,43,21,coral,0.014414414,baseline
+2021,T,43,21,gorgonian,0.061711712,baseline
+2021,T,43,21,algae,0.389189189,baseline
+2021,T,43,21,other,0.001801802,baseline
+2021,T,43,21,sponge,0.077927928,baseline
+2021,T,43,21,sand-rubble,0.393243243,baseline
+2021,T,43,21,tools,0.061711712,baseline
+2021,T,43,22,coral,0.02984127,baseline
+2021,T,43,22,gorgonian,0.075555556,baseline
+2021,T,43,22,algae,0.248571429,baseline
+2021,T,43,22,other,9.52E-04,baseline
+2021,T,43,22,sponge,0.211746032,baseline
+2021,T,43,22,sand-rubble,0.411111111,baseline
+2021,T,43,22,tools,0.022222222,baseline
+2021,T,43,24,coral,0.020610687,baseline
+2021,T,43,24,gorgonian,0.042748092,baseline
+2021,T,43,24,algae,0.324681934,baseline
+2021,T,43,24,other,7.63E-04,baseline
+2021,T,43,24,sponge,0.110687023,baseline
+2021,T,43,24,sand-rubble,0.467938931,baseline
+2021,T,43,24,tools,0.032569975,baseline
+2021,T,45,25,coral,0.020353982,baseline
+2021,T,45,25,gorgonian,0.074188791,baseline
+2021,T,45,25,algae,0.238348083,baseline
+2021,T,45,25,other,0.010471976,baseline
+2021,T,45,25,sponge,0.205309735,baseline
+2021,T,45,25,sand-rubble,0.347640118,baseline
+2021,T,45,25,seagrass,1.47E-04,baseline
+2021,T,45,25,tools,0.103539823,baseline
+2021,T,45,26,coral,0.015492958,baseline
+2021,T,45,26,gorgonian,0.091079812,baseline
+2021,T,45,26,algae,0.400704225,baseline
+2021,T,45,26,other,0.004694836,baseline
+2021,T,45,26,sponge,0.195070423,baseline
+2021,T,45,26,sand-rubble,0.242253521,baseline
+2021,T,45,26,tools,0.050704225,baseline
+2021,T,45,27,coral,0.023838384,baseline
+2021,T,45,27,gorgonian,0.054410774,baseline
+2021,T,45,27,algae,0.649158249,baseline
+2021,T,45,27,other,0.018047138,baseline
+2021,T,45,27,sponge,0.006464646,baseline
+2021,T,45,27,sand-rubble,0.208484848,baseline
+2021,T,45,27,tools,0.039461279,baseline
+2021,T,45,27,zoanthid,1.35E-04,baseline
+2021,T,45,28,coral,0.013552144,baseline
+2021,T,45,28,gorgonian,0.055690842,baseline
+2021,T,45,28,algae,0.613552144,baseline
+2021,T,45,28,other,0.015457914,baseline
+2021,T,45,28,sponge,0.01037586,baseline
+2021,T,45,28,sand-rubble,0.243620963,baseline
+2021,T,45,28,tools,0.047750132,baseline
+202206,M,8,69,coral,0.018465228,dieoff
+202206,M,8,69,gorgonian,0.015107914,dieoff
+202206,M,8,69,algae,0.336450839,dieoff
+202206,M,8,69,other,0.003117506,dieoff
+202206,M,8,69,sponge,0.017026379,dieoff
+202206,M,8,69,sand-rubble,0.530695444,dieoff
+202206,M,8,69,seagrass,0.057793765,dieoff
+202206,M,8,69,tools,0.021342926,dieoff
+202206,M,8,70,coral,0.01382716,dieoff
+202206,M,8,70,gorgonian,0.016790123,dieoff
+202206,M,8,70,algae,0.256296296,dieoff
+202206,M,8,70,sponge,0.006419753,dieoff
+202206,M,8,70,sand-rubble,0.649876543,dieoff
+202206,M,8,70,seagrass,0.016049383,dieoff
+202206,M,8,70,tools,0.040740741,dieoff
+202206,M,8,71,coral,0.01452381,dieoff
+202206,M,8,71,gorgonian,0.042619048,dieoff
+202206,M,8,71,algae,0.390238095,dieoff
+202206,M,8,71,other,0.003333333,dieoff
+202206,M,8,71,sponge,0.007619048,dieoff
+202206,M,8,71,sand-rubble,0.498095238,dieoff
+202206,M,8,71,seagrass,0.010714286,dieoff
+202206,M,8,71,tools,0.032857143,dieoff
+202206,M,8,72,coral,0.020080321,dieoff
+202206,M,8,72,gorgonian,0.014056225,dieoff
+202206,M,8,72,algae,0.300200803,dieoff
+202206,M,8,72,other,0.001204819,dieoff
+202206,M,8,72,sponge,0.0062249,dieoff
+202206,M,8,72,sand-rubble,0.611646586,dieoff
+202206,M,8,72,seagrass,0.024297189,dieoff
+202206,M,8,72,tools,0.022289157,dieoff
+202206,M,10,81,coral,0.005729167,dieoff
+202206,M,10,81,gorgonian,0.004947917,dieoff
+202206,M,10,81,algae,0.18125,dieoff
+202206,M,10,81,other,0.0046875,dieoff
+202206,M,10,81,sponge,0.018489583,dieoff
+202206,M,10,81,sand-rubble,0.75546875,dieoff
+202206,M,10,81,tools,0.029427083,dieoff
+202206,M,10,82,coral,0.004504505,dieoff
+202206,M,10,82,gorgonian,9.01E-04,dieoff
+202206,M,10,82,algae,0.157957958,dieoff
+202206,M,10,82,other,0.002702703,dieoff
+202206,M,10,82,sponge,0.013213213,dieoff
+202206,M,10,82,sand-rubble,0.803303303,dieoff
+202206,M,10,82,tools,0.017417417,dieoff
+202206,M,10,83,coral,0.008136483,dieoff
+202206,M,10,83,gorgonian,0.016010499,dieoff
+202206,M,10,83,algae,0.215748031,dieoff
+202206,M,10,83,other,0.005511811,dieoff
+202206,M,10,83,sponge,0.018372703,dieoff
+202206,M,10,83,sand-rubble,0.718635171,dieoff
+202206,M,10,83,tools,0.017585302,dieoff
+202206,M,10,84,coral,0.003816794,dieoff
+202206,M,10,84,gorgonian,0.002035623,dieoff
+202206,M,10,84,algae,0.319847328,dieoff
+202206,M,10,84,other,0.006361323,dieoff
+202206,M,10,84,sponge,0.011704835,dieoff
+202206,M,10,84,sand-rubble,0.647582697,dieoff
+202206,M,10,84,tools,0.008651399,dieoff
+202206,M,12,53,coral,0.006981982,dieoff
+202206,M,12,53,gorgonian,0.016666667,dieoff
+202206,M,12,53,algae,0.265315315,dieoff
+202206,M,12,53,other,9.01E-04,dieoff
+202206,M,12,53,sponge,0.003828829,dieoff
+202206,M,12,53,sand-rubble,0.69954955,dieoff
+202206,M,12,53,tools,0.006756757,dieoff
+202206,M,12,54,coral,0.004674797,dieoff
+202206,M,12,54,gorgonian,0.011585366,dieoff
+202206,M,12,54,algae,0.366463415,dieoff
+202206,M,12,54,other,0.00101626,dieoff
+202206,M,12,54,sponge,0.003455285,dieoff
+202206,M,12,54,sand-rubble,0.600203252,dieoff
+202206,M,12,54,seagrass,8.13E-04,dieoff
+202206,M,12,54,tools,0.011788618,dieoff
+202206,M,12,55,coral,0.007916667,dieoff
+202206,M,12,55,gorgonian,0.013125,dieoff
+202206,M,12,55,algae,0.32125,dieoff
+202206,M,12,55,other,0.00125,dieoff
+202206,M,12,55,sponge,0.005625,dieoff
+202206,M,12,55,sand-rubble,0.596875,dieoff
+202206,M,12,55,seagrass,0.045208333,dieoff
+202206,M,12,55,tools,0.00875,dieoff
+202206,M,12,56,coral,0.01232493,dieoff
+202206,M,12,56,gorgonian,0.013165266,dieoff
+202206,M,12,56,algae,0.382633053,dieoff
+202206,M,12,56,other,0.004481793,dieoff
+202206,M,12,56,sponge,0.003921569,dieoff
+202206,M,12,56,sand-rubble,0.575910364,dieoff
+202206,M,12,56,seagrass,8.40E-04,dieoff
+202206,M,12,56,tools,0.006722689,dieoff
+202206,M,15,61,coral,0.022305764,dieoff
+202206,M,15,61,gorgonian,0.021052632,dieoff
+202206,M,15,61,algae,0.374686717,dieoff
+202206,M,15,61,other,0.001754386,dieoff
+202206,M,15,61,sponge,0.004511278,dieoff
+202206,M,15,61,sand-rubble,0.54887218,dieoff
+202206,M,15,61,tools,0.026817043,dieoff
+202206,M,15,62,coral,0.011032864,dieoff
+202206,M,15,62,gorgonian,0.011032864,dieoff
+202206,M,15,62,algae,0.428873239,dieoff
+202206,M,15,62,other,7.04E-04,dieoff
+202206,M,15,62,sponge,0.009624413,dieoff
+202206,M,15,62,sand-rubble,0.508920188,dieoff
+202206,M,15,62,seagrass,9.39E-04,dieoff
+202206,M,15,62,tools,0.028873239,dieoff
+202206,M,15,63,coral,0.018584071,dieoff
+202206,M,15,63,gorgonian,0.027138643,dieoff
+202206,M,15,63,algae,0.350442478,dieoff
+202206,M,15,63,other,0.001179941,dieoff
+202206,M,15,63,sponge,0.009734513,dieoff
+202206,M,15,63,sand-rubble,0.579351032,dieoff
+202206,M,15,63,tools,0.013569322,dieoff
+202206,M,15,64,coral,0.015217391,dieoff
+202206,M,15,64,gorgonian,0.021980676,dieoff
+202206,M,15,64,algae,0.396376812,dieoff
+202206,M,15,64,other,0.002173913,dieoff
+202206,M,15,64,sponge,0.00821256,dieoff
+202206,M,15,64,sand-rubble,0.541304348,dieoff
+202206,M,15,64,seagrass,2.42E-04,dieoff
+202206,M,15,64,tools,0.014492754,dieoff
+202206,M,17,89,coral,0.007077626,dieoff
+202206,M,17,89,gorgonian,0.014840183,dieoff
+202206,M,17,89,algae,0.197260274,dieoff
+202206,M,17,89,other,0.002054795,dieoff
+202206,M,17,89,sponge,0.014611872,dieoff
+202206,M,17,89,sand-rubble,0.747716895,dieoff
+202206,M,17,89,seagrass,6.85E-04,dieoff
+202206,M,17,89,tools,0.015753425,dieoff
+202206,M,17,90,coral,0.005833333,dieoff
+202206,M,17,90,gorgonian,0.016944444,dieoff
+202206,M,17,90,algae,0.21,dieoff
+202206,M,17,90,other,0.003055556,dieoff
+202206,M,17,90,sponge,0.008611111,dieoff
+202206,M,17,90,sand-rubble,0.744722222,dieoff
+202206,M,17,90,tools,0.010833333,dieoff
+202206,M,17,91,coral,0.006382979,dieoff
+202206,M,17,91,gorgonian,0.008274232,dieoff
+202206,M,17,91,algae,0.138297872,dieoff
+202206,M,17,91,other,0.003782506,dieoff
+202206,M,17,91,sponge,0.011583924,dieoff
+202206,M,17,91,sand-rubble,0.817966903,dieoff
+202206,M,17,91,tools,0.013711584,dieoff
+202206,M,17,92,coral,0.005787037,dieoff
+202206,M,17,92,gorgonian,0.008796296,dieoff
+202206,M,17,92,algae,0.144212963,dieoff
+202206,M,17,92,other,0.001388889,dieoff
+202206,M,17,92,sponge,0.015740741,dieoff
+202206,M,17,92,sand-rubble,0.813425926,dieoff
+202206,M,17,92,tools,0.010648148,dieoff
+202206,M,28,73,coral,0.017886179,dieoff
+202206,M,28,73,gorgonian,0.047154472,dieoff
+202206,M,28,73,algae,0.278861789,dieoff
+202206,M,28,73,other,0.001897019,dieoff
+202206,M,28,73,sponge,0.008943089,dieoff
+202206,M,28,73,sand-rubble,0.611653117,dieoff
+202206,M,28,73,seagrass,0.013821138,dieoff
+202206,M,28,73,tools,0.019783198,dieoff
+202206,M,28,74,coral,0.008264463,dieoff
+202206,M,28,74,gorgonian,0.007988981,dieoff
+202206,M,28,74,algae,0.110192837,dieoff
+202206,M,28,74,other,0.002203857,dieoff
+202206,M,28,74,sponge,0.00661157,dieoff
+202206,M,28,74,sand-rubble,0.850137741,dieoff
+202206,M,28,74,seagrass,0.003581267,dieoff
+202206,M,28,74,tools,0.011019284,dieoff
+202206,M,28,75,coral,0.010057471,dieoff
+202206,M,28,75,gorgonian,0.01637931,dieoff
+202206,M,28,75,algae,0.098850575,dieoff
+202206,M,28,75,other,0.001436782,dieoff
+202206,M,28,75,sponge,0.008908046,dieoff
+202206,M,28,75,sand-rubble,0.854310345,dieoff
+202206,M,28,75,tools,0.010057471,dieoff
+202206,M,28,76,coral,0.009333333,dieoff
+202206,M,28,76,gorgonian,0.025066667,dieoff
+202206,M,28,76,algae,0.225333333,dieoff
+202206,M,28,76,other,0.002933333,dieoff
+202206,M,28,76,sponge,0.008533333,dieoff
+202206,M,28,76,sand-rubble,0.701333333,dieoff
+202206,M,28,76,seagrass,0.016266667,dieoff
+202206,M,28,76,tools,0.0112,dieoff
+202206,M,38,57,coral,0.001253133,dieoff
+202206,M,38,57,gorgonian,0.001754386,dieoff
+202206,M,38,57,algae,0.361904762,dieoff
+202206,M,38,57,other,2.51E-04,dieoff
+202206,M,38,57,sponge,0.001002506,dieoff
+202206,M,38,57,sand-rubble,0.612280702,dieoff
+202206,M,38,57,seagrass,0.00877193,dieoff
+202206,M,38,57,tools,0.012781955,dieoff
+202206,M,38,58,coral,0.008037825,dieoff
+202206,M,38,58,gorgonian,0.004491726,dieoff
+202206,M,38,58,algae,0.421513002,dieoff
+202206,M,38,58,other,0.003073286,dieoff
+202206,M,38,58,sponge,0.006146572,dieoff
+202206,M,38,58,sand-rubble,0.5356974,dieoff
+202206,M,38,58,seagrass,0.005200946,dieoff
+202206,M,38,58,tools,0.015839243,dieoff
+202206,M,38,59,coral,0.009382716,dieoff
+202206,M,38,59,gorgonian,0.017530864,dieoff
+202206,M,38,59,algae,0.379012346,dieoff
+202206,M,38,59,other,0.003209877,dieoff
+202206,M,38,59,sponge,0.003209877,dieoff
+202206,M,38,59,sand-rubble,0.540740741,dieoff
+202206,M,38,59,seagrass,0.030123457,dieoff
+202206,M,38,59,tools,0.016790123,dieoff
+202206,M,38,60,coral,0.012146893,dieoff
+202206,M,38,60,gorgonian,0.013841808,dieoff
+202206,M,38,60,algae,0.390677966,dieoff
+202206,M,38,60,other,0.001129944,dieoff
+202206,M,38,60,sponge,0.005649718,dieoff
+202206,M,38,60,sand-rubble,0.51779661,dieoff
+202206,M,38,60,seagrass,0.047740113,dieoff
+202206,M,38,60,tools,0.011016949,dieoff
+202206,M,43,65,coral,0.016944444,dieoff
+202206,M,43,65,gorgonian,0.03,dieoff
+202206,M,43,65,algae,0.259166667,dieoff
+202206,M,43,65,other,0.001944444,dieoff
+202206,M,43,65,sponge,0.005,dieoff
+202206,M,43,65,sand-rubble,0.669722222,dieoff
+202206,M,43,65,tools,0.017222222,dieoff
+202206,M,43,66,coral,0.009333333,dieoff
+202206,M,43,66,gorgonian,0.015466667,dieoff
+202206,M,43,66,algae,0.269333333,dieoff
+202206,M,43,66,other,0.001866667,dieoff
+202206,M,43,66,sponge,0.003466667,dieoff
+202206,M,43,66,sand-rubble,0.668266667,dieoff
+202206,M,43,66,seagrass,0.002666667,dieoff
+202206,M,43,66,tools,0.0296,dieoff
+202206,M,43,67,coral,0.010761155,dieoff
+202206,M,43,67,gorgonian,0.032808399,dieoff
+202206,M,43,67,algae,0.291338583,dieoff
+202206,M,43,67,other,7.87E-04,dieoff
+202206,M,43,67,sponge,0.006299213,dieoff
+202206,M,43,67,sand-rubble,0.644619423,dieoff
+202206,M,43,67,tools,0.013385827,dieoff
+202206,M,43,68,coral,0.017333333,dieoff
+202206,M,43,68,gorgonian,0.018133333,dieoff
+202206,M,43,68,algae,0.337866667,dieoff
+202206,M,43,68,other,0.004,dieoff
+202206,M,43,68,sponge,0.005066667,dieoff
+202206,M,43,68,sand-rubble,0.597066667,dieoff
+202206,M,43,68,tools,0.020533333,dieoff
+202206,M,45,85,coral,0.008905852,dieoff
+202206,M,45,85,gorgonian,0.005343511,dieoff
+202206,M,45,85,algae,0.215776081,dieoff
+202206,M,45,85,other,0.002544529,dieoff
+202206,M,45,85,sponge,0.012977099,dieoff
+202206,M,45,85,sand-rubble,0.746310433,dieoff
+202206,M,45,85,tools,0.008142494,dieoff
+202206,M,45,86,coral,0.002877698,dieoff
+202206,M,45,86,gorgonian,0.005995204,dieoff
+202206,M,45,86,algae,0.181055156,dieoff
+202206,M,45,86,other,0.003117506,dieoff
+202206,M,45,86,sponge,0.009592326,dieoff
+202206,M,45,86,sand-rubble,0.777458034,dieoff
+202206,M,45,86,tools,0.019904077,dieoff
+202206,M,45,87,coral,0.007344633,dieoff
+202206,M,45,87,gorgonian,0.002824859,dieoff
+202206,M,45,87,algae,0.160169492,dieoff
+202206,M,45,87,other,0.003672316,dieoff
+202206,M,45,87,sponge,0.016949153,dieoff
+202206,M,45,87,sand-rubble,0.800282486,dieoff
+202206,M,45,87,tools,0.008757062,dieoff
+202206,M,45,88,coral,0.008602151,dieoff
+202206,M,45,88,gorgonian,0.003494624,dieoff
+202206,M,45,88,algae,0.181182796,dieoff
+202206,M,45,88,other,0.002688172,dieoff
+202206,M,45,88,sponge,0.009946237,dieoff
+202206,M,45,88,sand-rubble,0.788172043,dieoff
+202206,M,45,88,tools,0.005913978,dieoff
+202206,M,48,49,coral,0.014285714,dieoff
+202206,M,48,49,gorgonian,0.007769424,dieoff
+202206,M,48,49,algae,0.379949875,dieoff
+202206,M,48,49,other,7.52E-04,dieoff
+202206,M,48,49,sponge,0.003508772,dieoff
+202206,M,48,49,sand-rubble,0.582957393,dieoff
+202206,M,48,49,seagrass,2.51E-04,dieoff
+202206,M,48,49,tools,0.010526316,dieoff
+202206,M,48,50,coral,0.010675381,dieoff
+202206,M,48,50,gorgonian,0.012636166,dieoff
+202206,M,48,50,algae,0.311982571,dieoff
+202206,M,48,50,other,0.00130719,dieoff
+202206,M,48,50,sponge,0.003267974,dieoff
+202206,M,48,50,sand-rubble,0.647930283,dieoff
+202206,M,48,50,seagrass,0.002614379,dieoff
+202206,M,48,50,tools,0.009586057,dieoff
+202206,M,48,51,coral,0.010434783,dieoff
+202206,M,48,51,gorgonian,0.017971014,dieoff
+202206,M,48,51,algae,0.415362319,dieoff
+202206,M,48,51,other,0.002318841,dieoff
+202206,M,48,51,sponge,0.004927536,dieoff
+202206,M,48,51,sand-rubble,0.531594203,dieoff
+202206,M,48,51,seagrass,0.011014493,dieoff
+202206,M,48,51,tools,0.006376812,dieoff
+202206,M,48,52,coral,0.005932203,dieoff
+202206,M,48,52,gorgonian,0.005649718,dieoff
+202206,M,48,52,algae,0.384745763,dieoff
+202206,M,48,52,other,0.001129944,dieoff
+202206,M,48,52,sponge,0.002824859,dieoff
+202206,M,48,52,sand-rubble,0.596045198,dieoff
+202206,M,48,52,seagrass,0.001412429,dieoff
+202206,M,48,52,tools,0.002259887,dieoff
+202206,M,73,77,coral,0.028165375,dieoff
+202206,M,73,77,gorgonian,0.037209302,dieoff
+202206,M,73,77,algae,0.1625323,dieoff
+202206,M,73,77,other,0.010852713,dieoff
+202206,M,73,77,sponge,0.059431525,dieoff
+202206,M,73,77,sand-rubble,0.688630491,dieoff
+202206,M,73,77,tools,0.013178295,dieoff
+202206,M,73,78,coral,0.027911647,dieoff
+202206,M,73,78,gorgonian,0.041365462,dieoff
+202206,M,73,78,algae,0.124096386,dieoff
+202206,M,73,78,other,0.009036145,dieoff
+202206,M,73,78,sponge,0.06686747,dieoff
+202206,M,73,78,sand-rubble,0.686345382,dieoff
+202206,M,73,78,tools,0.04437751,dieoff
+202206,M,73,79,coral,0.022868217,dieoff
+202206,M,73,79,gorgonian,0.049612403,dieoff
+202206,M,73,79,algae,0.112015504,dieoff
+202206,M,73,79,other,0.024031008,dieoff
+202206,M,73,79,sponge,0.018604651,dieoff
+202206,M,73,79,sand-rubble,0.737209302,dieoff
+202206,M,73,79,tools,0.035658915,dieoff
+202206,M,73,80,coral,0.026111111,dieoff
+202206,M,73,80,gorgonian,0.011111111,dieoff
+202206,M,73,80,algae,0.157222222,dieoff
+202206,M,73,80,other,0.003055556,dieoff
+202206,M,73,80,sponge,0.031111111,dieoff
+202206,M,73,80,sand-rubble,0.745277778,dieoff
+202206,M,73,80,tools,0.026111111,dieoff
+202206,M,74,93,coral,0.002721088,dieoff
+202206,M,74,93,gorgonian,4.54E-04,dieoff
+202206,M,74,93,algae,0.164852608,dieoff
+202206,M,74,93,other,0.001814059,dieoff
+202206,M,74,93,sponge,0.013378685,dieoff
+202206,M,74,93,sand-rubble,0.807029478,dieoff
+202206,M,74,93,tools,0.009750567,dieoff
+202206,M,74,94,coral,0.011363636,dieoff
+202206,M,74,94,gorgonian,0.001262626,dieoff
+202206,M,74,94,algae,0.351262626,dieoff
+202206,M,74,94,other,0.005050505,dieoff
+202206,M,74,94,sponge,0.021717172,dieoff
+202206,M,74,94,sand-rubble,0.597474747,dieoff
+202206,M,74,94,seagrass,2.53E-04,dieoff
+202206,M,74,94,tools,0.011616162,dieoff
+202206,M,74,95,coral,0.009923664,dieoff
+202206,M,74,95,gorgonian,0.002290076,dieoff
+202206,M,74,95,algae,0.24605598,dieoff
+202206,M,74,95,other,0.003053435,dieoff
+202206,M,74,95,sponge,0.016030534,dieoff
+202206,M,74,95,sand-rubble,0.705343511,dieoff
+202206,M,74,95,seagrass,2.54E-04,dieoff
+202206,M,74,95,tools,0.017048346,dieoff
+202206,M,74,96,coral,0.013279133,dieoff
+202206,M,74,96,gorgonian,0.002168022,dieoff
+202206,M,74,96,algae,0.130623306,dieoff
+202206,M,74,96,other,0.00596206,dieoff
+202206,M,74,96,sponge,0.013279133,dieoff
+202206,M,74,96,sand-rubble,0.823848238,dieoff
+202206,M,74,96,tools,0.010840108,dieoff
+202206,T,1,14,coral,0.020493827,dieoff
+202206,T,1,14,gorgonian,0.025925926,dieoff
+202206,T,1,14,algae,0.408148148,dieoff
+202206,T,1,14,other,7.41E-04,dieoff
+202206,T,1,14,sponge,0.008888889,dieoff
+202206,T,1,14,sand-rubble,0.524444444,dieoff
+202206,T,1,14,seagrass,7.41E-04,dieoff
+202206,T,1,14,tools,0.010617284,dieoff
+202206,T,1,15,coral,0.021323529,dieoff
+202206,T,1,15,gorgonian,0.020098039,dieoff
+202206,T,1,15,algae,0.284313725,dieoff
+202206,T,1,15,other,0.003186275,dieoff
+202206,T,1,15,sponge,0.007107843,dieoff
+202206,T,1,15,sand-rubble,0.643627451,dieoff
+202206,T,1,15,tools,0.020343137,dieoff
+202206,T,1,16,coral,0.004467354,dieoff
+202206,T,1,16,gorgonian,0.005498282,dieoff
+202206,T,1,16,algae,0.359450172,dieoff
+202206,T,1,16,other,0.002405498,dieoff
+202206,T,1,16,sponge,0.006872852,dieoff
+202206,T,1,16,sand-rubble,0.612714777,dieoff
+202206,T,1,16,seagrass,3.44E-04,dieoff
+202206,T,1,16,tools,0.008247423,dieoff
+202206,T,4,5,coral,0.013013699,dieoff
+202206,T,4,5,gorgonian,0.044063927,dieoff
+202206,T,4,5,algae,0.467123288,dieoff
+202206,T,4,5,other,0.001598174,dieoff
+202206,T,4,5,sponge,0.012557078,dieoff
+202206,T,4,5,sand-rubble,0.41803653,dieoff
+202206,T,4,5,seagrass,0.015296804,dieoff
+202206,T,4,5,tools,0.028310502,dieoff
+202206,T,4,6,coral,0.031578947,dieoff
+202206,T,4,6,gorgonian,0.106015038,dieoff
+202206,T,4,6,algae,0.427568922,dieoff
+202206,T,4,6,other,0.002506266,dieoff
+202206,T,4,6,sponge,0.006766917,dieoff
+202206,T,4,6,sand-rubble,0.385714286,dieoff
+202206,T,4,6,seagrass,0.002255639,dieoff
+202206,T,4,6,tools,0.037593985,dieoff
+202206,T,4,7,coral,0.045801527,dieoff
+202206,T,4,7,gorgonian,0.08778626,dieoff
+202206,T,4,7,algae,0.501526718,dieoff
+202206,T,4,7,other,0.002544529,dieoff
+202206,T,4,7,sponge,0.004580153,dieoff
+202206,T,4,7,sand-rubble,0.312977099,dieoff
+202206,T,4,7,seagrass,2.54E-04,dieoff
+202206,T,4,7,tools,0.044529262,dieoff
+202206,T,4,8,coral,0.034986226,dieoff
+202206,T,4,8,gorgonian,0.100275482,dieoff
+202206,T,4,8,algae,0.490358127,dieoff
+202206,T,4,8,other,0.002479339,dieoff
+202206,T,4,8,sponge,0.00523416,dieoff
+202206,T,4,8,sand-rubble,0.309917355,dieoff
+202206,T,4,8,seagrass,0.001652893,dieoff
+202206,T,4,8,tools,0.055096419,dieoff
+202206,T,20,9,coral,0.031510417,dieoff
+202206,T,20,9,gorgonian,0.06953125,dieoff
+202206,T,20,9,algae,0.297916667,dieoff
+202206,T,20,9,other,0.001041667,dieoff
+202206,T,20,9,sponge,0.007552083,dieoff
+202206,T,20,9,sand-rubble,0.547135417,dieoff
+202206,T,20,9,seagrass,0.001041667,dieoff
+202206,T,20,9,tools,0.044270833,dieoff
+202206,T,20,10,coral,0.039949109,dieoff
+202206,T,20,10,gorgonian,0.067175573,dieoff
+202206,T,20,10,algae,0.347328244,dieoff
+202206,T,20,10,other,0.002798982,dieoff
+202206,T,20,10,sponge,0.00610687,dieoff
+202206,T,20,10,sand-rubble,0.479898219,dieoff
+202206,T,20,10,seagrass,2.54E-04,dieoff
+202206,T,20,10,tools,0.05648855,dieoff
+202206,T,20,11,coral,0.023232323,dieoff
+202206,T,20,11,gorgonian,0.022474747,dieoff
+202206,T,20,11,algae,0.437878788,dieoff
+202206,T,20,11,other,0.002777778,dieoff
+202206,T,20,11,sponge,0.007575758,dieoff
+202206,T,20,11,sand-rubble,0.487121212,dieoff
+202206,T,20,11,seagrass,2.53E-04,dieoff
+202206,T,20,11,tools,0.018686869,dieoff
+202206,T,20,12,coral,0.019471947,dieoff
+202206,T,20,12,gorgonian,0.034653465,dieoff
+202206,T,20,12,algae,0.466006601,dieoff
+202206,T,20,12,other,0.001320132,dieoff
+202206,T,20,12,sponge,0.010561056,dieoff
+202206,T,20,12,sand-rubble,0.4330033,dieoff
+202206,T,20,12,tools,0.034983498,dieoff
+202206,T,22,33,coral,0.022316384,dieoff
+202206,T,22,33,gorgonian,0.042090395,dieoff
+202206,T,22,33,algae,0.353954802,dieoff
+202206,T,22,33,other,0.001129944,dieoff
+202206,T,22,33,sponge,0.012711864,dieoff
+202206,T,22,33,sand-rubble,0.501412429,dieoff
+202206,T,22,33,seagrass,0.032768362,dieoff
+202206,T,22,33,tools,0.033615819,dieoff
+202206,T,22,34,coral,0.01946472,dieoff
+202206,T,22,34,gorgonian,0.033333333,dieoff
+202206,T,22,34,algae,0.397810219,dieoff
+202206,T,22,34,other,7.30E-04,dieoff
+202206,T,22,34,sponge,0.006569343,dieoff
+202206,T,22,34,sand-rubble,0.506569343,dieoff
+202206,T,22,34,seagrass,2.43E-04,dieoff
+202206,T,22,34,tools,0.035279805,dieoff
+202206,T,22,35,coral,0.025,dieoff
+202206,T,22,35,gorgonian,0.034090909,dieoff
+202206,T,22,35,algae,0.470454545,dieoff
+202206,T,22,35,other,7.58E-04,dieoff
+202206,T,22,35,sponge,0.013131313,dieoff
+202206,T,22,35,sand-rubble,0.427777778,dieoff
+202206,T,22,35,seagrass,0.004040404,dieoff
+202206,T,22,35,tools,0.024747475,dieoff
+202206,T,22,36,coral,0.025,dieoff
+202206,T,22,36,gorgonian,0.031597222,dieoff
+202206,T,22,36,algae,0.571180556,dieoff
+202206,T,22,36,other,0.006597222,dieoff
+202206,T,22,36,sponge,0.007638889,dieoff
+202206,T,22,36,sand-rubble,0.297569444,dieoff
+202206,T,22,36,seagrass,0.03125,dieoff
+202206,T,22,36,tools,0.029166667,dieoff
+202206,T,23,45,coral,0.017792793,dieoff
+202206,T,23,45,gorgonian,0.007657658,dieoff
+202206,T,23,45,algae,0.317342342,dieoff
+202206,T,23,45,other,0.018918919,dieoff
+202206,T,23,45,sponge,0.01463964,dieoff
+202206,T,23,45,sand-rubble,0.611936937,dieoff
+202206,T,23,45,seagrass,2.25E-04,dieoff
+202206,T,23,45,tools,0.011486486,dieoff
+202206,T,23,46,coral,0.003921569,dieoff
+202206,T,23,46,gorgonian,7.35E-04,dieoff
+202206,T,23,46,algae,0.108333333,dieoff
+202206,T,23,46,other,2.45E-04,dieoff
+202206,T,23,46,sponge,0.004656863,dieoff
+202206,T,23,46,sand-rubble,0.873284314,dieoff
+202206,T,23,46,tools,0.008823529,dieoff
+202206,T,23,47,coral,0.013934426,dieoff
+202206,T,23,47,gorgonian,0.006010929,dieoff
+202206,T,23,47,algae,0.297540984,dieoff
+202206,T,23,47,other,0.004371585,dieoff
+202206,T,23,47,sponge,0.005191257,dieoff
+202206,T,23,47,sand-rubble,0.654918033,dieoff
+202206,T,23,47,seagrass,0.001912568,dieoff
+202206,T,23,47,tools,0.016120219,dieoff
+202206,T,23,48,coral,0.0075,dieoff
+202206,T,23,48,algae,0.188611111,dieoff
+202206,T,23,48,other,8.33E-04,dieoff
+202206,T,23,48,sponge,0.006666667,dieoff
+202206,T,23,48,sand-rubble,0.7825,dieoff
+202206,T,23,48,seagrass,0.001111111,dieoff
+202206,T,23,48,tools,0.012777778,dieoff
+202206,T,24,29,coral,0.048907104,dieoff
+202206,T,24,29,gorgonian,0.09863388,dieoff
+202206,T,24,29,algae,0.353825137,dieoff
+202206,T,24,29,other,0.00273224,dieoff
+202206,T,24,29,sponge,0.010928962,dieoff
+202206,T,24,29,sand-rubble,0.392349727,dieoff
+202206,T,24,29,seagrass,2.73E-04,dieoff
+202206,T,24,29,tools,0.092349727,dieoff
+202206,T,24,30,coral,0.020833333,dieoff
+202206,T,24,30,gorgonian,0.0484375,dieoff
+202206,T,24,30,algae,0.324479167,dieoff
+202206,T,24,30,other,0.001302083,dieoff
+202206,T,24,30,sponge,0.009375,dieoff
+202206,T,24,30,sand-rubble,0.54765625,dieoff
+202206,T,24,30,tools,0.047916667,dieoff
+202206,T,24,32,coral,0.028318584,dieoff
+202206,T,24,32,gorgonian,0.035103245,dieoff
+202206,T,24,32,algae,0.32359882,dieoff
+202206,T,24,32,other,0.002359882,dieoff
+202206,T,24,32,sponge,0.009144543,dieoff
+202206,T,24,32,sand-rubble,0.572271386,dieoff
+202206,T,24,32,seagrass,0.003834808,dieoff
+202206,T,24,32,tools,0.025368732,dieoff
+202206,T,35,1,coral,0.010416667,dieoff
+202206,T,35,1,gorgonian,0.001041667,dieoff
+202206,T,35,1,algae,0.410416667,dieoff
+202206,T,35,1,other,2.60E-04,dieoff
+202206,T,35,1,sponge,0.005208333,dieoff
+202206,T,35,1,sand-rubble,0.534635417,dieoff
+202206,T,35,1,seagrass,0.002864583,dieoff
+202206,T,35,1,tools,0.03515625,dieoff
+202206,T,35,2,coral,0.008396947,dieoff
+202206,T,35,2,gorgonian,0.002798982,dieoff
+202206,T,35,2,algae,0.506361323,dieoff
+202206,T,35,2,other,0.001272265,dieoff
+202206,T,35,2,sponge,0.004834606,dieoff
+202206,T,35,2,sand-rubble,0.432824427,dieoff
+202206,T,35,2,tools,0.04351145,dieoff
+202206,T,35,3,coral,0.013550136,dieoff
+202206,T,35,3,algae,0.464498645,dieoff
+202206,T,35,3,other,8.13E-04,dieoff
+202206,T,35,3,sponge,0.004607046,dieoff
+202206,T,35,3,sand-rubble,0.491056911,dieoff
+202206,T,35,3,seagrass,8.13E-04,dieoff
+202206,T,35,3,tools,0.024661247,dieoff
+202206,T,35,4,coral,0.017073171,dieoff
+202206,T,35,4,gorgonian,0.002710027,dieoff
+202206,T,35,4,algae,0.439295393,dieoff
+202206,T,35,4,other,0.004607046,dieoff
+202206,T,35,4,sponge,0.00704607,dieoff
+202206,T,35,4,sand-rubble,0.497831978,dieoff
+202206,T,35,4,seagrass,8.13E-04,dieoff
+202206,T,35,4,tools,0.030623306,dieoff
+202206,T,37,17,coral,0.005833333,dieoff
+202206,T,37,17,gorgonian,0.013055556,dieoff
+202206,T,37,17,algae,0.3675,dieoff
+202206,T,37,17,other,0.001666667,dieoff
+202206,T,37,17,sponge,0.004444444,dieoff
+202206,T,37,17,sand-rubble,0.585833333,dieoff
+202206,T,37,17,tools,0.021666667,dieoff
+202206,T,37,18,coral,0.024615385,dieoff
+202206,T,37,18,gorgonian,0.034358974,dieoff
+202206,T,37,18,algae,0.446666667,dieoff
+202206,T,37,18,other,0.001538462,dieoff
+202206,T,37,18,sponge,0.005897436,dieoff
+202206,T,37,18,sand-rubble,0.46025641,dieoff
+202206,T,37,18,tools,0.026666667,dieoff
+202206,T,37,19,coral,0.022321429,dieoff
+202206,T,37,19,gorgonian,0.060714286,dieoff
+202206,T,37,19,algae,0.398809524,dieoff
+202206,T,37,19,other,0.00327381,dieoff
+202206,T,37,19,sponge,0.00922619,dieoff
+202206,T,37,19,sand-rubble,0.475595238,dieoff
+202206,T,37,19,tools,0.030059524,dieoff
+202206,T,37,20,coral,0.021784777,dieoff
+202206,T,37,20,gorgonian,0.042257218,dieoff
+202206,T,37,20,algae,0.360104987,dieoff
+202206,T,37,20,other,0.002624672,dieoff
+202206,T,37,20,sponge,0.011811024,dieoff
+202206,T,37,20,sand-rubble,0.535433071,dieoff
+202206,T,37,20,seagrass,7.87E-04,dieoff
+202206,T,37,20,tools,0.02519685,dieoff
+202206,T,39,37,coral,0.00960961,dieoff
+202206,T,39,37,gorgonian,0.022222222,dieoff
+202206,T,39,37,algae,0.43993994,dieoff
+202206,T,39,37,other,0.001201201,dieoff
+202206,T,39,37,sponge,0.02972973,dieoff
+202206,T,39,37,sand-rubble,0.482282282,dieoff
+202206,T,39,37,seagrass,0.001201201,dieoff
+202206,T,39,37,tools,0.013813814,dieoff
+202206,T,39,38,coral,0.01814059,dieoff
+202206,T,39,38,gorgonian,0.047165533,dieoff
+202206,T,39,38,algae,0.469387755,dieoff
+202206,T,39,38,other,0.004535147,dieoff
+202206,T,39,38,sponge,0.031292517,dieoff
+202206,T,39,38,sand-rubble,0.38185941,dieoff
+202206,T,39,38,seagrass,0.023809524,dieoff
+202206,T,39,38,tools,0.023809524,dieoff
+202206,T,39,39,coral,0.017445483,dieoff
+202206,T,39,39,gorgonian,0.028971963,dieoff
+202206,T,39,39,algae,0.486604361,dieoff
+202206,T,39,39,other,0.005607477,dieoff
+202206,T,39,39,sponge,0.019937695,dieoff
+202206,T,39,39,sand-rubble,0.363862928,dieoff
+202206,T,39,39,seagrass,0.046417445,dieoff
+202206,T,39,39,tools,0.031152648,dieoff
+202206,T,39,40,coral,0.01459695,dieoff
+202206,T,39,40,gorgonian,0.045533769,dieoff
+202206,T,39,40,algae,0.367320261,dieoff
+202206,T,39,40,other,0.003267974,dieoff
+202206,T,39,40,sponge,0.031590414,dieoff
+202206,T,39,40,sand-rubble,0.510021786,dieoff
+202206,T,39,40,seagrass,4.36E-04,dieoff
+202206,T,39,40,tools,0.027233115,dieoff
+202206,T,43,21,coral,0.017759563,dieoff
+202206,T,43,21,gorgonian,0.069125683,dieoff
+202206,T,43,21,algae,0.475956284,dieoff
+202206,T,43,21,other,8.20E-04,dieoff
+202206,T,43,21,sponge,0.009289617,dieoff
+202206,T,43,21,sand-rubble,0.391803279,dieoff
+202206,T,43,21,seagrass,8.20E-04,dieoff
+202206,T,43,21,tools,0.03442623,dieoff
+202206,T,43,22,coral,0.037254902,dieoff
+202206,T,43,22,gorgonian,0.049579832,dieoff
+202206,T,43,22,algae,0.479271709,dieoff
+202206,T,43,22,other,5.60E-04,dieoff
+202206,T,43,22,sponge,0.009243697,dieoff
+202206,T,43,22,sand-rubble,0.388515406,dieoff
+202206,T,43,22,seagrass,5.60E-04,dieoff
+202206,T,43,22,tools,0.035014006,dieoff
+202206,T,43,23,coral,0.053174603,dieoff
+202206,T,43,23,gorgonian,0.078571429,dieoff
+202206,T,43,23,algae,0.423809524,dieoff
+202206,T,43,23,other,0.002910053,dieoff
+202206,T,43,23,sponge,0.014021164,dieoff
+202206,T,43,23,sand-rubble,0.394973545,dieoff
+202206,T,43,23,seagrass,7.94E-04,dieoff
+202206,T,43,23,tools,0.031746032,dieoff
+202206,T,43,24,coral,0.023809524,dieoff
+202206,T,43,24,gorgonian,0.039047619,dieoff
+202206,T,43,24,algae,0.347301587,dieoff
+202206,T,43,24,other,0.001587302,dieoff
+202206,T,43,24,sponge,0.007301587,dieoff
+202206,T,43,24,sand-rubble,0.551428571,dieoff
+202206,T,43,24,seagrass,0.001587302,dieoff
+202206,T,43,24,tools,0.027936508,dieoff
+202206,T,45,25,coral,0.029951691,dieoff
+202206,T,45,25,gorgonian,0.087198068,dieoff
+202206,T,45,25,algae,0.300724638,dieoff
+202206,T,45,25,other,0.005555556,dieoff
+202206,T,45,25,sponge,0.010628019,dieoff
+202206,T,45,25,sand-rubble,0.426811594,dieoff
+202206,T,45,25,seagrass,0.009903382,dieoff
+202206,T,45,25,tools,0.129227053,dieoff
+202206,T,45,26,coral,0.022131148,dieoff
+202206,T,45,26,gorgonian,0.088251366,dieoff
+202206,T,45,26,algae,0.350273224,dieoff
+202206,T,45,26,other,0.001092896,dieoff
+202206,T,45,26,sponge,0.004098361,dieoff
+202206,T,45,26,sand-rubble,0.431967213,dieoff
+202206,T,45,26,seagrass,8.20E-04,dieoff
+202206,T,45,26,tools,0.10136612,dieoff
+202206,T,45,27,coral,0.016510903,dieoff
+202206,T,45,27,gorgonian,0.034890966,dieoff
+202206,T,45,27,algae,0.397196262,dieoff
+202206,T,45,27,other,0.002180685,dieoff
+202206,T,45,27,sponge,0.007165109,dieoff
+202206,T,45,27,sand-rubble,0.503738318,dieoff
+202206,T,45,27,tools,0.038317757,dieoff
+202206,T,45,28,coral,0.019266055,dieoff
+202206,T,45,28,gorgonian,0.050458716,dieoff
+202206,T,45,28,algae,0.355657492,dieoff
+202206,T,45,28,other,0.004892966,dieoff
+202206,T,45,28,sponge,0.00764526,dieoff
+202206,T,45,28,sand-rubble,0.521712538,dieoff
+202206,T,45,28,seagrass,0.001529052,dieoff
+202206,T,45,28,tools,0.03883792,dieoff
+202210,M,8,69,coral,0.020454545,after 6mo
+202210,M,8,69,gorgonian,0.020454545,after 6mo
+202210,M,8,69,algae,0.316919192,after 6mo
+202210,M,8,69,other,0.002777778,after 6mo
+202210,M,8,69,sponge,0.011111111,after 6mo
+202210,M,8,69,sand-rubble,0.507070707,after 6mo
+202210,M,8,69,seagrass,0.087878788,after 6mo
+202210,M,8,69,tools,0.033333333,after 6mo
+202210,M,8,70,coral,0.004909561,after 6mo
+202210,M,8,70,gorgonian,0.010335917,after 6mo
+202210,M,8,70,algae,0.228423773,after 6mo
+202210,M,8,70,other,7.75E-04,after 6mo
+202210,M,8,70,sponge,0.008010336,after 6mo
+202210,M,8,70,sand-rubble,0.700258398,after 6mo
+202210,M,8,70,seagrass,0.031782946,after 6mo
+202210,M,8,70,tools,0.015503876,after 6mo
+202210,M,8,71,coral,0.016481481,after 6mo
+202210,M,8,71,gorgonian,0.037777778,after 6mo
+202210,M,8,71,algae,0.307592593,after 6mo
+202210,M,8,71,other,0.001666667,after 6mo
+202210,M,8,71,sponge,0.022407407,after 6mo
+202210,M,8,71,sand-rubble,0.550555556,after 6mo
+202210,M,8,71,seagrass,0.040925926,after 6mo
+202210,M,8,71,tools,0.022592593,after 6mo
+202210,M,8,72,coral,0.020462046,after 6mo
+202210,M,8,72,gorgonian,0.010891089,after 6mo
+202210,M,8,72,algae,0.189108911,after 6mo
+202210,M,8,72,other,6.60E-04,after 6mo
+202210,M,8,72,sponge,0.031023102,after 6mo
+202210,M,8,72,sand-rubble,0.684488449,after 6mo
+202210,M,8,72,seagrass,0.041584158,after 6mo
+202210,M,8,72,tools,0.021782178,after 6mo
+202210,M,10,81,coral,0.004266667,after 6mo
+202210,M,10,81,gorgonian,0.002666667,after 6mo
+202210,M,10,81,algae,0.085066667,after 6mo
+202210,M,10,81,other,0.006133333,after 6mo
+202210,M,10,81,sponge,0.014133333,after 6mo
+202210,M,10,81,sand-rubble,0.877333333,after 6mo
+202210,M,10,81,seagrass,8.00E-04,after 6mo
+202210,M,10,81,tools,0.0096,after 6mo
+202210,M,10,82,coral,0.0024,after 6mo
+202210,M,10,82,gorgonian,0.001066667,after 6mo
+202210,M,10,82,algae,0.041866667,after 6mo
+202210,M,10,82,other,0.002666667,after 6mo
+202210,M,10,82,sponge,0.010133333,after 6mo
+202210,M,10,82,sand-rubble,0.929866667,after 6mo
+202210,M,10,82,tools,0.012,after 6mo
+202210,M,10,83,coral,0.005357143,after 6mo
+202210,M,10,83,gorgonian,0.018154762,after 6mo
+202210,M,10,83,algae,0.073214286,after 6mo
+202210,M,10,83,other,0.002678571,after 6mo
+202210,M,10,83,sponge,0.021130952,after 6mo
+202210,M,10,83,sand-rubble,0.869047619,after 6mo
+202210,M,10,83,seagrass,0.001488095,after 6mo
+202210,M,10,83,tools,0.008928571,after 6mo
+202210,M,10,84,coral,0.003030303,after 6mo
+202210,M,10,84,gorgonian,0.001928375,after 6mo
+202210,M,10,84,algae,0.052341598,after 6mo
+202210,M,10,84,other,0.003305785,after 6mo
+202210,M,10,84,sponge,0.01046832,after 6mo
+202210,M,10,84,sand-rubble,0.917355372,after 6mo
+202210,M,10,84,tools,0.011570248,after 6mo
+202210,M,12,53,coral,0.003144654,after 6mo
+202210,M,12,53,gorgonian,0.006918239,after 6mo
+202210,M,12,53,algae,0.216352201,after 6mo
+202210,M,12,53,other,0.001048218,after 6mo
+202210,M,12,53,sponge,0.006708595,after 6mo
+202210,M,12,53,sand-rubble,0.742138365,after 6mo
+202210,M,12,53,seagrass,0.007966457,after 6mo
+202210,M,12,53,tools,0.01572327,after 6mo
+202210,M,12,54,coral,0.005307856,after 6mo
+202210,M,12,54,gorgonian,0.011889597,after 6mo
+202210,M,12,54,algae,0.283864119,after 6mo
+202210,M,12,54,other,0.001273885,after 6mo
+202210,M,12,54,sponge,0.004670913,after 6mo
+202210,M,12,54,sand-rubble,0.646072187,after 6mo
+202210,M,12,54,seagrass,0.028237792,after 6mo
+202210,M,12,54,tools,0.018683652,after 6mo
+202210,M,12,55,coral,0.010093897,after 6mo
+202210,M,12,55,gorgonian,0.008450704,after 6mo
+202210,M,12,55,algae,0.204225352,after 6mo
+202210,M,12,55,other,0.001877934,after 6mo
+202210,M,12,55,sponge,0.00399061,after 6mo
+202210,M,12,55,sand-rubble,0.616666667,after 6mo
+202210,M,12,55,seagrass,0.140375587,after 6mo
+202210,M,12,55,tools,0.014319249,after 6mo
+202210,M,12,56,coral,0.010233918,after 6mo
+202210,M,12,56,gorgonian,0.008479532,after 6mo
+202210,M,12,56,algae,0.238011696,after 6mo
+202210,M,12,56,other,8.77E-04,after 6mo
+202210,M,12,56,sponge,0.006140351,after 6mo
+202210,M,12,56,sand-rubble,0.703508772,after 6mo
+202210,M,12,56,seagrass,0.02251462,after 6mo
+202210,M,12,56,tools,0.010233918,after 6mo
+202210,M,15,61,coral,0.018656716,after 6mo
+202210,M,15,61,gorgonian,0.020895522,after 6mo
+202210,M,15,61,algae,0.443283582,after 6mo
+202210,M,15,61,other,0.002487562,after 6mo
+202210,M,15,61,sponge,0.011442786,after 6mo
+202210,M,15,61,sand-rubble,0.469402985,after 6mo
+202210,M,15,61,seagrass,2.49E-04,after 6mo
+202210,M,15,61,tools,0.03358209,after 6mo
+202210,M,15,62,coral,0.010687023,after 6mo
+202210,M,15,62,gorgonian,0.007379135,after 6mo
+202210,M,15,62,algae,0.48778626,after 6mo
+202210,M,15,62,other,0.001017812,after 6mo
+202210,M,15,62,sponge,0.009160305,after 6mo
+202210,M,15,62,sand-rubble,0.460814249,after 6mo
+202210,M,15,62,seagrass,0.007888041,after 6mo
+202210,M,15,62,tools,0.015267176,after 6mo
+202210,M,15,63,coral,0.01754386,after 6mo
+202210,M,15,63,gorgonian,0.028362573,after 6mo
+202210,M,15,63,algae,0.412573099,after 6mo
+202210,M,15,63,other,0.001169591,after 6mo
+202210,M,15,63,sponge,0.01374269,after 6mo
+202210,M,15,63,sand-rubble,0.507894737,after 6mo
+202210,M,15,63,seagrass,5.85E-04,after 6mo
+202210,M,15,63,tools,0.018128655,after 6mo
+202210,M,15,64,coral,0.012280702,after 6mo
+202210,M,15,64,gorgonian,0.021303258,after 6mo
+202210,M,15,64,algae,0.433834586,after 6mo
+202210,M,15,64,other,0.001002506,after 6mo
+202210,M,15,64,sponge,0.00952381,after 6mo
+202210,M,15,64,sand-rubble,0.494987469,after 6mo
+202210,M,15,64,seagrass,0.001253133,after 6mo
+202210,M,15,64,tools,0.025814536,after 6mo
+202210,M,17,89,coral,0.009375,after 6mo
+202210,M,17,89,gorgonian,0.011979167,after 6mo
+202210,M,17,89,algae,0.187239583,after 6mo
+202210,M,17,89,other,0.004947917,after 6mo
+202210,M,17,89,sponge,0.011458333,after 6mo
+202210,M,17,89,sand-rubble,0.762760417,after 6mo
+202210,M,17,89,tools,0.012239583,after 6mo
+202210,M,17,90,coral,0.006060606,after 6mo
+202210,M,17,90,gorgonian,0.008181818,after 6mo
+202210,M,17,90,algae,0.148484848,after 6mo
+202210,M,17,90,other,0.003030303,after 6mo
+202210,M,17,90,sponge,0.011818182,after 6mo
+202210,M,17,90,sand-rubble,0.806969697,after 6mo
+202210,M,17,90,tools,0.015454545,after 6mo
+202210,M,17,91,coral,0.005291005,after 6mo
+202210,M,17,91,gorgonian,0.005026455,after 6mo
+202210,M,17,91,algae,0.093121693,after 6mo
+202210,M,17,91,other,0.002645503,after 6mo
+202210,M,17,91,sponge,0.014021164,after 6mo
+202210,M,17,91,sand-rubble,0.87010582,after 6mo
+202210,M,17,91,tools,0.00978836,after 6mo
+202210,M,17,92,coral,0.007713499,after 6mo
+202210,M,17,92,gorgonian,0.007988981,after 6mo
+202210,M,17,92,algae,0.14214876,after 6mo
+202210,M,17,92,other,0.002479339,after 6mo
+202210,M,17,92,sponge,0.01707989,after 6mo
+202210,M,17,92,sand-rubble,0.810743802,after 6mo
+202210,M,17,92,tools,0.01184573,after 6mo
+202210,M,28,73,coral,0.011548556,after 6mo
+202210,M,28,73,gorgonian,0.035170604,after 6mo
+202210,M,28,73,algae,0.318897638,after 6mo
+202210,M,28,73,other,0.002624672,after 6mo
+202210,M,28,73,sponge,0.009973753,after 6mo
+202210,M,28,73,sand-rubble,0.546194226,after 6mo
+202210,M,28,73,seagrass,0.044356955,after 6mo
+202210,M,28,73,tools,0.031233596,after 6mo
+202210,M,28,74,coral,0.008888889,after 6mo
+202210,M,28,74,gorgonian,0.006349206,after 6mo
+202210,M,28,74,algae,0.251111111,after 6mo
+202210,M,28,74,other,0.003492063,after 6mo
+202210,M,28,74,sponge,0.016190476,after 6mo
+202210,M,28,74,sand-rubble,0.658095238,after 6mo
+202210,M,28,74,seagrass,0.03015873,after 6mo
+202210,M,28,74,tools,0.025714286,after 6mo
+202210,M,28,75,coral,0.00623053,after 6mo
+202210,M,28,75,gorgonian,0.018068536,after 6mo
+202210,M,28,75,algae,0.212772586,after 6mo
+202210,M,28,75,other,0.002180685,after 6mo
+202210,M,28,75,sponge,0.013707165,after 6mo
+202210,M,28,75,sand-rubble,0.735514019,after 6mo
+202210,M,28,75,tools,0.01152648,after 6mo
+202210,M,28,76,coral,0.010280374,after 6mo
+202210,M,28,76,gorgonian,0.026168224,after 6mo
+202210,M,28,76,algae,0.217757009,after 6mo
+202210,M,28,76,other,0.001557632,after 6mo
+202210,M,28,76,sponge,0.019937695,after 6mo
+202210,M,28,76,sand-rubble,0.581619938,after 6mo
+202210,M,28,76,seagrass,0.119314642,after 6mo
+202210,M,28,76,tools,0.023364486,after 6mo
+202210,M,38,57,coral,0.001598174,after 6mo
+202210,M,38,57,gorgonian,0.001826484,after 6mo
+202210,M,38,57,algae,0.126940639,after 6mo
+202210,M,38,57,sponge,0.010958904,after 6mo
+202210,M,38,57,sand-rubble,0.833105023,after 6mo
+202210,M,38,57,seagrass,0.01826484,after 6mo
+202210,M,38,57,tools,0.007305936,after 6mo
+202210,M,38,58,coral,0.005995204,after 6mo
+202210,M,38,58,gorgonian,0.001678657,after 6mo
+202210,M,38,58,algae,0.301918465,after 6mo
+202210,M,38,58,other,0.001438849,after 6mo
+202210,M,38,58,sponge,0.005275779,after 6mo
+202210,M,38,58,sand-rubble,0.64940048,after 6mo
+202210,M,38,58,seagrass,0.021582734,after 6mo
+202210,M,38,58,tools,0.012709832,after 6mo
+202210,M,38,59,coral,0.008831909,after 6mo
+202210,M,38,59,gorgonian,0.013390313,after 6mo
+202210,M,38,59,algae,0.305698006,after 6mo
+202210,M,38,59,other,5.70E-04,after 6mo
+202210,M,38,59,sponge,0.008262108,after 6mo
+202210,M,38,59,sand-rubble,0.593732194,after 6mo
+202210,M,38,59,seagrass,0.048717949,after 6mo
+202210,M,38,59,tools,0.020797721,after 6mo
+202210,M,38,60,coral,0.004950495,after 6mo
+202210,M,38,60,gorgonian,0.011881188,after 6mo
+202210,M,38,60,algae,0.227392739,after 6mo
+202210,M,38,60,other,0.001320132,after 6mo
+202210,M,38,60,sponge,0.006270627,after 6mo
+202210,M,38,60,sand-rubble,0.669966997,after 6mo
+202210,M,38,60,seagrass,0.059075908,after 6mo
+202210,M,38,60,tools,0.019141914,after 6mo
+202210,M,43,65,coral,0.017066667,after 6mo
+202210,M,43,65,gorgonian,0.021066667,after 6mo
+202210,M,43,65,algae,0.186666667,after 6mo
+202210,M,43,65,other,5.33E-04,after 6mo
+202210,M,43,65,sponge,0.013066667,after 6mo
+202210,M,43,65,sand-rubble,0.740533333,after 6mo
+202210,M,43,65,seagrass,0.004266667,after 6mo
+202210,M,43,65,tools,0.0168,after 6mo
+202210,M,43,66,coral,0.01046832,after 6mo
+202210,M,43,66,gorgonian,0.01046832,after 6mo
+202210,M,43,66,algae,0.215977961,after 6mo
+202210,M,43,66,other,0.002203857,after 6mo
+202210,M,43,66,sponge,0.01322314,after 6mo
+202210,M,43,66,sand-rubble,0.712121212,after 6mo
+202210,M,43,66,seagrass,0.017630854,after 6mo
+202210,M,43,66,tools,0.017906336,after 6mo
+202210,M,43,67,coral,0.01091954,after 6mo
+202210,M,43,67,gorgonian,0.025287356,after 6mo
+202210,M,43,67,algae,0.187356322,after 6mo
+202210,M,43,67,other,0.001724138,after 6mo
+202210,M,43,67,sponge,0.018678161,after 6mo
+202210,M,43,67,sand-rubble,0.739367816,after 6mo
+202210,M,43,67,seagrass,0.008045977,after 6mo
+202210,M,43,67,tools,0.00862069,after 6mo
+202210,M,43,68,coral,0.009489051,after 6mo
+202210,M,43,68,gorgonian,0.016058394,after 6mo
+202210,M,43,68,algae,0.144768856,after 6mo
+202210,M,43,68,other,0.00243309,after 6mo
+202210,M,43,68,sponge,0.014111922,after 6mo
+202210,M,43,68,sand-rubble,0.801459854,after 6mo
+202210,M,43,68,seagrass,0.001703163,after 6mo
+202210,M,43,68,tools,0.009975669,after 6mo
+202210,M,45,85,coral,0.003482587,after 6mo
+202210,M,45,85,gorgonian,0.003233831,after 6mo
+202210,M,45,85,algae,0.177860697,after 6mo
+202210,M,45,85,other,0.003482587,after 6mo
+202210,M,45,85,sponge,0.012935323,after 6mo
+202210,M,45,85,sand-rubble,0.781840796,after 6mo
+202210,M,45,85,seagrass,2.49E-04,after 6mo
+202210,M,45,85,tools,0.016915423,after 6mo
+202210,M,45,86,coral,0.002380952,after 6mo
+202210,M,45,86,gorgonian,0.00625,after 6mo
+202210,M,45,86,algae,0.229464286,after 6mo
+202210,M,45,86,other,0.003869048,after 6mo
+202210,M,45,86,sponge,0.0125,after 6mo
+202210,M,45,86,sand-rubble,0.713988095,after 6mo
+202210,M,45,86,tools,0.031547619,after 6mo
+202210,M,45,87,coral,0.00877193,after 6mo
+202210,M,45,87,gorgonian,0.001754386,after 6mo
+202210,M,45,87,algae,0.107309942,after 6mo
+202210,M,45,87,other,0.003216374,after 6mo
+202210,M,45,87,sponge,0.012573099,after 6mo
+202210,M,45,87,sand-rubble,0.851754386,after 6mo
+202210,M,45,87,tools,0.014619883,after 6mo
+202210,M,45,88,coral,0.007713499,after 6mo
+202210,M,45,88,gorgonian,0.002754821,after 6mo
+202210,M,45,88,algae,0.137741047,after 6mo
+202210,M,45,88,other,0.002203857,after 6mo
+202210,M,45,88,sponge,0.014325069,after 6mo
+202210,M,45,88,sand-rubble,0.820385675,after 6mo
+202210,M,45,88,tools,0.014876033,after 6mo
+202210,M,48,49,coral,0.008872902,after 6mo
+202210,M,48,49,gorgonian,0.0117506,after 6mo
+202210,M,48,49,algae,0.39616307,after 6mo
+202210,M,48,49,other,9.59E-04,after 6mo
+202210,M,48,49,sponge,9.59E-04,after 6mo
+202210,M,48,49,sand-rubble,0.533573141,after 6mo
+202210,M,48,49,seagrass,0.02206235,after 6mo
+202210,M,48,49,tools,0.025659472,after 6mo
+202210,M,48,50,coral,0.006933333,after 6mo
+202210,M,48,50,gorgonian,0.016,after 6mo
+202210,M,48,50,algae,0.363733333,after 6mo
+202210,M,48,50,other,0.001333333,after 6mo
+202210,M,48,50,sponge,0.004,after 6mo
+202210,M,48,50,sand-rubble,0.5128,after 6mo
+202210,M,48,50,seagrass,0.070666667,after 6mo
+202210,M,48,50,tools,0.024533333,after 6mo
+202210,M,48,51,coral,0.013813814,after 6mo
+202210,M,48,51,gorgonian,0.022522523,after 6mo
+202210,M,48,51,algae,0.311411411,after 6mo
+202210,M,48,51,other,0.002402402,after 6mo
+202210,M,48,51,sponge,0.003003003,after 6mo
+202210,M,48,51,sand-rubble,0.58048048,after 6mo
+202210,M,48,51,seagrass,0.045345345,after 6mo
+202210,M,48,51,tools,0.021021021,after 6mo
+202210,M,48,52,coral,0.007407407,after 6mo
+202210,M,48,52,gorgonian,0.005820106,after 6mo
+202210,M,48,52,algae,0.356878307,after 6mo
+202210,M,48,52,other,7.94E-04,after 6mo
+202210,M,48,52,sponge,0.001587302,after 6mo
+202210,M,48,52,sand-rubble,0.608730159,after 6mo
+202210,M,48,52,seagrass,0.006084656,after 6mo
+202210,M,48,52,tools,0.012698413,after 6mo
+202210,M,73,77,coral,0.032634033,after 6mo
+202210,M,73,77,gorgonian,0.040792541,after 6mo
+202210,M,73,77,algae,0.229137529,after 6mo
+202210,M,73,77,other,0.013053613,after 6mo
+202210,M,73,77,sponge,0.058275058,after 6mo
+202210,M,73,77,sand-rubble,0.574358974,after 6mo
+202210,M,73,77,tools,0.051748252,after 6mo
+202210,M,73,78,coral,0.028354978,after 6mo
+202210,M,73,78,gorgonian,0.036796537,after 6mo
+202210,M,73,78,algae,0.21969697,after 6mo
+202210,M,73,78,other,0.008441558,after 6mo
+202210,M,73,78,sponge,0.052380952,after 6mo
+202210,M,73,78,sand-rubble,0.603246753,after 6mo
+202210,M,73,78,seagrass,2.16E-04,after 6mo
+202210,M,73,78,tools,0.050865801,after 6mo
+202210,M,73,79,coral,0.015079365,after 6mo
+202210,M,73,79,gorgonian,0.056349206,after 6mo
+202210,M,73,79,algae,0.227248677,after 6mo
+202210,M,73,79,other,0.02010582,after 6mo
+202210,M,73,79,sponge,0.031216931,after 6mo
+202210,M,73,79,sand-rubble,0.616666667,after 6mo
+202210,M,73,79,tools,0.033333333,after 6mo
+202210,M,74,93,coral,0.002864583,after 6mo
+202210,M,74,93,gorgonian,0.002604167,after 6mo
+202210,M,74,93,algae,0.207291667,after 6mo
+202210,M,74,93,other,0.002864583,after 6mo
+202210,M,74,93,sponge,0.016666667,after 6mo
+202210,M,74,93,sand-rubble,0.746875,after 6mo
+202210,M,74,93,seagrass,2.60E-04,after 6mo
+202210,M,74,93,tools,0.020572917,after 6mo
+202210,M,74,94,coral,0.012295082,after 6mo
+202210,M,74,94,gorgonian,0.001912568,after 6mo
+202210,M,74,94,algae,0.14863388,after 6mo
+202210,M,74,94,other,0.011748634,after 6mo
+202210,M,74,94,sponge,0.019398907,after 6mo
+202210,M,74,94,sand-rubble,0.780601093,after 6mo
+202210,M,74,94,tools,0.025409836,after 6mo
+202210,M,74,95,coral,0.012077295,after 6mo
+202210,M,74,95,gorgonian,0.004589372,after 6mo
+202210,M,74,95,algae,0.20942029,after 6mo
+202210,M,74,95,other,0.00531401,after 6mo
+202210,M,74,95,sponge,0.020772947,after 6mo
+202210,M,74,95,sand-rubble,0.727294686,after 6mo
+202210,M,74,95,tools,0.020531401,after 6mo
+202210,M,74,96,coral,0.009946237,after 6mo
+202210,M,74,96,gorgonian,0.002419355,after 6mo
+202210,M,74,96,algae,0.333064516,after 6mo
+202210,M,74,96,other,0.011290323,after 6mo
+202210,M,74,96,sponge,0.025268817,after 6mo
+202210,M,74,96,sand-rubble,0.589784946,after 6mo
+202210,M,74,96,tools,0.028225806,after 6mo
+202210,T,1,14,coral,0.017886179,after 6mo
+202210,T,1,14,gorgonian,0.024661247,after 6mo
+202210,T,1,14,algae,0.363685637,after 6mo
+202210,T,1,14,other,0.001084011,after 6mo
+202210,T,1,14,sponge,0.019512195,after 6mo
+202210,T,1,14,sand-rubble,0.549051491,after 6mo
+202210,T,1,14,seagrass,0.002168022,after 6mo
+202210,T,1,14,tools,0.02195122,after 6mo
+202210,T,1,15,coral,0.027327327,after 6mo
+202210,T,1,15,gorgonian,0.026126126,after 6mo
+202210,T,1,15,algae,0.23033033,after 6mo
+202210,T,1,15,other,0.002702703,after 6mo
+202210,T,1,15,sponge,0.022222222,after 6mo
+202210,T,1,15,sand-rubble,0.66966967,after 6mo
+202210,T,1,15,seagrass,0.001201201,after 6mo
+202210,T,1,15,tools,0.02042042,after 6mo
+202210,T,1,16,coral,0.009427609,after 6mo
+202210,T,1,16,gorgonian,0.006397306,after 6mo
+202210,T,1,16,algae,0.212121212,after 6mo
+202210,T,1,16,other,0.001010101,after 6mo
+202210,T,1,16,sponge,0.006060606,after 6mo
+202210,T,1,16,sand-rubble,0.750505051,after 6mo
+202210,T,1,16,seagrass,0.001683502,after 6mo
+202210,T,1,16,tools,0.012794613,after 6mo
+202210,T,4,5,coral,0.013550136,after 6mo
+202210,T,4,5,gorgonian,0.03902439,after 6mo
+202210,T,4,5,algae,0.349051491,after 6mo
+202210,T,4,5,sponge,0.011111111,after 6mo
+202210,T,4,5,sand-rubble,0.514363144,after 6mo
+202210,T,4,5,seagrass,0.03495935,after 6mo
+202210,T,4,5,tools,0.037940379,after 6mo
+202210,T,4,6,coral,0.027301587,after 6mo
+202210,T,4,6,gorgonian,0.124761905,after 6mo
+202210,T,4,6,algae,0.327936508,after 6mo
+202210,T,4,6,other,3.17E-04,after 6mo
+202210,T,4,6,sponge,0.006984127,after 6mo
+202210,T,4,6,sand-rubble,0.456825397,after 6mo
+202210,T,4,6,seagrass,0.004761905,after 6mo
+202210,T,4,6,tools,0.051111111,after 6mo
+202210,T,4,7,coral,0.041397849,after 6mo
+202210,T,4,7,gorgonian,0.094892473,after 6mo
+202210,T,4,7,algae,0.42688172,after 6mo
+202210,T,4,7,other,5.38E-04,after 6mo
+202210,T,4,7,sponge,0.010752688,after 6mo
+202210,T,4,7,sand-rubble,0.333333333,after 6mo
+202210,T,4,7,seagrass,0.001612903,after 6mo
+202210,T,4,7,tools,0.090591398,after 6mo
+202210,T,4,8,coral,0.023076923,after 6mo
+202210,T,4,8,gorgonian,0.077564103,after 6mo
+202210,T,4,8,algae,0.367307692,after 6mo
+202210,T,4,8,sponge,0.003205128,after 6mo
+202210,T,4,8,sand-rubble,0.453525641,after 6mo
+202210,T,4,8,seagrass,0.0125,after 6mo
+202210,T,4,8,tools,0.062820513,after 6mo
+202210,T,20,9,coral,0.029498525,after 6mo
+202210,T,20,9,gorgonian,0.077876106,after 6mo
+202210,T,20,9,algae,0.307669617,after 6mo
+202210,T,20,9,other,0.003539823,after 6mo
+202210,T,20,9,sponge,0.010619469,after 6mo
+202210,T,20,9,sand-rubble,0.520353982,after 6mo
+202210,T,20,9,seagrass,0.001179941,after 6mo
+202210,T,20,9,tools,0.049262537,after 6mo
+202210,T,20,10,coral,0.037669377,after 6mo
+202210,T,20,10,gorgonian,0.066666667,after 6mo
+202210,T,20,10,algae,0.404878049,after 6mo
+202210,T,20,10,other,0.00298103,after 6mo
+202210,T,20,10,sponge,0.011924119,after 6mo
+202210,T,20,10,sand-rubble,0.392682927,after 6mo
+202210,T,20,10,seagrass,8.13E-04,after 6mo
+202210,T,20,10,tools,0.082384824,after 6mo
+202210,T,20,11,coral,0.022916667,after 6mo
+202210,T,20,11,gorgonian,0.028385417,after 6mo
+202210,T,20,11,algae,0.454427083,after 6mo
+202210,T,20,11,other,0.002083333,after 6mo
+202210,T,20,11,sponge,0.008072917,after 6mo
+202210,T,20,11,sand-rubble,0.453645833,after 6mo
+202210,T,20,11,seagrass,0.004947917,after 6mo
+202210,T,20,11,tools,0.025520833,after 6mo
+202210,T,20,12,coral,0.018518519,after 6mo
+202210,T,20,12,gorgonian,0.041595442,after 6mo
+202210,T,20,12,algae,0.452991453,after 6mo
+202210,T,20,12,other,0.003418803,after 6mo
+202210,T,20,12,sponge,0.010541311,after 6mo
+202210,T,20,12,sand-rubble,0.413390313,after 6mo
+202210,T,20,12,seagrass,0.002849003,after 6mo
+202210,T,20,12,tools,0.056695157,after 6mo
+202210,T,22,33,coral,0.015789474,after 6mo
+202210,T,22,33,gorgonian,0.032748538,after 6mo
+202210,T,22,33,algae,0.419005848,after 6mo
+202210,T,22,33,other,0.002046784,after 6mo
+202210,T,22,33,sponge,0.007894737,after 6mo
+202210,T,22,33,sand-rubble,0.403508772,after 6mo
+202210,T,22,33,seagrass,0.074853801,after 6mo
+202210,T,22,33,tools,0.044152047,after 6mo
+202210,T,22,34,coral,0.01969697,after 6mo
+202210,T,22,34,gorgonian,0.031212121,after 6mo
+202210,T,22,34,algae,0.474848485,after 6mo
+202210,T,22,34,other,0.001515152,after 6mo
+202210,T,22,34,sponge,0.005151515,after 6mo
+202210,T,22,34,sand-rubble,0.415757576,after 6mo
+202210,T,22,34,seagrass,0.004242424,after 6mo
+202210,T,22,34,tools,0.047575758,after 6mo
+202210,T,22,35,coral,0.026666667,after 6mo
+202210,T,22,35,gorgonian,0.033968254,after 6mo
+202210,T,22,35,algae,0.544126984,after 6mo
+202210,T,22,35,other,3.17E-04,after 6mo
+202210,T,22,35,sponge,0.008253968,after 6mo
+202210,T,22,35,sand-rubble,0.291428571,after 6mo
+202210,T,22,35,seagrass,0.014603175,after 6mo
+202210,T,22,35,tools,0.080634921,after 6mo
+202210,T,22,36,coral,0.017821782,after 6mo
+202210,T,22,36,gorgonian,0.033333333,after 6mo
+202210,T,22,36,algae,0.552805281,after 6mo
+202210,T,22,36,sponge,0.004950495,after 6mo
+202210,T,22,36,sand-rubble,0.27029703,after 6mo
+202210,T,22,36,seagrass,0.064026403,after 6mo
+202210,T,22,36,tools,0.056765677,after 6mo
+202210,T,24,29,coral,0.047747748,after 6mo
+202210,T,24,29,gorgonian,0.098798799,after 6mo
+202210,T,24,29,algae,0.428528529,after 6mo
+202210,T,24,29,other,0.001501502,after 6mo
+202210,T,24,29,sponge,0.01021021,after 6mo
+202210,T,24,29,sand-rubble,0.34024024,after 6mo
+202210,T,24,29,seagrass,0.002402402,after 6mo
+202210,T,24,29,tools,0.070570571,after 6mo
+202210,T,24,30,coral,0.02037037,after 6mo
+202210,T,24,30,gorgonian,0.039506173,after 6mo
+202210,T,24,30,algae,0.47962963,after 6mo
+202210,T,24,30,other,9.26E-04,after 6mo
+202210,T,24,30,sponge,0.007098765,after 6mo
+202210,T,24,30,sand-rubble,0.421296296,after 6mo
+202210,T,24,30,seagrass,0.001234568,after 6mo
+202210,T,24,30,tools,0.029938272,after 6mo
+202210,T,24,31,coral,0.013271605,after 6mo
+202210,T,24,31,gorgonian,0.024074074,after 6mo
+202210,T,24,31,algae,0.446296296,after 6mo
+202210,T,24,31,other,6.17E-04,after 6mo
+202210,T,24,31,sponge,0.006790123,after 6mo
+202210,T,24,31,sand-rubble,0.481481481,after 6mo
+202210,T,24,31,seagrass,6.17E-04,after 6mo
+202210,T,24,31,tools,0.026851852,after 6mo
+202210,T,24,32,coral,0.025057471,after 6mo
+202210,T,24,32,gorgonian,0.04,after 6mo
+202210,T,24,32,algae,0.505977011,after 6mo
+202210,T,24,32,other,0.00137931,after 6mo
+202210,T,24,32,sponge,0.005517241,after 6mo
+202210,T,24,32,sand-rubble,0.354252874,after 6mo
+202210,T,24,32,seagrass,0.009195402,after 6mo
+202210,T,24,32,tools,0.05862069,after 6mo
+202210,T,26,41,coral,0.01047619,after 6mo
+202210,T,26,41,gorgonian,0.005079365,after 6mo
+202210,T,26,41,algae,0.266984127,after 6mo
+202210,T,26,41,other,9.52E-04,after 6mo
+202210,T,26,41,sponge,0.005079365,after 6mo
+202210,T,26,41,sand-rubble,0.692063492,after 6mo
+202210,T,26,41,seagrass,0.004761905,after 6mo
+202210,T,26,41,tools,0.014603175,after 6mo
+202210,T,26,42,coral,0.014880952,after 6mo
+202210,T,26,42,gorgonian,0.010416667,after 6mo
+202210,T,26,42,algae,0.263392857,after 6mo
+202210,T,26,42,sponge,0.004464286,after 6mo
+202210,T,26,42,sand-rubble,0.693452381,after 6mo
+202210,T,26,42,seagrass,0.002083333,after 6mo
+202210,T,26,42,tools,0.011309524,after 6mo
+202210,T,26,43,coral,0.006410256,after 6mo
+202210,T,26,43,gorgonian,0.007948718,after 6mo
+202210,T,26,43,algae,0.249487179,after 6mo
+202210,T,26,43,sponge,0.004102564,after 6mo
+202210,T,26,43,sand-rubble,0.720769231,after 6mo
+202210,T,26,43,seagrass,7.69E-04,after 6mo
+202210,T,26,43,tools,0.010512821,after 6mo
+202210,T,26,44,coral,0.009565217,after 6mo
+202210,T,26,44,gorgonian,0.010144928,after 6mo
+202210,T,26,44,algae,0.257101449,after 6mo
+202210,T,26,44,other,0.00173913,after 6mo
+202210,T,26,44,sponge,0.00115942,after 6mo
+202210,T,26,44,sand-rubble,0.703188406,after 6mo
+202210,T,26,44,seagrass,0.002028986,after 6mo
+202210,T,26,44,tools,0.015072464,after 6mo
+202210,T,35,1,coral,0.008080808,after 6mo
+202210,T,35,1,gorgonian,0.001346801,after 6mo
+202210,T,35,1,algae,0.371380471,after 6mo
+202210,T,35,1,sponge,0.003367003,after 6mo
+202210,T,35,1,sand-rubble,0.582828283,after 6mo
+202210,T,35,1,seagrass,0.005387205,after 6mo
+202210,T,35,1,tools,0.027609428,after 6mo
+202210,T,35,2,coral,0.00922619,after 6mo
+202210,T,35,2,gorgonian,0.001190476,after 6mo
+202210,T,35,2,algae,0.425297619,after 6mo
+202210,T,35,2,other,0.001488095,after 6mo
+202210,T,35,2,sponge,0.004166667,after 6mo
+202210,T,35,2,sand-rubble,0.532142857,after 6mo
+202210,T,35,2,seagrass,2.98E-04,after 6mo
+202210,T,35,2,tools,0.026190476,after 6mo
+202210,T,35,3,coral,0.007407407,after 6mo
+202210,T,35,3,gorgonian,3.70E-04,after 6mo
+202210,T,35,3,algae,0.466296296,after 6mo
+202210,T,35,3,other,0.001481481,after 6mo
+202210,T,35,3,sponge,0.002962963,after 6mo
+202210,T,35,3,sand-rubble,0.493703704,after 6mo
+202210,T,35,3,seagrass,7.41E-04,after 6mo
+202210,T,35,3,tools,0.027037037,after 6mo
+202210,T,35,4,coral,0.014521452,after 6mo
+202210,T,35,4,gorgonian,0.001650165,after 6mo
+202210,T,35,4,algae,0.431023102,after 6mo
+202210,T,35,4,other,0.002310231,after 6mo
+202210,T,35,4,sponge,0.006270627,after 6mo
+202210,T,35,4,sand-rubble,0.501320132,after 6mo
+202210,T,35,4,seagrass,6.60E-04,after 6mo
+202210,T,35,4,tools,0.042244224,after 6mo
+202210,T,37,17,coral,0.008333333,after 6mo
+202210,T,37,17,gorgonian,0.017666667,after 6mo
+202210,T,37,17,algae,0.280333333,after 6mo
+202210,T,37,17,other,0.001,after 6mo
+202210,T,37,17,sponge,0.008,after 6mo
+202210,T,37,17,sand-rubble,0.666666667,after 6mo
+202210,T,37,17,seagrass,0.001333333,after 6mo
+202210,T,37,17,tools,0.016666667,after 6mo
+202210,T,37,18,coral,0.02124183,after 6mo
+202210,T,37,18,gorgonian,0.02875817,after 6mo
+202210,T,37,18,algae,0.359150327,after 6mo
+202210,T,37,18,other,0.00130719,after 6mo
+202210,T,37,18,sponge,0.010784314,after 6mo
+202210,T,37,18,sand-rubble,0.553921569,after 6mo
+202210,T,37,18,seagrass,0.004901961,after 6mo
+202210,T,37,18,tools,0.019934641,after 6mo
+202210,T,37,19,coral,0.020114943,after 6mo
+202210,T,37,19,gorgonian,0.075862069,after 6mo
+202210,T,37,19,algae,0.340804598,after 6mo
+202210,T,37,19,other,0.002586207,after 6mo
+202210,T,37,19,sponge,0.012643678,after 6mo
+202210,T,37,19,sand-rubble,0.494252874,after 6mo
+202210,T,37,19,seagrass,5.75E-04,after 6mo
+202210,T,37,19,tools,0.05316092,after 6mo
+202210,T,37,20,coral,0.022008547,after 6mo
+202210,T,37,20,gorgonian,0.045726496,after 6mo
+202210,T,37,20,algae,0.256623932,after 6mo
+202210,T,37,20,other,0.003418803,after 6mo
+202210,T,37,20,sponge,0.009188034,after 6mo
+202210,T,37,20,sand-rubble,0.622863248,after 6mo
+202210,T,37,20,seagrass,0.001495726,after 6mo
+202210,T,37,20,tools,0.038675214,after 6mo
+202210,T,39,37,coral,0.00733945,after 6mo
+202210,T,39,37,gorgonian,0.024464832,after 6mo
+202210,T,39,37,algae,0.457798165,after 6mo
+202210,T,39,37,other,3.06E-04,after 6mo
+202210,T,39,37,sponge,0.011620795,after 6mo
+202210,T,39,37,sand-rubble,0.477675841,after 6mo
+202210,T,39,37,seagrass,0.004281346,after 6mo
+202210,T,39,37,tools,0.016513761,after 6mo
+202210,T,39,38,coral,0.013157895,after 6mo
+202210,T,39,38,gorgonian,0.055847953,after 6mo
+202210,T,39,38,algae,0.392982456,after 6mo
+202210,T,39,38,other,5.85E-04,after 6mo
+202210,T,39,38,sponge,0.014327485,after 6mo
+202210,T,39,38,sand-rubble,0.451754386,after 6mo
+202210,T,39,38,seagrass,0.035087719,after 6mo
+202210,T,39,38,tools,0.03625731,after 6mo
+202210,T,39,39,coral,0.012781955,after 6mo
+202210,T,39,39,gorgonian,0.024310777,after 6mo
+202210,T,39,39,algae,0.458145363,after 6mo
+202210,T,39,39,other,7.52E-04,after 6mo
+202210,T,39,39,sponge,0.011278195,after 6mo
+202210,T,39,39,sand-rubble,0.318045113,after 6mo
+202210,T,39,39,seagrass,0.130576441,after 6mo
+202210,T,39,39,tools,0.044110276,after 6mo
+202210,T,39,40,coral,0.014861996,after 6mo
+202210,T,39,40,gorgonian,0.047558386,after 6mo
+202210,T,39,40,algae,0.459235669,after 6mo
+202210,T,39,40,sponge,0.012526539,after 6mo
+202210,T,39,40,sand-rubble,0.421656051,after 6mo
+202210,T,39,40,seagrass,0.003609342,after 6mo
+202210,T,39,40,tools,0.040552017,after 6mo
+202210,T,43,21,coral,0.02109375,after 6mo
+202210,T,43,21,gorgonian,0.065104167,after 6mo
+202210,T,43,21,algae,0.542708333,after 6mo
+202210,T,43,21,other,0.002083333,after 6mo
+202210,T,43,21,sponge,0.01015625,after 6mo
+202210,T,43,21,sand-rubble,0.298958333,after 6mo
+202210,T,43,21,seagrass,7.81E-04,after 6mo
+202210,T,43,21,tools,0.059114583,after 6mo
+202210,T,43,22,coral,0.03024055,after 6mo
+202210,T,43,22,gorgonian,0.049140893,after 6mo
+202210,T,43,22,algae,0.509278351,after 6mo
+202210,T,43,22,other,3.44E-04,after 6mo
+202210,T,43,22,sponge,0.011340206,after 6mo
+202210,T,43,22,sand-rubble,0.333333333,after 6mo
+202210,T,43,22,seagrass,0.001718213,after 6mo
+202210,T,43,22,tools,0.064604811,after 6mo
+202210,T,43,24,coral,0.020356234,after 6mo
+202210,T,43,24,gorgonian,0.027989822,after 6mo
+202210,T,43,24,algae,0.557760814,after 6mo
+202210,T,43,24,other,5.09E-04,after 6mo
+202210,T,43,24,sponge,0.009414758,after 6mo
+202210,T,43,24,sand-rubble,0.295419847,after 6mo
+202210,T,43,24,tools,0.088549618,after 6mo
+202210,T,45,25,coral,0.021587302,after 6mo
+202210,T,45,25,gorgonian,0.088888889,after 6mo
+202210,T,45,25,algae,0.335873016,after 6mo
+202210,T,45,25,other,9.52E-04,after 6mo
+202210,T,45,25,sponge,0.00984127,after 6mo
+202210,T,45,25,sand-rubble,0.442857143,after 6mo
+202210,T,45,25,seagrass,0.032698413,after 6mo
+202210,T,45,25,tools,0.067301587,after 6mo
+202210,T,45,26,coral,0.016969697,after 6mo
+202210,T,45,26,gorgonian,0.099393939,after 6mo
+202210,T,45,26,algae,0.460606061,after 6mo
+202210,T,45,26,other,0.001818182,after 6mo
+202210,T,45,26,sponge,0.01,after 6mo
+202210,T,45,26,sand-rubble,0.358181818,after 6mo
+202210,T,45,26,seagrass,3.03E-04,after 6mo
+202210,T,45,26,tools,0.052727273,after 6mo
+202210,T,45,27,coral,0.018333333,after 6mo
+202210,T,45,27,gorgonian,0.039722222,after 6mo
+202210,T,45,27,algae,0.461388889,after 6mo
+202210,T,45,27,other,0.002222222,after 6mo
+202210,T,45,27,sponge,0.013333333,after 6mo
+202210,T,45,27,sand-rubble,0.376944444,after 6mo
+202210,T,45,27,seagrass,5.56E-04,after 6mo
+202210,T,45,27,tools,0.0875,after 6mo
+202210,T,45,28,coral,0.017073171,after 6mo
+202210,T,45,28,gorgonian,0.04796748,after 6mo
+202210,T,45,28,algae,0.417073171,after 6mo
+202210,T,45,28,other,8.13E-04,after 6mo
+202210,T,45,28,sponge,0.01598916,after 6mo
+202210,T,45,28,sand-rubble,0.438753388,after 6mo
+202210,T,45,28,seagrass,0.009214092,after 6mo
+202210,T,45,28,tools,0.053116531,after 6mo
+202305,M,8,69,coral,0.023076923,after 12mo
+202305,M,8,69,gorgonian,0.014529915,after 12mo
+202305,M,8,69,algae,0.104487179,after 12mo
+202305,M,8,69,other,0.003846154,after 12mo
+202305,M,8,69,sponge,0.008333333,after 12mo
+202305,M,8,69,sand-rubble,0.552136752,after 12mo
+202305,M,8,69,seagrass,0.214102564,after 12mo
+202305,M,8,69,tools,0.079487179,after 12mo
+202305,M,8,70,coral,0.017333333,after 12mo
+202305,M,8,70,gorgonian,0.005866667,after 12mo
+202305,M,8,70,algae,0.2472,after 12mo
+202305,M,8,70,other,8.00E-04,after 12mo
+202305,M,8,70,sponge,0.047466667,after 12mo
+202305,M,8,70,sand-rubble,0.598133333,after 12mo
+202305,M,8,70,seagrass,0.0544,after 12mo
+202305,M,8,70,tools,0.0288,after 12mo
+202305,M,8,71,coral,0.013381995,after 12mo
+202305,M,8,71,gorgonian,0.025547445,after 12mo
+202305,M,8,71,algae,0.405596107,after 12mo
+202305,M,8,71,other,0.001216545,after 12mo
+202305,M,8,71,sponge,0.023600973,after 12mo
+202305,M,8,71,sand-rubble,0.424817518,after 12mo
+202305,M,8,71,seagrass,0.042579075,after 12mo
+202305,M,8,71,tools,0.063260341,after 12mo
+202305,M,8,72,coral,0.019583333,after 12mo
+202305,M,8,72,gorgonian,0.011666667,after 12mo
+202305,M,8,72,algae,0.297916667,after 12mo
+202305,M,8,72,other,0.00125,after 12mo
+202305,M,8,72,sponge,0.014791667,after 12mo
+202305,M,8,72,sand-rubble,0.527291667,after 12mo
+202305,M,8,72,seagrass,0.086458333,after 12mo
+202305,M,8,72,tools,0.041041667,after 12mo
+202305,M,10,81,coral,0.004216867,after 12mo
+202305,M,10,81,gorgonian,0.003413655,after 12mo
+202305,M,10,81,algae,0.107630522,after 12mo
+202305,M,10,81,other,0.003413655,after 12mo
+202305,M,10,81,sponge,0.010441767,after 12mo
+202305,M,10,81,sand-rubble,0.824698795,after 12mo
+202305,M,10,81,seagrass,0.002610442,after 12mo
+202305,M,10,81,tools,0.043574297,after 12mo
+202305,M,10,82,coral,0.009126984,after 12mo
+202305,M,10,82,gorgonian,7.94E-04,after 12mo
+202305,M,10,82,algae,0.033928571,after 12mo
+202305,M,10,82,other,0.004563492,after 12mo
+202305,M,10,82,sponge,0.009126984,after 12mo
+202305,M,10,82,sand-rubble,0.884126984,after 12mo
+202305,M,10,82,tools,0.058134921,after 12mo
+202305,M,10,82,zoanthid,1.98E-04,after 12mo
+202305,M,10,83,coral,0.005729167,after 12mo
+202305,M,10,83,gorgonian,0.016666667,after 12mo
+202305,M,10,83,algae,0.115364583,after 12mo
+202305,M,10,83,other,0.00234375,after 12mo
+202305,M,10,83,sponge,0.014322917,after 12mo
+202305,M,10,83,sand-rubble,0.8234375,after 12mo
+202305,M,10,83,seagrass,0.00234375,after 12mo
+202305,M,10,83,tools,0.019791667,after 12mo
+202305,M,10,84,coral,0.00504065,after 12mo
+202305,M,10,84,gorgonian,0.004227642,after 12mo
+202305,M,10,84,algae,0.241138211,after 12mo
+202305,M,10,84,other,0.001788618,after 12mo
+202305,M,10,84,sponge,0.006829268,after 12mo
+202305,M,10,84,sand-rubble,0.664390244,after 12mo
+202305,M,10,84,tools,0.076585366,after 12mo
+202305,M,12,53,coral,0.011835749,after 12mo
+202305,M,12,53,gorgonian,0.006521739,after 12mo
+202305,M,12,53,algae,0.344444444,after 12mo
+202305,M,12,53,other,4.83E-04,after 12mo
+202305,M,12,53,sponge,0.003864734,after 12mo
+202305,M,12,53,sand-rubble,0.480434783,after 12mo
+202305,M,12,53,seagrass,0.110628019,after 12mo
+202305,M,12,53,tools,0.04178744,after 12mo
+202305,M,12,54,coral,0.009619687,after 12mo
+202305,M,12,54,gorgonian,0.009395973,after 12mo
+202305,M,12,54,algae,0.324161074,after 12mo
+202305,M,12,54,other,6.71E-04,after 12mo
+202305,M,12,54,sponge,0.003803132,after 12mo
+202305,M,12,54,sand-rubble,0.612304251,after 12mo
+202305,M,12,54,seagrass,0.009619687,after 12mo
+202305,M,12,54,tools,0.030425056,after 12mo
+202305,M,12,55,coral,0.006888889,after 12mo
+202305,M,12,55,gorgonian,0.008666667,after 12mo
+202305,M,12,55,algae,0.331777778,after 12mo
+202305,M,12,55,other,0.001111111,after 12mo
+202305,M,12,55,sponge,0.006222222,after 12mo
+202305,M,12,55,sand-rubble,0.595777778,after 12mo
+202305,M,12,55,seagrass,0.034444444,after 12mo
+202305,M,12,55,tools,0.015111111,after 12mo
+202305,M,12,56,coral,0.014188034,after 12mo
+202305,M,12,56,gorgonian,0.010769231,after 12mo
+202305,M,12,56,algae,0.277094017,after 12mo
+202305,M,12,56,other,0.003931624,after 12mo
+202305,M,12,56,sponge,0.005811966,after 12mo
+202305,M,12,56,sand-rubble,0.505128205,after 12mo
+202305,M,12,56,seagrass,0.022051282,after 12mo
+202305,M,12,56,tools,0.160683761,after 12mo
+202305,M,12,56,zoanthid,3.42E-04,after 12mo
+202305,M,15,61,coral,0.018541667,after 12mo
+202305,M,15,61,gorgonian,0.019375,after 12mo
+202305,M,15,61,algae,0.469166667,after 12mo
+202305,M,15,61,other,0.001666667,after 12mo
+202305,M,15,61,sponge,0.015208333,after 12mo
+202305,M,15,61,sand-rubble,0.421458333,after 12mo
+202305,M,15,61,seagrass,2.08E-04,after 12mo
+202305,M,15,61,tools,0.054375,after 12mo
+202305,M,15,62,coral,0.012634409,after 12mo
+202305,M,15,62,gorgonian,0.006182796,after 12mo
+202305,M,15,62,algae,0.45672043,after 12mo
+202305,M,15,62,other,0.006182796,after 12mo
+202305,M,15,62,sponge,0.021236559,after 12mo
+202305,M,15,62,sand-rubble,0.427956989,after 12mo
+202305,M,15,62,seagrass,0.025537634,after 12mo
+202305,M,15,62,tools,0.043548387,after 12mo
+202305,M,15,63,coral,0.019064327,after 12mo
+202305,M,15,63,gorgonian,0.02245614,after 12mo
+202305,M,15,63,algae,0.489239766,after 12mo
+202305,M,15,63,other,0.001052632,after 12mo
+202305,M,15,63,sponge,0.013099415,after 12mo
+202305,M,15,63,sand-rubble,0.331111111,after 12mo
+202305,M,15,63,seagrass,0.001052632,after 12mo
+202305,M,15,63,tools,0.122923977,after 12mo
+202305,M,15,64,coral,0.013888889,after 12mo
+202305,M,15,64,gorgonian,0.009166667,after 12mo
+202305,M,15,64,algae,0.374166667,after 12mo
+202305,M,15,64,other,5.56E-04,after 12mo
+202305,M,15,64,sponge,0.013333333,after 12mo
+202305,M,15,64,sand-rubble,0.54,after 12mo
+202305,M,15,64,seagrass,2.78E-04,after 12mo
+202305,M,15,64,tools,0.048611111,after 12mo
+202305,M,17,89,coral,0.009583333,after 12mo
+202305,M,17,89,gorgonian,0.017708333,after 12mo
+202305,M,17,89,algae,0.211666667,after 12mo
+202305,M,17,89,other,0.005208333,after 12mo
+202305,M,17,89,sponge,0.004166667,after 12mo
+202305,M,17,89,sand-rubble,0.588958333,after 12mo
+202305,M,17,89,tools,0.162708333,after 12mo
+202305,M,17,90,coral,0.008708709,after 12mo
+202305,M,17,90,gorgonian,0.012012012,after 12mo
+202305,M,17,90,algae,0.184084084,after 12mo
+202305,M,17,90,other,0.001501502,after 12mo
+202305,M,17,90,sponge,0.016516517,after 12mo
+202305,M,17,90,sand-rubble,0.745945946,after 12mo
+202305,M,17,90,tools,0.031231231,after 12mo
+202305,M,17,91,coral,0.00464135,after 12mo
+202305,M,17,91,gorgonian,0.005274262,after 12mo
+202305,M,17,91,algae,0.273839662,after 12mo
+202305,M,17,91,other,0.002953586,after 12mo
+202305,M,17,91,sponge,0.021940928,after 12mo
+202305,M,17,91,sand-rubble,0.653375527,after 12mo
+202305,M,17,91,seagrass,2.11E-04,after 12mo
+202305,M,17,91,tools,0.037763713,after 12mo
+202305,M,17,92,coral,0.007317073,after 12mo
+202305,M,17,92,gorgonian,0.003523035,after 12mo
+202305,M,17,92,algae,0.185907859,after 12mo
+202305,M,17,92,other,0.001084011,after 12mo
+202305,M,17,92,sponge,0.027100271,after 12mo
+202305,M,17,92,sand-rubble,0.748238482,after 12mo
+202305,M,17,92,tools,0.026829268,after 12mo
+202305,M,28,73,coral,0.01459854,after 12mo
+202305,M,28,73,gorgonian,0.021167883,after 12mo
+202305,M,28,73,algae,0.25863747,after 12mo
+202305,M,28,73,other,0.00243309,after 12mo
+202305,M,28,73,sponge,0.015815085,after 12mo
+202305,M,28,73,sand-rubble,0.532603406,after 12mo
+202305,M,28,73,seagrass,0.093430657,after 12mo
+202305,M,28,73,tools,0.061313869,after 12mo
+202305,M,28,74,coral,0.005673759,after 12mo
+202305,M,28,74,gorgonian,0.007092199,after 12mo
+202305,M,28,74,algae,0.201182033,after 12mo
+202305,M,28,74,other,0.005437352,after 12mo
+202305,M,28,74,sponge,0.007092199,after 12mo
+202305,M,28,74,sand-rubble,0.644444444,after 12mo
+202305,M,28,74,seagrass,0.069267139,after 12mo
+202305,M,28,74,tools,0.059810875,after 12mo
+202305,M,28,75,coral,0.006617647,after 12mo
+202305,M,28,75,gorgonian,0.01004902,after 12mo
+202305,M,28,75,algae,0.157598039,after 12mo
+202305,M,28,75,other,0.00245098,after 12mo
+202305,M,28,75,sponge,0.022058824,after 12mo
+202305,M,28,75,sand-rubble,0.765441176,after 12mo
+202305,M,28,75,seagrass,0.017892157,after 12mo
+202305,M,28,75,tools,0.017892157,after 12mo
+202305,M,28,76,coral,0.013055556,after 12mo
+202305,M,28,76,gorgonian,0.021388889,after 12mo
+202305,M,28,76,algae,0.250833333,after 12mo
+202305,M,28,76,other,0.001944444,after 12mo
+202305,M,28,76,sponge,0.013055556,after 12mo
+202305,M,28,76,sand-rubble,0.415555556,after 12mo
+202305,M,28,76,seagrass,0.252777778,after 12mo
+202305,M,28,76,tools,0.031388889,after 12mo
+202305,M,38,57,coral,0.002331002,after 12mo
+202305,M,38,57,gorgonian,0.001398601,after 12mo
+202305,M,38,57,algae,0.193939394,after 12mo
+202305,M,38,57,sponge,0.006060606,after 12mo
+202305,M,38,57,sand-rubble,0.705827506,after 12mo
+202305,M,38,57,seagrass,0.053146853,after 12mo
+202305,M,38,57,tools,0.037296037,after 12mo
+202305,M,38,58,coral,0.006666667,after 12mo
+202305,M,38,58,gorgonian,0.00183908,after 12mo
+202305,M,38,58,algae,0.26183908,after 12mo
+202305,M,38,58,other,6.90E-04,after 12mo
+202305,M,38,58,sponge,0.009655172,after 12mo
+202305,M,38,58,sand-rubble,0.677931034,after 12mo
+202305,M,38,58,seagrass,0.025747126,after 12mo
+202305,M,38,58,tools,0.015632184,after 12mo
+202305,M,38,59,coral,0.011779449,after 12mo
+202305,M,38,59,gorgonian,0.005263158,after 12mo
+202305,M,38,59,algae,0.25764411,after 12mo
+202305,M,38,59,other,5.01E-04,after 12mo
+202305,M,38,59,sponge,0.011528822,after 12mo
+202305,M,38,59,sand-rubble,0.627067669,after 12mo
+202305,M,38,59,seagrass,0.06641604,after 12mo
+202305,M,38,59,tools,0.019799499,after 12mo
+202305,M,38,60,coral,0.011190476,after 12mo
+202305,M,38,60,gorgonian,0.009285714,after 12mo
+202305,M,38,60,algae,0.174047619,after 12mo
+202305,M,38,60,other,0.001904762,after 12mo
+202305,M,38,60,sponge,0.011428571,after 12mo
+202305,M,38,60,sand-rubble,0.692857143,after 12mo
+202305,M,38,60,seagrass,0.079761905,after 12mo
+202305,M,38,60,tools,0.01952381,after 12mo
+202305,M,43,65,coral,0.018484848,after 12mo
+202305,M,43,65,gorgonian,0.016363636,after 12mo
+202305,M,43,65,algae,0.123939394,after 12mo
+202305,M,43,65,other,9.09E-04,after 12mo
+202305,M,43,65,sponge,0.00969697,after 12mo
+202305,M,43,65,sand-rubble,0.796666667,after 12mo
+202305,M,43,65,seagrass,6.06E-04,after 12mo
+202305,M,43,65,tools,0.033333333,after 12mo
+202305,M,43,66,coral,0.014705882,after 12mo
+202305,M,43,66,gorgonian,0.009803922,after 12mo
+202305,M,43,66,algae,0.221813725,after 12mo
+202305,M,43,66,other,0.002083333,after 12mo
+202305,M,43,66,sponge,0.006740196,after 12mo
+202305,M,43,66,sand-rubble,0.666666667,after 12mo
+202305,M,43,66,seagrass,0.011397059,after 12mo
+202305,M,43,66,tools,0.066789216,after 12mo
+202305,M,43,67,coral,0.007160494,after 12mo
+202305,M,43,67,gorgonian,0.019259259,after 12mo
+202305,M,43,67,algae,0.168148148,after 12mo
+202305,M,43,67,other,2.47E-04,after 12mo
+202305,M,43,67,sponge,0.01037037,after 12mo
+202305,M,43,67,sand-rubble,0.760246914,after 12mo
+202305,M,43,67,seagrass,0.002962963,after 12mo
+202305,M,43,67,tools,0.031604938,after 12mo
+202305,M,43,68,coral,0.015882353,after 12mo
+202305,M,43,68,gorgonian,0.020588235,after 12mo
+202305,M,43,68,algae,0.150196078,after 12mo
+202305,M,43,68,other,7.84E-04,after 12mo
+202305,M,43,68,sponge,0.011568627,after 12mo
+202305,M,43,68,sand-rubble,0.786862745,after 12mo
+202305,M,43,68,seagrass,5.88E-04,after 12mo
+202305,M,43,68,tools,0.013529412,after 12mo
+202305,M,45,85,coral,0.004843305,after 12mo
+202305,M,45,85,gorgonian,0.004273504,after 12mo
+202305,M,45,85,algae,0.156125356,after 12mo
+202305,M,45,85,other,5.70E-04,after 12mo
+202305,M,45,85,sponge,0.033903134,after 12mo
+202305,M,45,85,sand-rubble,0.758119658,after 12mo
+202305,M,45,85,tools,0.042165242,after 12mo
+202305,M,45,86,coral,0.0032,after 12mo
+202305,M,45,86,gorgonian,0.004266667,after 12mo
+202305,M,45,86,algae,0.1728,after 12mo
+202305,M,45,86,other,0.006133333,after 12mo
+202305,M,45,86,sponge,0.057866667,after 12mo
+202305,M,45,86,sand-rubble,0.724533333,after 12mo
+202305,M,45,86,tools,0.0312,after 12mo
+202305,M,45,87,coral,0.006622517,after 12mo
+202305,M,45,87,gorgonian,0.002428256,after 12mo
+202305,M,45,87,algae,0.209933775,after 12mo
+202305,M,45,87,other,0.002428256,after 12mo
+202305,M,45,87,sponge,0.02781457,after 12mo
+202305,M,45,87,sand-rubble,0.709492274,after 12mo
+202305,M,45,87,tools,0.041280353,after 12mo
+202305,M,45,88,coral,0.00915493,after 12mo
+202305,M,45,88,gorgonian,0.003051643,after 12mo
+202305,M,45,88,algae,0.335915493,after 12mo
+202305,M,45,88,other,0.002816901,after 12mo
+202305,M,45,88,sponge,0.018544601,after 12mo
+202305,M,45,88,sand-rubble,0.595774648,after 12mo
+202305,M,45,88,tools,0.034741784,after 12mo
+202305,M,48,49,coral,0.014918415,after 12mo
+202305,M,48,49,gorgonian,0.007692308,after 12mo
+202305,M,48,49,algae,0.475524476,after 12mo
+202305,M,48,49,other,6.99E-04,after 12mo
+202305,M,48,49,sponge,0.003729604,after 12mo
+202305,M,48,49,sand-rubble,0.44988345,after 12mo
+202305,M,48,49,seagrass,0.015151515,after 12mo
+202305,M,48,49,tools,0.032400932,after 12mo
+202305,M,48,50,coral,0.006575964,after 12mo
+202305,M,48,50,gorgonian,0.002947846,after 12mo
+202305,M,48,50,algae,0.255782313,after 12mo
+202305,M,48,50,other,6.80E-04,after 12mo
+202305,M,48,50,sponge,0.001814059,after 12mo
+202305,M,48,50,sand-rubble,0.688662132,after 12mo
+202305,M,48,50,seagrass,0.023809524,after 12mo
+202305,M,48,50,tools,0.019727891,after 12mo
+202305,M,48,51,coral,0.009887006,after 12mo
+202305,M,48,51,gorgonian,0.012711864,after 12mo
+202305,M,48,51,algae,0.331920904,after 12mo
+202305,M,48,51,other,0.001694915,after 12mo
+202305,M,48,51,sponge,0.005932203,after 12mo
+202305,M,48,51,sand-rubble,0.548305085,after 12mo
+202305,M,48,51,seagrass,0.070056497,after 12mo
+202305,M,48,51,tools,0.019491525,after 12mo
+202305,M,48,52,coral,0.007785888,after 12mo
+202305,M,48,52,gorgonian,0.002676399,after 12mo
+202305,M,48,52,algae,0.487347932,after 12mo
+202305,M,48,52,sponge,0.005109489,after 12mo
+202305,M,48,52,sand-rubble,0.461800487,after 12mo
+202305,M,48,52,seagrass,0.010462287,after 12mo
+202305,M,48,52,tools,0.024817518,after 12mo
+202305,M,73,77,coral,0.030516432,after 12mo
+202305,M,73,77,gorgonian,0.025821596,after 12mo
+202305,M,73,77,algae,0.178638498,after 12mo
+202305,M,73,77,other,0.004460094,after 12mo
+202305,M,73,77,sponge,0.141549296,after 12mo
+202305,M,73,77,sand-rubble,0.587089202,after 12mo
+202305,M,73,77,tools,0.031924883,after 12mo
+202305,M,73,78,coral,0.024840764,after 12mo
+202305,M,73,78,gorgonian,0.038428875,after 12mo
+202305,M,73,78,algae,0.195329087,after 12mo
+202305,M,73,78,other,0.00552017,after 12mo
+202305,M,73,78,sponge,0.057112527,after 12mo
+202305,M,73,78,sand-rubble,0.644373673,after 12mo
+202305,M,73,78,tools,0.034394904,after 12mo
+202305,M,73,79,coral,0.014652015,after 12mo
+202305,M,73,79,gorgonian,0.037362637,after 12mo
+202305,M,73,79,algae,0.129487179,after 12mo
+202305,M,73,79,other,0.012271062,after 12mo
+202305,M,73,79,sponge,0.08021978,after 12mo
+202305,M,73,79,sand-rubble,0.679487179,after 12mo
+202305,M,73,79,seagrass,7.33E-04,after 12mo
+202305,M,73,79,tools,0.045787546,after 12mo
+202305,M,73,80,coral,0.02293578,after 12mo
+202305,M,73,80,gorgonian,0.006116208,after 12mo
+202305,M,73,80,algae,0.125993884,after 12mo
+202305,M,73,80,other,6.12E-04,after 12mo
+202305,M,73,80,sponge,0.063608563,after 12mo
+202305,M,73,80,sand-rubble,0.718654434,after 12mo
+202305,M,73,80,tools,0.062079511,after 12mo
+202305,M,74,93,coral,0.001808786,after 12mo
+202305,M,74,93,gorgonian,0.002325581,after 12mo
+202305,M,74,93,algae,0.166666667,after 12mo
+202305,M,74,93,other,7.75E-04,after 12mo
+202305,M,74,93,sponge,0.022739018,after 12mo
+202305,M,74,93,sand-rubble,0.781912145,after 12mo
+202305,M,74,93,tools,0.02377261,after 12mo
+202305,M,74,94,coral,0.01010929,after 12mo
+202305,M,74,94,gorgonian,0.003005464,after 12mo
+202305,M,74,94,algae,0.117486339,after 12mo
+202305,M,74,94,other,0.001912568,after 12mo
+202305,M,74,94,sponge,0.066939891,after 12mo
+202305,M,74,94,sand-rubble,0.760655738,after 12mo
+202305,M,74,94,tools,0.03989071,after 12mo
+202305,M,74,95,coral,0.009429825,after 12mo
+202305,M,74,95,gorgonian,0.00372807,after 12mo
+202305,M,74,95,algae,0.209429825,after 12mo
+202305,M,74,95,other,0.005263158,after 12mo
+202305,M,74,95,sponge,0.013815789,after 12mo
+202305,M,74,95,sand-rubble,0.725438596,after 12mo
+202305,M,74,95,tools,0.032894737,after 12mo
+202305,M,74,96,coral,0.010666667,after 12mo
+202305,M,74,96,gorgonian,0.002666667,after 12mo
+202305,M,74,96,algae,0.184444444,after 12mo
+202305,M,74,96,other,0.003333333,after 12mo
+202305,M,74,96,sponge,0.021777778,after 12mo
+202305,M,74,96,sand-rubble,0.755333333,after 12mo
+202305,M,74,96,tools,0.021777778,after 12mo
+202305,T,1,14,coral,0.016783217,after 12mo
+202305,T,1,14,gorgonian,0.022144522,after 12mo
+202305,T,1,14,algae,0.2997669,after 12mo
+202305,T,1,14,other,9.32E-04,after 12mo
+202305,T,1,14,sponge,0.008391608,after 12mo
+202305,T,1,14,sand-rubble,0.528904429,after 12mo
+202305,T,1,14,tools,0.122610723,after 12mo
+202305,T,1,14,zoanthid,4.66E-04,after 12mo
+202305,T,1,15,coral,0.027430556,after 12mo
+202305,T,1,15,gorgonian,0.013194444,after 12mo
+202305,T,1,15,algae,0.216319444,after 12mo
+202305,T,1,15,other,3.47E-04,after 12mo
+202305,T,1,15,sponge,0.008333333,after 12mo
+202305,T,1,15,sand-rubble,0.626388889,after 12mo
+202305,T,1,15,tools,0.107986111,after 12mo
+202305,T,1,16,coral,0.009677419,after 12mo
+202305,T,1,16,gorgonian,0.002688172,after 12mo
+202305,T,1,16,algae,0.250537634,after 12mo
+202305,T,1,16,other,2.69E-04,after 12mo
+202305,T,1,16,sponge,0.008870968,after 12mo
+202305,T,1,16,sand-rubble,0.657795699,after 12mo
+202305,T,1,16,tools,0.07016129,after 12mo
+202305,T,4,5,coral,0.014705882,after 12mo
+202305,T,4,5,gorgonian,0.025,after 12mo
+202305,T,4,5,algae,0.351470588,after 12mo
+202305,T,4,5,other,0.001470588,after 12mo
+202305,T,4,5,sponge,0.017401961,after 12mo
+202305,T,4,5,sand-rubble,0.481127451,after 12mo
+202305,T,4,5,seagrass,0.031372549,after 12mo
+202305,T,4,5,tools,0.077205882,after 12mo
+202305,T,4,5,zoanthid,2.45E-04,after 12mo
+202305,T,4,6,coral,0.04375,after 12mo
+202305,T,4,6,gorgonian,0.086979167,after 12mo
+202305,T,4,6,algae,0.384114583,after 12mo
+202305,T,4,6,other,0.003125,after 12mo
+202305,T,4,6,sponge,0.009895833,after 12mo
+202305,T,4,6,sand-rubble,0.3640625,after 12mo
+202305,T,4,6,seagrass,0.009635417,after 12mo
+202305,T,4,6,tools,0.097395833,after 12mo
+202305,T,4,6,zoanthid,0.001041667,after 12mo
+202305,T,4,7,coral,0.043910256,after 12mo
+202305,T,4,7,gorgonian,0.070512821,after 12mo
+202305,T,4,7,algae,0.544230769,after 12mo
+202305,T,4,7,other,0.001282051,after 12mo
+202305,T,4,7,sponge,0.009615385,after 12mo
+202305,T,4,7,sand-rubble,0.269871795,after 12mo
+202305,T,4,7,seagrass,0.002564103,after 12mo
+202305,T,4,7,tools,0.058012821,after 12mo
+202305,T,4,8,coral,0.028099174,after 12mo
+202305,T,4,8,gorgonian,0.058402204,after 12mo
+202305,T,4,8,algae,0.43415978,after 12mo
+202305,T,4,8,sponge,0.017906336,after 12mo
+202305,T,4,8,sand-rubble,0.390909091,after 12mo
+202305,T,4,8,seagrass,2.75E-04,after 12mo
+202305,T,4,8,tools,0.070247934,after 12mo
+202305,T,20,9,coral,0.028571429,after 12mo
+202305,T,20,9,gorgonian,0.056022409,after 12mo
+202305,T,20,9,algae,0.234733894,after 12mo
+202305,T,20,9,other,0.00280112,after 12mo
+202305,T,20,9,sponge,0.035014006,after 12mo
+202305,T,20,9,sand-rubble,0.562464986,after 12mo
+202305,T,20,9,tools,0.080392157,after 12mo
+202305,T,20,10,coral,0.049382716,after 12mo
+202305,T,20,10,gorgonian,0.036213992,after 12mo
+202305,T,20,10,algae,0.353703704,after 12mo
+202305,T,20,10,other,8.23E-04,after 12mo
+202305,T,20,10,sponge,0.019341564,after 12mo
+202305,T,20,10,sand-rubble,0.501440329,after 12mo
+202305,T,20,10,seagrass,2.06E-04,after 12mo
+202305,T,20,10,tools,0.038888889,after 12mo
+202305,T,20,11,coral,0.026303855,after 12mo
+202305,T,20,11,gorgonian,0.014739229,after 12mo
+202305,T,20,11,algae,0.484580499,after 12mo
+202305,T,20,11,other,0.001360544,after 12mo
+202305,T,20,11,sponge,0.010657596,after 12mo
+202305,T,20,11,sand-rubble,0.413378685,after 12mo
+202305,T,20,11,seagrass,4.54E-04,after 12mo
+202305,T,20,11,tools,0.048526077,after 12mo
+202305,T,20,12,coral,0.019642857,after 12mo
+202305,T,20,12,gorgonian,0.024107143,after 12mo
+202305,T,20,12,algae,0.438392857,after 12mo
+202305,T,20,12,other,2.98E-04,after 12mo
+202305,T,20,12,sponge,0.038095238,after 12mo
+202305,T,20,12,sand-rubble,0.417559524,after 12mo
+202305,T,20,12,tools,0.061904762,after 12mo
+202305,T,22,33,coral,0.023515982,after 12mo
+202305,T,22,33,gorgonian,0.021917808,after 12mo
+202305,T,22,33,algae,0.356849315,after 12mo
+202305,T,22,33,other,9.13E-04,after 12mo
+202305,T,22,33,sponge,0.010502283,after 12mo
+202305,T,22,33,sand-rubble,0.515525114,after 12mo
+202305,T,22,33,seagrass,0.037214612,after 12mo
+202305,T,22,33,tools,0.033561644,after 12mo
+202305,T,22,34,coral,0.021103118,after 12mo
+202305,T,22,34,gorgonian,0.028057554,after 12mo
+202305,T,22,34,algae,0.328297362,after 12mo
+202305,T,22,34,other,7.19E-04,after 12mo
+202305,T,22,34,sponge,0.010311751,after 12mo
+202305,T,22,34,sand-rubble,0.578657074,after 12mo
+202305,T,22,34,tools,0.032853717,after 12mo
+202305,T,22,35,coral,0.026801802,after 12mo
+202305,T,22,35,gorgonian,0.033558559,after 12mo
+202305,T,22,35,algae,0.348648649,after 12mo
+202305,T,22,35,other,0.001801802,after 12mo
+202305,T,22,35,sponge,0.01509009,after 12mo
+202305,T,22,35,sand-rubble,0.519594595,after 12mo
+202305,T,22,35,seagrass,0.004954955,after 12mo
+202305,T,22,35,tools,0.04954955,after 12mo
+202305,T,22,36,coral,0.029565217,after 12mo
+202305,T,22,36,gorgonian,0.039130435,after 12mo
+202305,T,22,36,algae,0.412463768,after 12mo
+202305,T,22,36,sponge,0.014492754,after 12mo
+202305,T,22,36,sand-rubble,0.423478261,after 12mo
+202305,T,22,36,seagrass,0.053913043,after 12mo
+202305,T,22,36,tools,0.026956522,after 12mo
+202305,T,23,45,coral,0.016137566,after 12mo
+202305,T,23,45,gorgonian,0.002645503,after 12mo
+202305,T,23,45,algae,0.276455026,after 12mo
+202305,T,23,45,other,0.012169312,after 12mo
+202305,T,23,45,sponge,0.01957672,after 12mo
+202305,T,23,45,sand-rubble,0.643386243,after 12mo
+202305,T,23,45,seagrass,2.65E-04,after 12mo
+202305,T,23,45,tools,0.029365079,after 12mo
+202305,T,23,46,coral,0.003962704,after 12mo
+202305,T,23,46,gorgonian,0.001165501,after 12mo
+202305,T,23,46,algae,0.06037296,after 12mo
+202305,T,23,46,other,2.33E-04,after 12mo
+202305,T,23,46,sponge,0.011188811,after 12mo
+202305,T,23,46,sand-rubble,0.880885781,after 12mo
+202305,T,23,46,tools,0.042191142,after 12mo
+202305,T,23,47,coral,0.014480874,after 12mo
+202305,T,23,47,gorgonian,0.003278689,after 12mo
+202305,T,23,47,algae,0.283606557,after 12mo
+202305,T,23,47,other,5.46E-04,after 12mo
+202305,T,23,47,sponge,0.031693989,after 12mo
+202305,T,23,47,sand-rubble,0.643989071,after 12mo
+202305,T,23,47,seagrass,2.73E-04,after 12mo
+202305,T,23,47,tools,0.022131148,after 12mo
+202305,T,23,48,coral,0.00911271,after 12mo
+202305,T,23,48,gorgonian,4.80E-04,after 12mo
+202305,T,23,48,algae,0.164028777,after 12mo
+202305,T,23,48,other,2.40E-04,after 12mo
+202305,T,23,48,sponge,0.02470024,after 12mo
+202305,T,23,48,sand-rubble,0.782254197,after 12mo
+202305,T,23,48,seagrass,2.40E-04,after 12mo
+202305,T,23,48,tools,0.018944844,after 12mo
+202305,T,24,29,coral,0.047154472,after 12mo
+202305,T,24,29,gorgonian,0.061517615,after 12mo
+202305,T,24,29,algae,0.418699187,after 12mo
+202305,T,24,29,other,0.001626016,after 12mo
+202305,T,24,29,sponge,0.056910569,after 12mo
+202305,T,24,29,sand-rubble,0.336585366,after 12mo
+202305,T,24,29,seagrass,0.00298103,after 12mo
+202305,T,24,29,tools,0.074525745,after 12mo
+202305,T,24,30,coral,0.023950617,after 12mo
+202305,T,24,30,gorgonian,0.038024691,after 12mo
+202305,T,24,30,algae,0.337283951,after 12mo
+202305,T,24,30,other,2.47E-04,after 12mo
+202305,T,24,30,sponge,0.016296296,after 12mo
+202305,T,24,30,sand-rubble,0.521975309,after 12mo
+202305,T,24,30,seagrass,4.94E-04,after 12mo
+202305,T,24,30,tools,0.061728395,after 12mo
+202305,T,24,31,coral,0.019283747,after 12mo
+202305,T,24,31,gorgonian,0.015702479,after 12mo
+202305,T,24,31,algae,0.332506887,after 12mo
+202305,T,24,31,other,0.003581267,after 12mo
+202305,T,24,31,sponge,0.004958678,after 12mo
+202305,T,24,31,sand-rubble,0.485399449,after 12mo
+202305,T,24,31,tools,0.138292011,after 12mo
+202305,T,24,31,zoanthid,2.75E-04,after 12mo
+202305,T,24,32,coral,0.0264,after 12mo
+202305,T,24,32,gorgonian,0.019466667,after 12mo
+202305,T,24,32,algae,0.349066667,after 12mo
+202305,T,24,32,other,0.001866667,after 12mo
+202305,T,24,32,sponge,0.022933333,after 12mo
+202305,T,24,32,sand-rubble,0.44,after 12mo
+202305,T,24,32,seagrass,2.67E-04,after 12mo
+202305,T,24,32,tools,0.14,after 12mo
+202305,T,26,41,coral,0.011021505,after 12mo
+202305,T,26,41,gorgonian,0.006989247,after 12mo
+202305,T,26,41,algae,0.338978495,after 12mo
+202305,T,26,41,other,0.001344086,after 12mo
+202305,T,26,41,sponge,0.002688172,after 12mo
+202305,T,26,41,sand-rubble,0.617473118,after 12mo
+202305,T,26,41,tools,0.021505376,after 12mo
+202305,T,26,42,coral,0.014166667,after 12mo
+202305,T,26,42,gorgonian,0.005277778,after 12mo
+202305,T,26,42,algae,0.193333333,after 12mo
+202305,T,26,42,sponge,0.008333333,after 12mo
+202305,T,26,42,sand-rubble,0.749444444,after 12mo
+202305,T,26,42,seagrass,5.56E-04,after 12mo
+202305,T,26,42,tools,0.028888889,after 12mo
+202305,T,26,43,coral,0.013580247,after 12mo
+202305,T,26,43,gorgonian,0.003209877,after 12mo
+202305,T,26,43,algae,0.142716049,after 12mo
+202305,T,26,43,other,4.94E-04,after 12mo
+202305,T,26,43,sponge,0.00345679,after 12mo
+202305,T,26,43,sand-rubble,0.732345679,after 12mo
+202305,T,26,43,tools,0.104197531,after 12mo
+202305,T,26,44,coral,0.008641975,after 12mo
+202305,T,26,44,gorgonian,0.007407407,after 12mo
+202305,T,26,44,algae,0.235185185,after 12mo
+202305,T,26,44,other,3.09E-04,after 12mo
+202305,T,26,44,sponge,0.020061728,after 12mo
+202305,T,26,44,sand-rubble,0.694135802,after 12mo
+202305,T,26,44,seagrass,3.09E-04,after 12mo
+202305,T,26,44,tools,0.033950617,after 12mo
+202305,T,35,1,coral,0.008,after 12mo
+202305,T,35,1,gorgonian,2.67E-04,after 12mo
+202305,T,35,1,algae,0.4456,after 12mo
+202305,T,35,1,other,8.00E-04,after 12mo
+202305,T,35,1,sponge,0.008266667,after 12mo
+202305,T,35,1,sand-rubble,0.449066667,after 12mo
+202305,T,35,1,seagrass,0.001066667,after 12mo
+202305,T,35,1,tools,0.086933333,after 12mo
+202305,T,35,2,coral,0.012159329,after 12mo
+202305,T,35,2,gorgonian,0.001048218,after 12mo
+202305,T,35,2,algae,0.416352201,after 12mo
+202305,T,35,2,other,2.10E-04,after 12mo
+202305,T,35,2,sponge,0.035849057,after 12mo
+202305,T,35,2,sand-rubble,0.515932914,after 12mo
+202305,T,35,2,tools,0.018448637,after 12mo
+202305,T,35,3,coral,0.01147541,after 12mo
+202305,T,35,3,gorgonian,5.46E-04,after 12mo
+202305,T,35,3,algae,0.367213115,after 12mo
+202305,T,35,3,sponge,0.013934426,after 12mo
+202305,T,35,3,sand-rubble,0.554098361,after 12mo
+202305,T,35,3,seagrass,2.73E-04,after 12mo
+202305,T,35,3,tools,0.052459016,after 12mo
+202305,T,35,4,coral,0.017530864,after 12mo
+202305,T,35,4,gorgonian,4.94E-04,after 12mo
+202305,T,35,4,algae,0.415061728,after 12mo
+202305,T,35,4,other,0.001728395,after 12mo
+202305,T,35,4,sponge,0.032592593,after 12mo
+202305,T,35,4,sand-rubble,0.495802469,after 12mo
+202305,T,35,4,seagrass,2.47E-04,after 12mo
+202305,T,35,4,tools,0.03654321,after 12mo
+202305,T,37,17,coral,0.014478114,after 12mo
+202305,T,37,17,gorgonian,0.008080808,after 12mo
+202305,T,37,17,algae,0.283838384,after 12mo
+202305,T,37,17,other,0.004040404,after 12mo
+202305,T,37,17,sponge,0.081144781,after 12mo
+202305,T,37,17,sand-rubble,0.513131313,after 12mo
+202305,T,37,17,tools,0.095286195,after 12mo
+202305,T,37,18,coral,0.025974026,after 12mo
+202305,T,37,18,gorgonian,0.011688312,after 12mo
+202305,T,37,18,algae,0.398051948,after 12mo
+202305,T,37,18,other,0.003896104,after 12mo
+202305,T,37,18,sponge,0.061471861,after 12mo
+202305,T,37,18,sand-rubble,0.434199134,after 12mo
+202305,T,37,18,seagrass,0.001298701,after 12mo
+202305,T,37,18,tools,0.063419913,after 12mo
+202305,T,37,19,coral,0.019398907,after 12mo
+202305,T,37,19,gorgonian,0.051639344,after 12mo
+202305,T,37,19,algae,0.41010929,after 12mo
+202305,T,37,19,other,0.00136612,after 12mo
+202305,T,37,19,sponge,0.028961749,after 12mo
+202305,T,37,19,sand-rubble,0.420491803,after 12mo
+202305,T,37,19,seagrass,2.73E-04,after 12mo
+202305,T,37,19,tools,0.067759563,after 12mo
+202305,T,37,20,coral,0.02137931,after 12mo
+202305,T,37,20,gorgonian,0.030344828,after 12mo
+202305,T,37,20,algae,0.329195402,after 12mo
+202305,T,37,20,other,6.90E-04,after 12mo
+202305,T,37,20,sponge,0.068965517,after 12mo
+202305,T,37,20,sand-rubble,0.491264368,after 12mo
+202305,T,37,20,seagrass,0.00137931,after 12mo
+202305,T,37,20,tools,0.056781609,after 12mo
+202305,T,39,37,coral,0.010062893,after 12mo
+202305,T,39,37,gorgonian,0.02327044,after 12mo
+202305,T,39,37,algae,0.277044025,after 12mo
+202305,T,39,37,other,3.14E-04,after 12mo
+202305,T,39,37,sponge,0.006918239,after 12mo
+202305,T,39,37,sand-rubble,0.58836478,after 12mo
+202305,T,39,37,tools,0.094025157,after 12mo
+202305,T,39,38,coral,0.014871795,after 12mo
+202305,T,39,38,gorgonian,0.027692308,after 12mo
+202305,T,39,38,algae,0.481025641,after 12mo
+202305,T,39,38,other,2.56E-04,after 12mo
+202305,T,39,38,sponge,0.011025641,after 12mo
+202305,T,39,38,sand-rubble,0.393846154,after 12mo
+202305,T,39,38,seagrass,0.035641026,after 12mo
+202305,T,39,38,tools,0.035641026,after 12mo
+202305,T,39,39,coral,0.013095238,after 12mo
+202305,T,39,39,gorgonian,0.028095238,after 12mo
+202305,T,39,39,algae,0.411904762,after 12mo
+202305,T,39,39,sponge,0.009285714,after 12mo
+202305,T,39,39,sand-rubble,0.393095238,after 12mo
+202305,T,39,39,seagrass,0.121666667,after 12mo
+202305,T,39,39,tools,0.022857143,after 12mo
+202305,T,39,40,coral,0.017901235,after 12mo
+202305,T,39,40,gorgonian,0.043004115,after 12mo
+202305,T,39,40,algae,0.391769547,after 12mo
+202305,T,39,40,other,2.06E-04,after 12mo
+202305,T,39,40,sponge,0.006584362,after 12mo
+202305,T,39,40,sand-rubble,0.483539095,after 12mo
+202305,T,39,40,tools,0.056995885,after 12mo
+202305,T,43,21,coral,0.021609195,after 12mo
+202305,T,43,21,gorgonian,0.04183908,after 12mo
+202305,T,43,21,algae,0.395632184,after 12mo
+202305,T,43,21,other,6.90E-04,after 12mo
+202305,T,43,21,sponge,0.010114943,after 12mo
+202305,T,43,21,sand-rubble,0.476321839,after 12mo
+202305,T,43,21,seagrass,6.90E-04,after 12mo
+202305,T,43,21,tools,0.053103448,after 12mo
+202305,T,43,22,coral,0.035632184,after 12mo
+202305,T,43,22,gorgonian,0.021264368,after 12mo
+202305,T,43,22,algae,0.430747126,after 12mo
+202305,T,43,22,other,2.87E-04,after 12mo
+202305,T,43,22,sponge,0.007471264,after 12mo
+202305,T,43,22,sand-rubble,0.428735632,after 12mo
+202305,T,43,22,seagrass,0.002873563,after 12mo
+202305,T,43,22,tools,0.072988506,after 12mo
+202305,T,43,23,coral,0.0425,after 12mo
+202305,T,43,23,gorgonian,0.046944444,after 12mo
+202305,T,43,23,algae,0.493611111,after 12mo
+202305,T,43,23,sponge,0.030277778,after 12mo
+202305,T,43,23,sand-rubble,0.354722222,after 12mo
+202305,T,43,23,seagrass,5.56E-04,after 12mo
+202305,T,43,23,tools,0.031388889,after 12mo
+202305,T,43,24,coral,0.02183908,after 12mo
+202305,T,43,24,gorgonian,0.021551724,after 12mo
+202305,T,43,24,algae,0.337356322,after 12mo
+202305,T,43,24,sponge,0.018678161,after 12mo
+202305,T,43,24,sand-rubble,0.522126437,after 12mo
+202305,T,43,24,tools,0.078448276,after 12mo
+202305,T,45,25,coral,0.030097087,after 12mo
+202305,T,45,25,gorgonian,0.057605178,after 12mo
+202305,T,45,25,algae,0.261488673,after 12mo
+202305,T,45,25,other,9.71E-04,after 12mo
+202305,T,45,25,sponge,0.014886731,after 12mo
+202305,T,45,25,sand-rubble,0.529126214,after 12mo
+202305,T,45,25,seagrass,9.71E-04,after 12mo
+202305,T,45,25,tools,0.104854369,after 12mo
+202305,T,45,26,coral,0.027147766,after 12mo
+202305,T,45,26,gorgonian,0.062886598,after 12mo
+202305,T,45,26,algae,0.496907216,after 12mo
+202305,T,45,26,other,0.002749141,after 12mo
+202305,T,45,26,sponge,0.056013746,after 12mo
+202305,T,45,26,sand-rubble,0.234364261,after 12mo
+202305,T,45,26,tools,0.119931271,after 12mo
+202305,T,45,27,coral,0.021406728,after 12mo
+202305,T,45,27,gorgonian,0.022324159,after 12mo
+202305,T,45,27,algae,0.411620795,after 12mo
+202305,T,45,27,other,6.12E-04,after 12mo
+202305,T,45,27,sponge,0.018654434,after 12mo
+202305,T,45,27,sand-rubble,0.456574924,after 12mo
+202305,T,45,27,tools,0.068807339,after 12mo
+202305,T,45,28,coral,0.015464995,after 12mo
+202305,T,45,28,gorgonian,0.038453501,after 12mo
+202305,T,45,28,algae,0.366039707,after 12mo
+202305,T,45,28,other,5.22E-04,after 12mo
+202305,T,45,28,sponge,0.011598746,after 12mo
+202305,T,45,28,sand-rubble,0.516823406,after 12mo
+202305,T,45,28,seagrass,0.001776385,after 12mo
+202305,T,45,28,tools,0.049320794,after 12mo

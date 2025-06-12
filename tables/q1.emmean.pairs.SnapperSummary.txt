@@ -1,14 +1,14 @@
  contrast                  estimate    SE  df z.ratio p.value
- Lane - Mahogany            -0.4055 0.467 Inf  -0.868  0.9085
- Lane - Mutton              -0.3716 0.375 Inf  -0.992  0.8590
- Lane - Schoolmaster        -0.4055 0.330 Inf  -1.228  0.7352
- Lane - Yellowtail          -1.6440 0.304 Inf  -5.401  <.0001
- Mahogany - Mutton           0.0339 0.430 Inf   0.079  1.0000
- Mahogany - Schoolmaster     0.0000 0.392 Inf   0.000  1.0000
- Mahogany - Yellowtail      -1.2386 0.371 Inf  -3.340  0.0075
- Mutton - Schoolmaster      -0.0339 0.276 Inf  -0.123  0.9999
- Mutton - Yellowtail        -1.2725 0.245 Inf  -5.202  <.0001
- Schoolmaster - Yellowtail  -1.2386 0.169 Inf  -7.319  <.0001
+ Lane - Mahogany             -0.244 0.450 Inf  -0.542  0.9830
+ Lane - Mutton               -0.296 0.358 Inf  -0.826  0.9226
+ Lane - Schoolmaster         -0.268 0.320 Inf  -0.837  0.9192
+ Lane - Yellowtail           -1.511 0.294 Inf  -5.136  <.0001
+ Mahogany - Mutton           -0.052 0.417 Inf  -0.125  0.9999
+ Mahogany - Schoolmaster     -0.024 0.379 Inf  -0.063  1.0000
+ Mahogany - Yellowtail       -1.267 0.362 Inf  -3.501  0.0042
+ Mutton - Schoolmaster        0.028 0.263 Inf   0.106  1.0000
+ Mutton - Yellowtail         -1.215 0.233 Inf  -5.216  <.0001
+ Schoolmaster - Yellowtail   -1.243 0.160 Inf  -7.784  <.0001
 
 Results are given on the log (not the response) scale. 
 P value adjustment: tukey method for comparing a family of 5 estimates 

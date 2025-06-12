@@ -1,0 +1,120 @@
+SitePlot,Site,Plot,Location,Common,Taxa,MaxN
+M0873,M08,73,M,Graysby,Grouper,4
+M0874,M08,74,M,Graysby,Grouper,2
+M0874,M08,74,M,Red Hind,Grouper,2
+M0875,M08,75,M,Graysby,Grouper,2
+M0875,M08,75,M,Red Hind,Grouper,3
+M0876,M08,76,M,Graysby,Grouper,3
+M0876,M08,76,M,Red Hind,Grouper,2
+M1005,M10,05,M,Red Hind,Grouper,1
+M1007,M10,07,M,Coney,Grouper,1
+M1007,M10,07,M,Graysby,Grouper,2
+M1007,M10,07,M,Red Hind,Grouper,1
+M1203,M12,03,M,Graysby,Grouper,2
+M1203,M12,03,M,Red Hind,Grouper,2
+M1242,M12,42,M,Graysby,Grouper,2
+M1242,M12,42,M,Red Hind,Grouper,1
+M1260,M12,60,M,Graysby,Grouper,1
+M1260,M12,60,M,Red Hind,Grouper,1
+M1292,M12,92,M,Graysby,Grouper,2
+M1292,M12,92,M,Red Hind,Grouper,3
+M1506,M15,06,M,Graysby,Grouper,3
+M1506,M15,06,M,Red Hind,Grouper,2
+M1508,M15,08,M,Graysby,Grouper,3
+M1508,M15,08,M,Red Hind,Grouper,2
+M1509,M15,09,M,Graysby,Grouper,1
+M1509,M15,09,M,Red Hind,Grouper,1
+M1762,M17,62,M,Graysby,Grouper,1
+M1762,M17,62,M,Red Hind,Grouper,1
+M1764,M17,64,M,Coney,Grouper,1
+M1764,M17,64,M,Graysby,Grouper,1
+M1764,M17,64,M,Red Hind,Grouper,2
+M1765,M17,65,M,Coney,Grouper,1
+M1765,M17,65,M,Graysby,Grouper,1
+M1765,M17,65,M,Red Hind,Grouper,2
+M2870,M28,70,M,Graysby,Grouper,1
+M2870,M28,70,M,Red Hind,Grouper,2
+M3837,M38,37,M,Graysby,Grouper,2
+M3839,M38,39,M,Graysby,Grouper,3
+M3840,M38,40,M,Graysby,Grouper,5
+M4338,M43,38,M,Red Hind,Grouper,2
+M4378,M43,78,M,Graysby,Grouper,1
+M4381,M43,81,M,Graysby,Grouper,2
+M4381,M43,81,M,Red Hind,Grouper,1
+M4502,M45,02,M,Coney,Grouper,1
+M4502,M45,02,M,Graysby,Grouper,1
+M4504,M45,04,M,Coney,Grouper,1
+M4504,M45,04,M,Graysby,Grouper,1
+M4849,M48,49,M,Graysby,Grouper,2
+M4896,M48,96,M,Graysby,Grouper,2
+M4896,M48,96,M,Red Hind,Grouper,1
+M7309,M73,09,M,Graysby,Grouper,2
+M7421,M74,21,M,Coney,Grouper,1
+M7421,M74,21,M,Graysby,Grouper,1
+M7421,M74,21,M,Red Hind,Grouper,2
+M7422,M74,22,M,Red Hind,Grouper,2
+T0158,T01,58,T,Graysby,Grouper,2
+T0158,T01,58,T,Red Hind,Grouper,2
+T0160,T01,60,T,Graysby,Grouper,2
+T0160,T01,60,T,Red Hind,Grouper,1
+T0168,T01,68,T,Graysby,Grouper,2
+T0168,T01,68,T,Red Hind,Grouper,1
+T0473,T04,73,T,Graysby,Grouper,2
+T0473,T04,73,T,Red Hind,Grouper,1
+T0476,T04,76,T,Red Hind,Grouper,1
+T2069,T20,69,T,Graysby,Grouper,4
+T2069,T20,69,T,Red Hind,Grouper,1
+T2070,T20,70,T,Red Hind,Grouper,1
+T2072,T20,72,T,Graysby,Grouper,4
+T2209,T22,09,T,Graysby,Grouper,4
+T2210,T22,10,T,Graysby,Grouper,4
+T2210,T22,10,T,Red Hind,Grouper,1
+T2211,T22,11,T,Graysby,Grouper,3
+T2211,T22,11,T,Red Hind,Grouper,2
+T2212,T22,12,T,Graysby,Grouper,5
+T2361,T23,61,T,Graysby,Grouper,2
+T2374,T23,74,T,Graysby,Grouper,2
+T2378,T23,78,T,Graysby,Grouper,1
+T2378,T23,78,T,Red Hind,Grouper,1
+T2463,T24,63,T,Graysby,Grouper,3
+T2464,T24,64,T,Graysby,Grouper,5
+T2464,T24,64,T,Red Hind,Grouper,1
+T2477,T24,77,T,Graysby,Grouper,3
+T2479,T24,79,T,Graysby,Grouper,3
+T2479,T24,79,T,Red Hind,Grouper,1
+T2646,T26,46,T,Graysby,Grouper,2
+T2646,T26,46,T,Red Hind,Grouper,1
+T2647,T26,47,T,Graysby,Grouper,2
+T2648,T26,48,T,Graysby,Grouper,3
+T2648,T26,48,T,Red Hind,Grouper,1
+T3521,T35,21,T,Coney,Grouper,1
+T3521,T35,21,T,Graysby,Grouper,2
+T3521,T35,21,T,Red Hind,Grouper,3
+T3540,T35,40,T,Coney,Grouper,2
+T3540,T35,40,T,Graysby,Grouper,3
+T3540,T35,40,T,Red Hind,Grouper,3
+T3713,T37,13,T,Graysby,Grouper,2
+T3713,T37,13,T,Red Hind,Grouper,2
+T3715,T37,15,T,Graysby,Grouper,3
+T3715,T37,15,T,Red Hind,Grouper,2
+T3716,T37,16,T,Graysby,Grouper,5
+T3716,T37,16,T,Red Hind,Grouper,2
+T3967,T39,67,T,Graysby,Grouper,4
+T3967,T39,67,T,Red Hind,Grouper,1
+T3971,T39,71,T,Graysby,Grouper,4
+T3971,T39,71,T,Red Hind,Grouper,2
+T3976,T39,76,T,Graysby,Grouper,1
+T4301,T43,01,T,Graysby,Grouper,5
+T4301,T43,01,T,Red Hind,Grouper,1
+T4302,T43,02,T,Graysby,Grouper,3
+T4302,T43,02,T,Red Hind,Grouper,1
+T4303,T43,03,T,Graysby,Grouper,3
+T4304,T43,04,T,Graysby,Grouper,4
+T4512,T45,12,T,Graysby,Grouper,4
+T4512,T45,12,T,Red Hind,Grouper,1
+T4533,T45,33,T,Graysby,Grouper,3
+T4533,T45,33,T,Red Hind,Grouper,1
+T4572,T45,72,T,Graysby,Grouper,3
+T4572,T45,72,T,Red Hind,Grouper,2
+T4590,T45,90,T,Graysby,Grouper,4
+T4590,T45,90,T,Red Hind,Grouper,2

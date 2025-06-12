@@ -1,4 +1,7 @@
- contrast        estimate    SE  df z.ratio p.value
- Coney - Graysby    -4.03 0.517 Inf  -7.781  <.0001
+ contrast           estimate    SE  df z.ratio p.value
+ Coney - Graysby       -4.03 0.517 Inf  -7.781  <.0001
+ Coney - Red Hind      -2.77 0.451 Inf  -6.152  <.0001
+ Graysby - Red Hind     1.25 0.435 Inf   2.878  0.0112
 
 Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates 

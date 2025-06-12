@@ -34,7 +34,7 @@ library(MASS)
 ##########################Data processing#######################################
 
 #new_gs_data is the bruvs masterlist already filtered with just groupers and snappers (gs)
-new_gs_data<- read_csv("data/NEW_GS_DATA.csv") %>%   unite(SitePlot, Site, Plot, sep = "", remove = FALSE) |> 
+new_gs_data<- read_csv("data/old/NEW_GS_DATA.csv") %>%   unite(SitePlot, Site, Plot, sep = "", remove = FALSE) |> 
   mutate(Common = case_when(Common == "Red_hind" ~ "Red Hind", TRUE ~ Common))
 
 list(unique(new_gs_data$Common))
@@ -75,6 +75,10 @@ grouper |> count(Common) #Nassau eliminated for analysis purposes
 
 grouper = grouper |> 
   filter(Common != c("Nassau"))
+
+#write_csv(snapper, "data/snapper.csv")
+#write_csv(grouper, "data/grouper.csv")
+
 #################################################################################
 
 
@@ -219,6 +223,8 @@ gs <- new_gs2 |>
   pivot_longer(cols = Graysby:Nassau, names_to = "Common", values_to = "MaxN") |>
   mutate(PA = if_else(MaxN > 0, 1, 0))
 
+#write_csv(gs, "data/groupersnapper_pivot.csv")
+
 #---------------------------------------------
 # Section 1: Occurrence GLM Analysis
 #---------------------------------------------
@@ -276,7 +282,7 @@ snapper_occ_plot <- ggplot(gg.snapper.occ2, aes(Common, Occurrence, fill = Commo
 
 ### Grouper Occurrence Analysis ###
 grouper_oc <- gs |>
-  filter(Common %in% c("Graysby", "Red_hind", "Coney"))
+  filter(Common %in% c("Graysby", "Red Hind", "Coney"))
 
 # Fit GLM (binomial) for grouper occurrence
 glm_grouper_occur <- glm(PA ~ Common, family = binomial(link = "logit"), data = grouper_oc)
@@ -494,8 +500,8 @@ ggarrange(snapper_occ_loc_plot, grouper_occ_loc_plot,
           labels = c('a)', 'b)'),
           ncol = 1, vjust = 1, align = "v")
 
-ggsave("./figs/Occurrence_byLocation.Fit.GrouperSnapper.png", 
-        units = "in", width = 14, height = 12, dpi = 600)
+#ggsave("./figs/Occurrence_byLocation.Fit.GrouperSnapper.png", 
+#        units = "in", width = 14, height = 12, dpi = 600)
 
 #---------------------------------------------
 # Section 3: Additional - Interaction Tests on Abundance

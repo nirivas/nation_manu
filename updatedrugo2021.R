@@ -46,7 +46,7 @@ library(glmmTMB)
 
 #################################################################################
 
-rug_combined_data = read_csv("data/combined_sites.csv")
+rug_combined_data = read_csv("data/old/combined_sites.csv")
 
 # Part 2: Calculate rugosity index for each transect
 rugosity <- rug_combined_data %>%
@@ -100,13 +100,15 @@ Avg_rugosity_per_site <- Avg_rugosity_per_site %>%
   mutate(SitePlot = paste(Site, Plot, sep = ""))
 
 # SitePlotNew inserted into table: The site plots did not match
-newkeys<- read_excel("data/Trip_Records.xlsx", sheet = "All sites")
+newkeys<- read_excel("data/old/Trip_Records.xlsx", sheet = "All sites")
 newkeys <- subset(newkeys, select = c(SitePlotOld, SitePlotNew))
+
+write_csv(newkeys, "data/newkeys.csv")
 
 # Merge new site plots into data set
 new_gs2_joined <- new_gs2 %>%
   left_join(newkeys, by = c("SitePlot" = "SitePlotOld"))
-            
+
 new_gs2_joined <- new_gs2_joined %>%
   left_join(
     subset(Avg_rugosity_per_site, select = c(SitePlot))
@@ -114,6 +116,16 @@ new_gs2_joined <- new_gs2_joined %>%
 
 #write.csv(new_gs2_joined, file = "data/new_gs2_joined.csv", row.names = FALSE)
 #yes
+
+
+# Start Here --------------------------------------------------------------
+
+
+new_gs2_joined = read_csv("data/old/new_gs2_joined.csv")
+snapper_oc = read_csv("data/old/snapper_oc.csv")
+grouper_oc = read_csv("data/old/grouper_oc.csv")
+
+unique(grouper_oc$Common)
 
 # Join rugosity data with occurence datasets
 snapper_oc_joined <- snapper_oc %>%  left_join(newkeys, by = c("SitePlot" = "SitePlotOld"))
@@ -155,18 +167,25 @@ snapper_abundance_r <- snapper_oc_rugo_joined %>% #Drop PA column
   filter(MaxN != 0) |> 
   filter(Common %in% c("Yellowtail","Schoolmaster"))
 
+write_csv(snapper_abundance_r, "data/snapper_abundance_r.csv")
+
 snapper_occurrence_r <- snapper_oc_rugo_joined %>% #Drop MaxN column
   dplyr::select(SitePlot, Site, Plot, Location, Common, PA, SitePlotNew, Avg_rugosity, Rugosity_variance)|> 
   filter(Common %in% c("Yellowtail","Schoolmaster"))
+
+write_csv(snapper_occurrence_r, "data/snapper_occurrence_r.csv")
 
 grouper_abundance_r <- grouper_oc_rugo_joined %>% #Drop PA column
   dplyr::select(SitePlot, Site, Plot, Location, Common, MaxN, SitePlotNew, Avg_rugosity, Rugosity_variance) %>%
   filter(MaxN != 0)|> 
   filter(Common %in% c("Graysby","Red Hind"))
 
+write_csv(grouper_abundance_r, "data/grouper_abundance_r.csv")
+
 grouper_occurrence_r <- grouper_oc_rugo_joined %>% #Drop MaxN column
   dplyr::select(SitePlot, Site, Plot, Location, Common, PA, SitePlotNew, Avg_rugosity, Rugosity_variance)|> 
   filter(Common %in% c("Graysby","Red Hind"))
+write_csv(grouper_occurrence_r, "data/grouper_occurrence_r.csv")
 
 ###########################################################################
 #### Model Check:
@@ -191,25 +210,60 @@ car::Anova(snapp_maxn_nb)  # ANOVA for significance
 performance::check_collinearity(snapp_maxn_nb)  # high corelation.
 
 options(na.action = "na.fail")
-dredge(snapp_maxn_nb) # Model selection
+dredge(snapp_maxn_nb) # Model selection, looks like location is unnecessaty
+
+snapp_maxn_nb <- glmmTMB(MaxN ~ Avg_rugosity  + Common  + (1 | Site), family = nbinom2,data = snapper_abundance_r)
+check_model(snapp_maxn_nb)
+car::Anova(snapp_maxn_nb) 
+performance::check_collinearity(snapp_maxn_nb)
+
+
+#I did also run an interaction between Avg_rugosity and common but it was not signifcant and did not inform on anything more
+# em_snapp_maxn <- emmeans(snapp_maxn_nb, ~ Common | Avg_rugosity, 
+#                          at = list(Avg_rugosity = c(1.0, 1.5, 2.0, 2.5))) 
+# pairs(em_snapp_maxn, simple = "Common")
+
 
 # Snapper model prediction
-snapp_maxn_preds <- ggpredict(snapp_maxn_nb, terms = c("Common")) %>% 
-  rename(Common = x, MaxN = predicted)
-
-#help!
-# Run pairwise comparisons using emmeans
+snapp_maxn_commonpreds <- ggpredict(snapp_maxn_nb, terms = c("Common")) %>% 
+  rename(Common = x, MaxN = predicted) 
 
 
-# Get compact letter display (CLD) for grouper
+em_snapp_maxn <- emmeans(snapp_maxn_nb, ~ Common)
+pairs(em_snapp_maxn, simple = "Common")
 
-# Merge CLD with predictions
+cld_snapp_maxn <- cld(em_snapp_maxn, 
+                      Letters = letters,
+                      adjust = "bonf", 
+                      sort = FALSE, 
+                      alpha = 0.05) |>
+  mutate(code = str_replace_all(.group, ' ', ''))
 
-#Graph
+gg.snapp_maxn = left_join(snapp_maxn_commonpreds, cld_snapp_maxn, by = c("Common"))
+
+ggplot(gg.snapp_maxn, aes(x = Common, y = MaxN)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = code), vjust = -0.5, size = 3) +
+  labs(title = "Snapper Abundance (MaxN) by Species",
+       x = "Species",
+       y = "MaxN") +
+  theme_classic()
+
+snapp_maxn_rugopreds = ggpredict(snapp_maxn_nb, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) %>% 
+  rename(Avg_rugosity = x, MaxN = predicted)
+
+plot(snapp_maxn_rugopreds) +
+  theme_classic()
+
 
 ##Grouper abundance: MaxN
 grouper_maxn_pois <- glm(MaxN ~ Avg_rugosity * Location * Common, family = poisson, data = grouper_abundance_r)
 grouper_maxn_nb   <- glm.nb(MaxN ~ Avg_rugosity * Location * Common, data = grouper_abundance_r)
+
+grouper_maxn_pois1 = glmmTMB(MaxN ~ Avg_rugosity * Location * Common  * (1 | Site), family = poisson, data = grouper_abundance_r)
+grouper_maxn_nb1 = glmmTMB(MaxN ~ Avg_rugosity * Location * Common  * (1 | Site), family = nbinom2,data = grouper_abundance_r)
+grouper_maxn_pois2 = glmmTMB(MaxN ~ Avg_rugosity + Location + Common  + (1 | Site), family = poisson, data = grouper_abundance_r)
+grouper_maxn_nb2 = glmmTMB(MaxN ~ Avg_rugosity + Location + Common  + (1 | Site), family = nbinom2,data = grouper_abundance_r)
 
 # Model diagnostics.
 plot(grouper_maxn_pois)   # Check Poisson model structure
