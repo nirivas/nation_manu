@@ -917,9 +917,6 @@ grouper_abundance_r = read_csv("data/grouper_abundance_r.csv") |>
   dplyr::select(-SitePlot) |> 
   rename(SitePlot = SitePlotNew) 
 
-snapper_abundance_r = read_csv("data/snapper_abundance_r.csv") |> 
-  dplyr::select(-SitePlot) |> 
-  rename(SitePlot = SitePlotNew)
 
 pcover = read_csv("data/old/pcover.csv") |> 
   mutate(Pcover = Pcover*100,
@@ -930,19 +927,10 @@ pcover = read_csv("data/old/pcover.csv") |>
          Period == "baseline") |> 
   dplyr::select(-Period, -Year,-Location,-Site,-Plot) 
 
-all = lsmetrics |> 
-  dplyr::select(SitePlot) |> 
-  distinct() |> 
-  left_join(snapper_occurrence_r, by = c("SitePlot")) |>
-  dplyr::select(SitePlot,Avg_rugosity) |> 
-  drop_na() 
-
 lsmetrics = read_csv("data/lsmetrics.csv")
 
 
 dft = left_join(grouper_abundance_r, pcover, by = c("SitePlot")) 
-
-
 
 dft_wide = dft |> 
   pivot_wider(
@@ -958,159 +946,54 @@ dft_wide = dft |>
 df_gray_O = dft_wide |> 
   filter(Common == "Graysby") 
 
-grayA1 = glmmTMB(MaxN ~ Avg_rugosity + Location +  coral + gorgonian + sand + sponge + algae  + (1 | Site), family = nbinom2, data = df_gray_O)
+grayA1 = glmmTMB(MaxN ~ Avg_rugosity + Location +  coral + gorgonian + sand + sponge + algae  + (1 | Site), family = poisson(), data = df_gray_O)
+check_model(grayA1)
+dredge(grayA1)
 
-
-
-
-
-
-
-
-# Step 1: Get all unique species
-all_species <- grouper_abundance_r |> 
-  distinct(Common)
-
-# Step 2: Get all combinations of SitePlot × Common
-complete_grid <- crossing(all, all_species)
-
-# Step 3: Join with your real data and fill missing MaxN with 0
-grouper_complete <- complete_grid |> 
-  left_join(grouper_abundance_r, by = c("SitePlot", "Common")) |> 
-  mutate(MaxN = replace_na(MaxN, 0))
-
-
-
-library(tidyverse)
-
-# Step 1: Create a dataframe of all combinations of SitePlot × species
-all_species <- grouper_abundance_r |> distinct(Common)
-
-complete_grid <- crossing(all, all_species)
-
-# Step 2: Merge with original data to preserve site-level info
-grouper_complete <- complete_grid |> 
-  left_join(grouper_abundance_r, by = c("SitePlot", "Common","Avg_rugosity")) |> 
-  dplyr::select(-Rugosity_variance) 
-
-# Step 3: Fill missing values by grouping by SitePlot and filling downward
-grouper_complete <- grouper_complete |>
-  group_by(SitePlot) |> 
-  fill(Site, Plot, Location, Avg_rugosity, .direction = "downup") |> 
-  ungroup() |> 
-  mutate(MaxN = replace_na(MaxN, 0),
-         Location = if_else(is.na(Location), str_sub(SitePlot, 1, 1), Location),
-         Site     = if_else(is.na(Site), str_sub(SitePlot, 1, 3), Site),
-         Plot     = if_else(is.na(Plot), str_sub(SitePlot, 4, 5), Plot)) 
-
-
-graysbyA = grouper_complete |> 
-  filter(Common == "Graysby") |> 
-  left_join(lsmetrics, by = c("SitePlot")) |> 
-  left_join(pcover, by = c("SitePlot")) 
-
-dft_wide = graysbyA |> 
-  pivot_wider(
-    names_from = Category,
-    values_from = Pcover
-  )  |> 
-  rename(
-    sand = "sand-rubble") |> 
-  dplyr::select(-25) |> 
-  drop_na() 
-
-options(na.action = "na.omit")
-
-gam1 = glmmTMB(MaxN ~ Avg_rugosity + Location , 
-          family = nbinom2, data = dft_wide)
-gam2 = glmmTMB(MaxN ~ Avg_rugosity + Location , 
-          family = poisson(), data = dft_wide)
-
-compare_performance(gam1, gam2) # Compare models, gam1 is better
-
-AIC(gam1, gam2)
-
-check_model(gam1) # Model diagnostics
-check_model(gam2) # Model diagnostics
-#Both Models work...gonna stick with nbinom2
-
-summary(gam1) # Model coefficients
-
-options(na.action = "na.fail")
-dredge(gam1) # Model selection, l
-options(na.action = "na.omit")
-gam1 = glmmTMB(MaxN ~ Avg_rugosity + Location, 
-          family = nbinom2, data = dft_wide)
-
-
-gam2 = glmmTMB(MaxN ~ coral + gorgonian + sand + sponge + algae + (1 | Site), 
-          family = nbinom2, data = dft_wide)
-AIC(gam2, gam22) # Model comparison, gam22 is better
-check_model(gam22) # Model diagnostics, looks okayish
-
-options(na.action = "na.fail")
-dredge(gam2) # Model selection, looks like Location is not necessary
-options(na.action = "na.omit")
-
-#Keep sand
-
-
-gam3 = glmmTMB(MaxN ~ pd_AggregateReef + pd_AggregatedPatchReefs + pd_SandwithScatteredCoralandRock + pd_Seagrass + 
-                   pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass
-                   + (1|Site), data = dft_wide, family = nbinom2)
-check_model(gam3) # Model diagnostics, looks okayish
-options(na.action = "na.fail")
-dredge(gam3) # Model selection, looks like pland_SandwithScatteredCoralandRock is not necessary
-options(na.action = "na.omit")
-
-dr_invT = dredge(gam3) |> 
+dr_invT = dredge(grayA1) |> 
   filter(delta < 4)
 
-gam3_top = which.min(dr_invT$df)
+top = which.min(dr_invT$df)
 
-gam3_tops = get.models(dr_invT, subset = top)[[1]]
+top_invT = get.models(dr_invT, subset = top)[[1]]
 
-summary(gam3_tops)
+summary(top_invT)
 
-gam3 = glmmTMB(MaxN ~ pd_Seagrass + pland_AggregateReef + pland_SandwithScatteredCoralandRock + pland_Seagrass
-               + (1|Site), data = dft_wide, family = nbinom2)
-check_model(gam3) # Model diagnostics, looks okayish
+grayA1 = glmmTMB(MaxN ~ sand + (1 | Site), family = poisson(), data = df_gray_O) #only good one
 
-gam_final = glmmTMB(MaxN ~ pd_Seagrass + pland_AggregateReef + pland_SandwithScatteredCoralandRock + pland_Seagrass + sand
-                    + Avg_rugosity + Location + (1|Site), data = dft_wide, family = nbinom2)
-check_model(gam_final) # Model diagnostics, looks okayish
-summary(gam_final) # Model coefficients
-dr_dredge=dredge(gam_final) # Model selection, looks like Location is not necessary
+grayA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass
+                   + (1|Site), data = df_gray_O, family = poisson())
 
-dr_invT = dredge(gam_final) |> 
+check_model(grayA2) # Model diagnostics, looks okayish
+dredge(grayA2) 
+
+dr_invT = dredge(grayA2) |> 
   filter(delta < 4)
 
-gamf_top = which.min(dr_invT$df)
+top = which.min(dr_invT$df)
 
-gamf_tops = get.models(dr_invT, subset = top)[[1]]
+top_invT = get.models(dr_invT, subset = top)[[1]]
 
-summary(gamf_tops)
+summary(top_invT)
 
-library(glmmTMB)
-library(MuMIn)
+grayA3 = glmmTMB(MaxN ~ mpa_distance + mang + land + inlet, data = df_gray_O, family = nbinom2())
+check_model(grayA3) # Model diagnostics, looks okayish
+dredge(grayA3)
 
-# Extract all models from the dredge result
-all_models <- get.models(dr_dredge, subset = TRUE)
 
-# Function to check if a model converged
-check_convergence <- function(model) {
-  !any(is.na(summary(model)$coefficients$cond)) && 
-    model$sdr$pdHess &&
-    model$fit$convergence == 0
-}
+dr_invT = dredge(grayA3) |> 
+  filter(delta < 4)
 
-# Apply to all dredged models
-model_convergence <- sapply(all_models, check_convergence)
+top = which.min(dr_invT$df)
 
-# Which models converged?
-which_models_converged <- which(model_convergence)
+top_invT = get.models(dr_invT, subset = top)[[1]]
 
-# Extract only the good models
-converged_models <- all_models[which_models_converged]
-converged_models
+summary(top_invT)
 
+grayAF1 = glmmTMB(MaxN ~ sand + mang , data = df_gray_O, family = nbinom2(link = "sqrt"))
+grayAF2 = glmmTMB(MaxN ~ sand + mang  + (1|Site), data = df_gray_O, family = nbinom2(link = "sqrt"))
+compare_performance(grayAF1, grayAF2) # Model comparison, grayAF2 is better
+AIC(grayAF1, grayAF2) # AIC comparison, grayAF2 is better
+
+check_model(grayAF2) # Model diagnostics, looks okayish
+summary(grayAF2) # Model coefficients
