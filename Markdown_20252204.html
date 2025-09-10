@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -63,10 +63,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="Markdown_20252204_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="Markdown_20252204_files/libs/quarto-html/anchor.min.js"></script>
 <link href="Markdown_20252204_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Markdown_20252204_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Markdown_20252204_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Markdown_20252204_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Markdown_20252204_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Markdown_20252204_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="Markdown_20252204_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -115,12 +115,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#snapper-2" id="toc-snapper-2" class="nav-link" data-scroll-target="#snapper-2">Snapper</a></li>
   <li><a href="#snapper-occurrence-by-location-pairwise" id="toc-snapper-occurrence-by-location-pairwise" class="nav-link" data-scroll-target="#snapper-occurrence-by-location-pairwise">Snapper Occurrence by Location Pairwise</a></li>
   <li><a href="#snapper-occurrence-by-location-plot" id="toc-snapper-occurrence-by-location-plot" class="nav-link" data-scroll-target="#snapper-occurrence-by-location-plot">Snapper Occurrence by Location Plot</a></li>
-  </ul></li>
   <li><a href="#grouper-2" id="toc-grouper-2" class="nav-link" data-scroll-target="#grouper-2">Grouper</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#model-selection-2" id="toc-model-selection-2" class="nav-link" data-scroll-target="#model-selection-2">Model Selection</a></li>
   <li><a href="#grouper-occurrence-by-location-pairwise" id="toc-grouper-occurrence-by-location-pairwise" class="nav-link" data-scroll-target="#grouper-occurrence-by-location-pairwise">Grouper Occurrence by Location Pairwise</a></li>
   <li><a href="#grouper-occurrence-by-location-plot" id="toc-grouper-occurrence-by-location-plot" class="nav-link" data-scroll-target="#grouper-occurrence-by-location-plot">Grouper Occurrence by Location Plot</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#panel-plot-2" id="toc-panel-plot-2" class="nav-link" data-scroll-target="#panel-plot-2">Panel Plot</a></li>
   </ul></li>
@@ -173,10 +173,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>glmm_nb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">data =</span> snapper, <span class="at">family =</span> nbinom2)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>glm_snap_MaxN.poi <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), <span class="at">data =</span> snapper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>glm_snap_MaxN.poi <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), <span class="at">data =</span> snapper)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">AICc</span>(glm_snap_MaxN.nb, glm_snap_MaxN.poi, glmm_nb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  df     AICc
+glm_snap_MaxN.nb   6 646.8149
+glm_snap_MaxN.poi  5 728.2615
+glmm_nb            7 638.5242</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_snap_MaxN.nb) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_snap_MaxN.nb) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -190,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Selecting this model as the best fit:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glmm_nb) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glmm_nb) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -201,14 +209,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmm_nb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glmm_nb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: nbinom2  ( log )
 Formula:          MaxN ~ Common + (1 | Site)
 Data: snapper
 
-     AIC      BIC   logLik deviance df.resid 
-   637.7    658.2   -311.8    623.7      132 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    637.7     658.2    -311.8     623.7       132 
 
 Random effects:
 
@@ -229,7 +237,7 @@ CommonYellowtail     1.5110     0.2942   5.136 2.81e-07 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(glmm_nb, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(glmm_nb, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
 
@@ -245,23 +253,30 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 class="anchored" data-anchor-id="maxn-snapper-pairwise">MaxN Snapper Pairwise</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="mjisoogezc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mjisoogezc table {
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/-%20Snapper%20Model%20Pairwise%20Comparisons-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="qinffptwzr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qinffptwzr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mjisoogezc thead, #mjisoogezc tbody, #mjisoogezc tfoot, #mjisoogezc tr, #mjisoogezc td, #mjisoogezc th {
+#qinffptwzr thead, #qinffptwzr tbody, #qinffptwzr tfoot, #qinffptwzr tr, #qinffptwzr td, #qinffptwzr th {
   border-style: none;
 }
 
-#mjisoogezc p {
+#qinffptwzr p {
   margin: 0;
   padding: 0;
 }
 
-#mjisoogezc .gt_table {
+#qinffptwzr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -287,12 +302,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_caption {
+#qinffptwzr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mjisoogezc .gt_title {
+#qinffptwzr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -304,7 +319,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-width: 0;
 }
 
-#mjisoogezc .gt_subtitle {
+#qinffptwzr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -316,7 +331,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-width: 0;
 }
 
-#mjisoogezc .gt_heading {
+#qinffptwzr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -328,13 +343,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_bottom_border {
+#qinffptwzr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_col_headings {
+#qinffptwzr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -349,7 +364,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_col_heading {
+#qinffptwzr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -369,7 +384,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#mjisoogezc .gt_column_spanner_outer {
+#qinffptwzr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -381,15 +396,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 4px;
 }
 
-#mjisoogezc .gt_column_spanner_outer:first-child {
+#qinffptwzr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mjisoogezc .gt_column_spanner_outer:last-child {
+#qinffptwzr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mjisoogezc .gt_column_spanner {
+#qinffptwzr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -401,11 +416,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   width: 100%;
 }
 
-#mjisoogezc .gt_spanner_row {
+#qinffptwzr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mjisoogezc .gt_group_heading {
+#qinffptwzr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -431,7 +446,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   text-align: left;
 }
 
-#mjisoogezc .gt_empty_group_heading {
+#qinffptwzr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -446,15 +461,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: middle;
 }
 
-#mjisoogezc .gt_from_md > :first-child {
+#qinffptwzr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mjisoogezc .gt_from_md > :last-child {
+#qinffptwzr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mjisoogezc .gt_row {
+#qinffptwzr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -473,7 +488,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#mjisoogezc .gt_stub {
+#qinffptwzr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -486,7 +501,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#mjisoogezc .gt_stub_row_group {
+#qinffptwzr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -500,15 +515,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: top;
 }
 
-#mjisoogezc .gt_row_group_first td {
+#qinffptwzr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mjisoogezc .gt_row_group_first th {
+#qinffptwzr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mjisoogezc .gt_summary_row {
+#qinffptwzr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -518,16 +533,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#mjisoogezc .gt_first_summary_row {
+#qinffptwzr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_first_summary_row.thick {
+#qinffptwzr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mjisoogezc .gt_last_summary_row {
+#qinffptwzr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -537,7 +552,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_grand_summary_row {
+#qinffptwzr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -547,7 +562,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#mjisoogezc .gt_first_grand_summary_row {
+#qinffptwzr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -557,7 +572,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_last_grand_summary_row_top {
+#qinffptwzr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -567,11 +582,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_striped {
+#qinffptwzr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mjisoogezc .gt_table_body {
+#qinffptwzr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -580,7 +595,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_footnotes {
+#qinffptwzr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -594,7 +609,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_footnote {
+#qinffptwzr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -603,7 +618,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#mjisoogezc .gt_sourcenotes {
+#qinffptwzr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -617,7 +632,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mjisoogezc .gt_sourcenote {
+#qinffptwzr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -625,72 +640,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#mjisoogezc .gt_left {
+#qinffptwzr .gt_left {
   text-align: left;
 }
 
-#mjisoogezc .gt_center {
+#qinffptwzr .gt_center {
   text-align: center;
 }
 
-#mjisoogezc .gt_right {
+#qinffptwzr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mjisoogezc .gt_font_normal {
+#qinffptwzr .gt_font_normal {
   font-weight: normal;
 }
 
-#mjisoogezc .gt_font_bold {
+#qinffptwzr .gt_font_bold {
   font-weight: bold;
 }
 
-#mjisoogezc .gt_font_italic {
+#qinffptwzr .gt_font_italic {
   font-style: italic;
 }
 
-#mjisoogezc .gt_super {
+#qinffptwzr .gt_super {
   font-size: 65%;
 }
 
-#mjisoogezc .gt_footnote_marks {
+#qinffptwzr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mjisoogezc .gt_asterisk {
+#qinffptwzr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mjisoogezc .gt_indent_1 {
+#qinffptwzr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mjisoogezc .gt_indent_2 {
+#qinffptwzr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mjisoogezc .gt_indent_3 {
+#qinffptwzr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mjisoogezc .gt_indent_4 {
+#qinffptwzr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mjisoogezc .gt_indent_5 {
+#qinffptwzr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mjisoogezc .katex-display {
+#qinffptwzr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mjisoogezc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qinffptwzr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -705,16 +720,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_heading">
+<tr class="gt_heading header">
 <th colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border">Pairwise Comparisons of MaxN by Species (GLMM. SNAPPER)</th>
 </tr>
-<tr class="odd gt_col_headings gt_spanner_row">
+<tr class="gt_col_headings gt_spanner_row even">
 <th rowspan="2" id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
 <th colspan="5" id="Statistics" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
 Statistics
 </div></th>
 </tr>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Difference</th>
 <th id="SE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
 <th id="df" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">df</th>
@@ -828,45 +843,36 @@ Statistics
 <section id="poisson-model" class="level3">
 <h3 class="anchored" data-anchor-id="poisson-model">Poisson model</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>grouper<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(grouper<span class="sc">$</span>Common)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>glm_grp_MaxN.nb <span class="ot">&lt;-</span> <span class="fu">glm.nb</span>(MaxN <span class="sc">~</span> Common, </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">data =</span> grouper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>grouper<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(grouper<span class="sc">$</span>Common)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>glm_grp_MaxN.poi <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common , </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> grouper)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>glmm_grp_MaxN_poi <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">data =</span> grouper)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_performance</span>(glm_grp_MaxN.poi,glmm_grp_MaxN_poi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in theta.ml(Y, mu, sum(w), w, limit = control$maxit, trace =
-control$trace &gt; : iteration limit reached
-Warning in theta.ml(Y, mu, sum(w), w, limit = control$maxit, trace =
-control$trace &gt; : iteration limit reached</code></pre>
+<pre><code>Some of the nested models seem to be identical and probably only vary in
+  their random effects.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>glm_grp_MaxN.poi <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common , </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> grouper)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>glmm_grp_MaxN_nb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="fu">nbinom2</span>(), </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> grouper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>glmm_grp_MaxN_poi <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Common <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>), </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">data =</span> grouper)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_performance</span>(glm_grp_MaxN.poi,glmm_grp_MaxN_poi, </span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                    glm_grp_MaxN.nb, glmm_grp_MaxN_nb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Comparison of Model Performance Indices
 
-Name              |   Model | AIC (weights) | AICc (weights) | BIC (weights) |  RMSE |     Sigma | Score_log | Score_spherical | Nagelkerke's R2
-------------------------------------------------------------------------------------------------------------------------------------------------
-glm_grp_MaxN.poi  | glmmTMB | 355.5 (0.535) |  355.7 (0.555) | 363.8 (0.839) | 0.960 |     1.000 |    -1.468 |           0.088 |           0.341
-glmm_grp_MaxN_poi | glmmTMB | 357.5 (0.197) |  357.8 (0.190) | 368.6 (0.077) | 0.960 |     1.000 |    -1.468 |           0.088 |                
-glm_grp_MaxN.nb   |  negbin | 357.5 (0.196) |  357.8 (0.190) | 368.6 (0.077) | 0.960 |     1.000 |    -1.792 |           0.086 |           0.341
-glmm_grp_MaxN_nb  | glmmTMB | 359.5 (0.072) |  360.0 (0.064) | 373.4 (0.007) | 0.960 | 4.729e+07 |    -1.790 |           0.086 |                </code></pre>
+Name              |   Model | AIC (weights) | AICc (weights) | BIC (weights)
+----------------------------------------------------------------------------
+glm_grp_MaxN.poi  | glmmTMB | 355.5 (0.731) |  355.7 (0.745) | 363.8 (0.916)
+glmm_grp_MaxN_poi | glmmTMB | 357.5 (0.269) |  357.8 (0.255) | 368.6 (0.084)
+
+Name              |  RMSE | Sigma | Score_log | Score_spherical | Nagelkerke's R2
+---------------------------------------------------------------------------------
+glm_grp_MaxN.poi  | 0.960 | 1.000 |    -1.468 |           0.088 |           0.341
+glmm_grp_MaxN_poi | 0.960 | 1.000 |    -1.468 |           0.088 |                </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_grp_MaxN.poi) <span class="co"># Model diagnostics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_grp_MaxN.poi) <span class="co"># Model diagnostics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -877,14 +883,14 @@ glmm_grp_MaxN_nb  | glmmTMB | 359.5 (0.072) |  360.0 (0.064) | 373.4 (0.007) | 0
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_grp_MaxN.poi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_grp_MaxN.poi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: poisson  ( log )
 Formula:          MaxN ~ Common
 Data: grouper
 
-     AIC      BIC   logLik deviance df.resid 
-   355.5    363.8   -174.7    349.5      116 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    355.5     363.8    -174.7     349.5       116 
 
 
 Conditional model:
@@ -895,7 +901,7 @@ CommonRed Hind   0.3285     0.3528   0.931   0.3517
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(glm_grp_MaxN.poi, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(glm_grp_MaxN.poi, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
 
@@ -911,23 +917,30 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 class="anchored" data-anchor-id="maxn-grouper-pairwise">MaxN Grouper Pairwise</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="czolqkaqzk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#czolqkaqzk table {
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/-%20Model%20grouper%20pairwise-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="vktrjuzfru" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vktrjuzfru table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#czolqkaqzk thead, #czolqkaqzk tbody, #czolqkaqzk tfoot, #czolqkaqzk tr, #czolqkaqzk td, #czolqkaqzk th {
+#vktrjuzfru thead, #vktrjuzfru tbody, #vktrjuzfru tfoot, #vktrjuzfru tr, #vktrjuzfru td, #vktrjuzfru th {
   border-style: none;
 }
 
-#czolqkaqzk p {
+#vktrjuzfru p {
   margin: 0;
   padding: 0;
 }
 
-#czolqkaqzk .gt_table {
+#vktrjuzfru .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -953,12 +966,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_caption {
+#vktrjuzfru .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#czolqkaqzk .gt_title {
+#vktrjuzfru .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -970,7 +983,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-width: 0;
 }
 
-#czolqkaqzk .gt_subtitle {
+#vktrjuzfru .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -982,7 +995,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-width: 0;
 }
 
-#czolqkaqzk .gt_heading {
+#vktrjuzfru .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -994,13 +1007,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_bottom_border {
+#vktrjuzfru .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_col_headings {
+#vktrjuzfru .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1015,7 +1028,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_col_heading {
+#vktrjuzfru .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1035,7 +1048,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#czolqkaqzk .gt_column_spanner_outer {
+#vktrjuzfru .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1047,15 +1060,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 4px;
 }
 
-#czolqkaqzk .gt_column_spanner_outer:first-child {
+#vktrjuzfru .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#czolqkaqzk .gt_column_spanner_outer:last-child {
+#vktrjuzfru .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#czolqkaqzk .gt_column_spanner {
+#vktrjuzfru .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1067,11 +1080,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   width: 100%;
 }
 
-#czolqkaqzk .gt_spanner_row {
+#vktrjuzfru .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#czolqkaqzk .gt_group_heading {
+#vktrjuzfru .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1097,7 +1110,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   text-align: left;
 }
 
-#czolqkaqzk .gt_empty_group_heading {
+#vktrjuzfru .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1112,15 +1125,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: middle;
 }
 
-#czolqkaqzk .gt_from_md > :first-child {
+#vktrjuzfru .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#czolqkaqzk .gt_from_md > :last-child {
+#vktrjuzfru .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#czolqkaqzk .gt_row {
+#vktrjuzfru .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1139,7 +1152,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#czolqkaqzk .gt_stub {
+#vktrjuzfru .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1152,7 +1165,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#czolqkaqzk .gt_stub_row_group {
+#vktrjuzfru .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1166,15 +1179,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: top;
 }
 
-#czolqkaqzk .gt_row_group_first td {
+#vktrjuzfru .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#czolqkaqzk .gt_row_group_first th {
+#vktrjuzfru .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#czolqkaqzk .gt_summary_row {
+#vktrjuzfru .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1184,16 +1197,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#czolqkaqzk .gt_first_summary_row {
+#vktrjuzfru .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_first_summary_row.thick {
+#vktrjuzfru .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#czolqkaqzk .gt_last_summary_row {
+#vktrjuzfru .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1203,7 +1216,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_grand_summary_row {
+#vktrjuzfru .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1213,7 +1226,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#czolqkaqzk .gt_first_grand_summary_row {
+#vktrjuzfru .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1223,7 +1236,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_last_grand_summary_row_top {
+#vktrjuzfru .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1233,11 +1246,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_striped {
+#vktrjuzfru .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#czolqkaqzk .gt_table_body {
+#vktrjuzfru .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1246,7 +1259,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_footnotes {
+#vktrjuzfru .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1260,7 +1273,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_footnote {
+#vktrjuzfru .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1269,7 +1282,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#czolqkaqzk .gt_sourcenotes {
+#vktrjuzfru .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1283,7 +1296,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#czolqkaqzk .gt_sourcenote {
+#vktrjuzfru .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1291,72 +1304,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#czolqkaqzk .gt_left {
+#vktrjuzfru .gt_left {
   text-align: left;
 }
 
-#czolqkaqzk .gt_center {
+#vktrjuzfru .gt_center {
   text-align: center;
 }
 
-#czolqkaqzk .gt_right {
+#vktrjuzfru .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#czolqkaqzk .gt_font_normal {
+#vktrjuzfru .gt_font_normal {
   font-weight: normal;
 }
 
-#czolqkaqzk .gt_font_bold {
+#vktrjuzfru .gt_font_bold {
   font-weight: bold;
 }
 
-#czolqkaqzk .gt_font_italic {
+#vktrjuzfru .gt_font_italic {
   font-style: italic;
 }
 
-#czolqkaqzk .gt_super {
+#vktrjuzfru .gt_super {
   font-size: 65%;
 }
 
-#czolqkaqzk .gt_footnote_marks {
+#vktrjuzfru .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#czolqkaqzk .gt_asterisk {
+#vktrjuzfru .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#czolqkaqzk .gt_indent_1 {
+#vktrjuzfru .gt_indent_1 {
   text-indent: 5px;
 }
 
-#czolqkaqzk .gt_indent_2 {
+#vktrjuzfru .gt_indent_2 {
   text-indent: 10px;
 }
 
-#czolqkaqzk .gt_indent_3 {
+#vktrjuzfru .gt_indent_3 {
   text-indent: 15px;
 }
 
-#czolqkaqzk .gt_indent_4 {
+#vktrjuzfru .gt_indent_4 {
   text-indent: 20px;
 }
 
-#czolqkaqzk .gt_indent_5 {
+#vktrjuzfru .gt_indent_5 {
   text-indent: 25px;
 }
 
-#czolqkaqzk .katex-display {
+#vktrjuzfru .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#czolqkaqzk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vktrjuzfru div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1371,16 +1384,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_heading">
+<tr class="gt_heading header">
 <th colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border">Pairwise Comparisons of MaxN by Species ( GROUPER)</th>
 </tr>
-<tr class="odd gt_col_headings gt_spanner_row">
+<tr class="gt_col_headings gt_spanner_row even">
 <th rowspan="2" id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
 <th colspan="5" id="Statistics" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
 Statistics
 </div></th>
 </tr>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Difference</th>
 <th id="SE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
 <th id="df" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">df</th>
@@ -1453,13 +1466,13 @@ Statistics
 <section id="model-selection" class="level3">
 <h3 class="anchored" data-anchor-id="model-selection">Model Selection</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>snapper_oc <span class="ot">&lt;-</span> gs <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Common <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Yellowtail"</span>, <span class="st">"Lane"</span>, <span class="st">"Mahogany"</span>, <span class="st">"Schoolmaster"</span>, <span class="st">"Mutton"</span>))</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit GLM (binomial) for snapper occurrence</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>glm_snap_occur <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> snapper_oc)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_snap_occur)   <span class="co"># Model diagnostics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>snapper_oc <span class="ot">&lt;-</span> gs <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Common <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Yellowtail"</span>, <span class="st">"Lane"</span>, <span class="st">"Mahogany"</span>, <span class="st">"Schoolmaster"</span>, <span class="st">"Mutton"</span>))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit GLM (binomial) for snapper occurrence</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>glm_snap_occur <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> snapper_oc)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_snap_occur)   <span class="co"># Model diagnostics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1467,7 +1480,7 @@ Statistics
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_snap_occur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_snap_occur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1492,7 +1505,7 @@ AIC: 300.17
 
 Number of Fisher Scoring iterations: 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_snap_occur, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_snap_occur, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table
 
@@ -1514,23 +1527,30 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 class="anchored" data-anchor-id="occurrence-pairwise">Occurrence Pairwise</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="uqrvtimghx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uqrvtimghx table {
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/-%20snapper%20occurence%20pairwise-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="wkhtaaoptp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wkhtaaoptp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uqrvtimghx thead, #uqrvtimghx tbody, #uqrvtimghx tfoot, #uqrvtimghx tr, #uqrvtimghx td, #uqrvtimghx th {
+#wkhtaaoptp thead, #wkhtaaoptp tbody, #wkhtaaoptp tfoot, #wkhtaaoptp tr, #wkhtaaoptp td, #wkhtaaoptp th {
   border-style: none;
 }
 
-#uqrvtimghx p {
+#wkhtaaoptp p {
   margin: 0;
   padding: 0;
 }
 
-#uqrvtimghx .gt_table {
+#wkhtaaoptp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1556,12 +1576,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_caption {
+#wkhtaaoptp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uqrvtimghx .gt_title {
+#wkhtaaoptp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1573,7 +1593,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-width: 0;
 }
 
-#uqrvtimghx .gt_subtitle {
+#wkhtaaoptp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1585,7 +1605,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-width: 0;
 }
 
-#uqrvtimghx .gt_heading {
+#wkhtaaoptp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1597,13 +1617,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_bottom_border {
+#wkhtaaoptp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_col_headings {
+#wkhtaaoptp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1618,7 +1638,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_col_heading {
+#wkhtaaoptp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1638,7 +1658,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#uqrvtimghx .gt_column_spanner_outer {
+#wkhtaaoptp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1650,15 +1670,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 4px;
 }
 
-#uqrvtimghx .gt_column_spanner_outer:first-child {
+#wkhtaaoptp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uqrvtimghx .gt_column_spanner_outer:last-child {
+#wkhtaaoptp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uqrvtimghx .gt_column_spanner {
+#wkhtaaoptp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1670,11 +1690,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   width: 100%;
 }
 
-#uqrvtimghx .gt_spanner_row {
+#wkhtaaoptp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uqrvtimghx .gt_group_heading {
+#wkhtaaoptp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1700,7 +1720,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   text-align: left;
 }
 
-#uqrvtimghx .gt_empty_group_heading {
+#wkhtaaoptp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1715,15 +1735,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: middle;
 }
 
-#uqrvtimghx .gt_from_md > :first-child {
+#wkhtaaoptp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uqrvtimghx .gt_from_md > :last-child {
+#wkhtaaoptp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uqrvtimghx .gt_row {
+#wkhtaaoptp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1742,7 +1762,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#uqrvtimghx .gt_stub {
+#wkhtaaoptp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1755,7 +1775,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#uqrvtimghx .gt_stub_row_group {
+#wkhtaaoptp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1769,15 +1789,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: top;
 }
 
-#uqrvtimghx .gt_row_group_first td {
+#wkhtaaoptp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uqrvtimghx .gt_row_group_first th {
+#wkhtaaoptp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uqrvtimghx .gt_summary_row {
+#wkhtaaoptp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1787,16 +1807,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#uqrvtimghx .gt_first_summary_row {
+#wkhtaaoptp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_first_summary_row.thick {
+#wkhtaaoptp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uqrvtimghx .gt_last_summary_row {
+#wkhtaaoptp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1806,7 +1826,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_grand_summary_row {
+#wkhtaaoptp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1816,7 +1836,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#uqrvtimghx .gt_first_grand_summary_row {
+#wkhtaaoptp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1826,7 +1846,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_last_grand_summary_row_top {
+#wkhtaaoptp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1836,11 +1856,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_striped {
+#wkhtaaoptp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uqrvtimghx .gt_table_body {
+#wkhtaaoptp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1849,7 +1869,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_footnotes {
+#wkhtaaoptp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1863,7 +1883,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_footnote {
+#wkhtaaoptp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1872,7 +1892,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#uqrvtimghx .gt_sourcenotes {
+#wkhtaaoptp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1886,7 +1906,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uqrvtimghx .gt_sourcenote {
+#wkhtaaoptp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1894,72 +1914,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#uqrvtimghx .gt_left {
+#wkhtaaoptp .gt_left {
   text-align: left;
 }
 
-#uqrvtimghx .gt_center {
+#wkhtaaoptp .gt_center {
   text-align: center;
 }
 
-#uqrvtimghx .gt_right {
+#wkhtaaoptp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uqrvtimghx .gt_font_normal {
+#wkhtaaoptp .gt_font_normal {
   font-weight: normal;
 }
 
-#uqrvtimghx .gt_font_bold {
+#wkhtaaoptp .gt_font_bold {
   font-weight: bold;
 }
 
-#uqrvtimghx .gt_font_italic {
+#wkhtaaoptp .gt_font_italic {
   font-style: italic;
 }
 
-#uqrvtimghx .gt_super {
+#wkhtaaoptp .gt_super {
   font-size: 65%;
 }
 
-#uqrvtimghx .gt_footnote_marks {
+#wkhtaaoptp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uqrvtimghx .gt_asterisk {
+#wkhtaaoptp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uqrvtimghx .gt_indent_1 {
+#wkhtaaoptp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uqrvtimghx .gt_indent_2 {
+#wkhtaaoptp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uqrvtimghx .gt_indent_3 {
+#wkhtaaoptp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uqrvtimghx .gt_indent_4 {
+#wkhtaaoptp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uqrvtimghx .gt_indent_5 {
+#wkhtaaoptp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uqrvtimghx .katex-display {
+#wkhtaaoptp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uqrvtimghx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wkhtaaoptp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1974,16 +1994,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_heading">
+<tr class="gt_heading header">
 <th colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border">Pairwise Comparisons of Occurence by Species (Snapper)</th>
 </tr>
-<tr class="odd gt_col_headings gt_spanner_row">
+<tr class="gt_col_headings gt_spanner_row even">
 <th rowspan="2" id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
 <th colspan="5" id="Statistics" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
 Statistics
 </div></th>
 </tr>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Difference</th>
 <th id="SE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
 <th id="df" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">df</th>
@@ -2097,12 +2117,12 @@ Statistics
 <section id="model-selection-1" class="level3">
 <h3 class="anchored" data-anchor-id="model-selection-1">Model Selection</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>grouper_oc <span class="ot">&lt;-</span> gs <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Common <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Graysby"</span>, <span class="st">"Red Hind"</span>, <span class="st">"Coney"</span>))</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit GLM (binomial) for grouper occurrence</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>glm_grouper_occur <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> grouper_oc)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_grouper_occur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>grouper_oc <span class="ot">&lt;-</span> gs <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Common <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Graysby"</span>, <span class="st">"Red Hind"</span>, <span class="st">"Coney"</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit GLM (binomial) for grouper occurrence</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>glm_grouper_occur <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), <span class="at">data =</span> grouper_oc)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_grouper_occur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2110,7 +2130,7 @@ Statistics
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_grouper_occur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_grouper_occur)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -2133,7 +2153,7 @@ AIC: 202.14
 
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_grouper_occur, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_grouper_occur, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table
 
@@ -2155,23 +2175,30 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 class="anchored" data-anchor-id="occurrence-pairwise-1">Occurrence Pairwise</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ysxozhcogz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ysxozhcogz table {
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/-%20grouper%20occurence%20pairwise-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="dmtmxhbson" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dmtmxhbson table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ysxozhcogz thead, #ysxozhcogz tbody, #ysxozhcogz tfoot, #ysxozhcogz tr, #ysxozhcogz td, #ysxozhcogz th {
+#dmtmxhbson thead, #dmtmxhbson tbody, #dmtmxhbson tfoot, #dmtmxhbson tr, #dmtmxhbson td, #dmtmxhbson th {
   border-style: none;
 }
 
-#ysxozhcogz p {
+#dmtmxhbson p {
   margin: 0;
   padding: 0;
 }
 
-#ysxozhcogz .gt_table {
+#dmtmxhbson .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2197,12 +2224,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_caption {
+#dmtmxhbson .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ysxozhcogz .gt_title {
+#dmtmxhbson .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2214,7 +2241,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-width: 0;
 }
 
-#ysxozhcogz .gt_subtitle {
+#dmtmxhbson .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2226,7 +2253,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-width: 0;
 }
 
-#ysxozhcogz .gt_heading {
+#dmtmxhbson .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2238,13 +2265,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_bottom_border {
+#dmtmxhbson .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_col_headings {
+#dmtmxhbson .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2259,7 +2286,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_col_heading {
+#dmtmxhbson .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2279,7 +2306,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#ysxozhcogz .gt_column_spanner_outer {
+#dmtmxhbson .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2291,15 +2318,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 4px;
 }
 
-#ysxozhcogz .gt_column_spanner_outer:first-child {
+#dmtmxhbson .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ysxozhcogz .gt_column_spanner_outer:last-child {
+#dmtmxhbson .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ysxozhcogz .gt_column_spanner {
+#dmtmxhbson .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2311,11 +2338,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   width: 100%;
 }
 
-#ysxozhcogz .gt_spanner_row {
+#dmtmxhbson .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ysxozhcogz .gt_group_heading {
+#dmtmxhbson .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2341,7 +2368,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   text-align: left;
 }
 
-#ysxozhcogz .gt_empty_group_heading {
+#dmtmxhbson .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2356,15 +2383,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: middle;
 }
 
-#ysxozhcogz .gt_from_md > :first-child {
+#dmtmxhbson .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ysxozhcogz .gt_from_md > :last-child {
+#dmtmxhbson .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ysxozhcogz .gt_row {
+#dmtmxhbson .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2383,7 +2410,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#ysxozhcogz .gt_stub {
+#dmtmxhbson .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2396,7 +2423,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ysxozhcogz .gt_stub_row_group {
+#dmtmxhbson .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2410,15 +2437,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: top;
 }
 
-#ysxozhcogz .gt_row_group_first td {
+#dmtmxhbson .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ysxozhcogz .gt_row_group_first th {
+#dmtmxhbson .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ysxozhcogz .gt_summary_row {
+#dmtmxhbson .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2428,16 +2455,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ysxozhcogz .gt_first_summary_row {
+#dmtmxhbson .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_first_summary_row.thick {
+#dmtmxhbson .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ysxozhcogz .gt_last_summary_row {
+#dmtmxhbson .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2447,7 +2474,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_grand_summary_row {
+#dmtmxhbson .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2457,7 +2484,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ysxozhcogz .gt_first_grand_summary_row {
+#dmtmxhbson .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2467,7 +2494,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_last_grand_summary_row_top {
+#dmtmxhbson .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2477,11 +2504,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_striped {
+#dmtmxhbson .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ysxozhcogz .gt_table_body {
+#dmtmxhbson .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2490,7 +2517,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_footnotes {
+#dmtmxhbson .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2504,7 +2531,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_footnote {
+#dmtmxhbson .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2513,7 +2540,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ysxozhcogz .gt_sourcenotes {
+#dmtmxhbson .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2527,7 +2554,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ysxozhcogz .gt_sourcenote {
+#dmtmxhbson .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2535,72 +2562,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ysxozhcogz .gt_left {
+#dmtmxhbson .gt_left {
   text-align: left;
 }
 
-#ysxozhcogz .gt_center {
+#dmtmxhbson .gt_center {
   text-align: center;
 }
 
-#ysxozhcogz .gt_right {
+#dmtmxhbson .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ysxozhcogz .gt_font_normal {
+#dmtmxhbson .gt_font_normal {
   font-weight: normal;
 }
 
-#ysxozhcogz .gt_font_bold {
+#dmtmxhbson .gt_font_bold {
   font-weight: bold;
 }
 
-#ysxozhcogz .gt_font_italic {
+#dmtmxhbson .gt_font_italic {
   font-style: italic;
 }
 
-#ysxozhcogz .gt_super {
+#dmtmxhbson .gt_super {
   font-size: 65%;
 }
 
-#ysxozhcogz .gt_footnote_marks {
+#dmtmxhbson .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ysxozhcogz .gt_asterisk {
+#dmtmxhbson .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ysxozhcogz .gt_indent_1 {
+#dmtmxhbson .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ysxozhcogz .gt_indent_2 {
+#dmtmxhbson .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ysxozhcogz .gt_indent_3 {
+#dmtmxhbson .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ysxozhcogz .gt_indent_4 {
+#dmtmxhbson .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ysxozhcogz .gt_indent_5 {
+#dmtmxhbson .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ysxozhcogz .katex-display {
+#dmtmxhbson .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ysxozhcogz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dmtmxhbson div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2615,16 +2642,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_heading">
+<tr class="gt_heading header">
 <th colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border">Pairwise Comparisons of Occurence by Species (Grouper)</th>
 </tr>
-<tr class="odd gt_col_headings gt_spanner_row">
+<tr class="gt_col_headings gt_spanner_row even">
 <th rowspan="2" id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
 <th colspan="5" id="Statistics" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
 Statistics
 </div></th>
 </tr>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Difference</th>
 <th id="SE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
 <th id="df" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">df</th>
@@ -2694,12 +2721,12 @@ Statistics
 <section id="snapper-2" class="level3">
 <h3 class="anchored" data-anchor-id="snapper-2">Snapper</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a GLM including Location as an interaction</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>glm_snap_occur_loc <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common <span class="sc">*</span> Location, </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> snapper_oc)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_snap_occur_loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a GLM including Location as an interaction</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>glm_snap_occur_loc <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common <span class="sc">*</span> Location, </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> snapper_oc)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_snap_occur_loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -2729,7 +2756,7 @@ AIC: 297.24
 
 Number of Fisher Scoring iterations: 17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_snap_occur_loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_snap_occur_loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2737,7 +2764,7 @@ Number of Fisher Scoring iterations: 17</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_snap_occur_loc, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_snap_occur_loc, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table
 
@@ -2761,23 +2788,30 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 class="anchored" data-anchor-id="snapper-occurrence-by-location-pairwise">Snapper Occurrence by Location Pairwise</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="csprlchuuu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#csprlchuuu table {
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/-%20snapper%20occurence%20by%20location%20pairwise-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="hvsvuxgiui" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hvsvuxgiui table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#csprlchuuu thead, #csprlchuuu tbody, #csprlchuuu tfoot, #csprlchuuu tr, #csprlchuuu td, #csprlchuuu th {
+#hvsvuxgiui thead, #hvsvuxgiui tbody, #hvsvuxgiui tfoot, #hvsvuxgiui tr, #hvsvuxgiui td, #hvsvuxgiui th {
   border-style: none;
 }
 
-#csprlchuuu p {
+#hvsvuxgiui p {
   margin: 0;
   padding: 0;
 }
 
-#csprlchuuu .gt_table {
+#hvsvuxgiui .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2803,12 +2837,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_caption {
+#hvsvuxgiui .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#csprlchuuu .gt_title {
+#hvsvuxgiui .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2820,7 +2854,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-width: 0;
 }
 
-#csprlchuuu .gt_subtitle {
+#hvsvuxgiui .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2832,7 +2866,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-width: 0;
 }
 
-#csprlchuuu .gt_heading {
+#hvsvuxgiui .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2844,13 +2878,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_bottom_border {
+#hvsvuxgiui .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_col_headings {
+#hvsvuxgiui .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2865,7 +2899,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_col_heading {
+#hvsvuxgiui .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2885,7 +2919,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#csprlchuuu .gt_column_spanner_outer {
+#hvsvuxgiui .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2897,15 +2931,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 4px;
 }
 
-#csprlchuuu .gt_column_spanner_outer:first-child {
+#hvsvuxgiui .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#csprlchuuu .gt_column_spanner_outer:last-child {
+#hvsvuxgiui .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#csprlchuuu .gt_column_spanner {
+#hvsvuxgiui .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2917,11 +2951,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   width: 100%;
 }
 
-#csprlchuuu .gt_spanner_row {
+#hvsvuxgiui .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#csprlchuuu .gt_group_heading {
+#hvsvuxgiui .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2947,7 +2981,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   text-align: left;
 }
 
-#csprlchuuu .gt_empty_group_heading {
+#hvsvuxgiui .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2962,15 +2996,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: middle;
 }
 
-#csprlchuuu .gt_from_md > :first-child {
+#hvsvuxgiui .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#csprlchuuu .gt_from_md > :last-child {
+#hvsvuxgiui .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#csprlchuuu .gt_row {
+#hvsvuxgiui .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2989,7 +3023,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#csprlchuuu .gt_stub {
+#hvsvuxgiui .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3002,7 +3036,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#csprlchuuu .gt_stub_row_group {
+#hvsvuxgiui .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3016,15 +3050,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: top;
 }
 
-#csprlchuuu .gt_row_group_first td {
+#hvsvuxgiui .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#csprlchuuu .gt_row_group_first th {
+#hvsvuxgiui .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#csprlchuuu .gt_summary_row {
+#hvsvuxgiui .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3034,16 +3068,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#csprlchuuu .gt_first_summary_row {
+#hvsvuxgiui .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_first_summary_row.thick {
+#hvsvuxgiui .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#csprlchuuu .gt_last_summary_row {
+#hvsvuxgiui .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3053,7 +3087,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_grand_summary_row {
+#hvsvuxgiui .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3063,7 +3097,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#csprlchuuu .gt_first_grand_summary_row {
+#hvsvuxgiui .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3073,7 +3107,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_last_grand_summary_row_top {
+#hvsvuxgiui .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3083,11 +3117,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_striped {
+#hvsvuxgiui .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#csprlchuuu .gt_table_body {
+#hvsvuxgiui .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3096,7 +3130,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_footnotes {
+#hvsvuxgiui .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3110,7 +3144,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_footnote {
+#hvsvuxgiui .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3119,7 +3153,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#csprlchuuu .gt_sourcenotes {
+#hvsvuxgiui .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3133,7 +3167,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#csprlchuuu .gt_sourcenote {
+#hvsvuxgiui .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3141,72 +3175,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#csprlchuuu .gt_left {
+#hvsvuxgiui .gt_left {
   text-align: left;
 }
 
-#csprlchuuu .gt_center {
+#hvsvuxgiui .gt_center {
   text-align: center;
 }
 
-#csprlchuuu .gt_right {
+#hvsvuxgiui .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#csprlchuuu .gt_font_normal {
+#hvsvuxgiui .gt_font_normal {
   font-weight: normal;
 }
 
-#csprlchuuu .gt_font_bold {
+#hvsvuxgiui .gt_font_bold {
   font-weight: bold;
 }
 
-#csprlchuuu .gt_font_italic {
+#hvsvuxgiui .gt_font_italic {
   font-style: italic;
 }
 
-#csprlchuuu .gt_super {
+#hvsvuxgiui .gt_super {
   font-size: 65%;
 }
 
-#csprlchuuu .gt_footnote_marks {
+#hvsvuxgiui .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#csprlchuuu .gt_asterisk {
+#hvsvuxgiui .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#csprlchuuu .gt_indent_1 {
+#hvsvuxgiui .gt_indent_1 {
   text-indent: 5px;
 }
 
-#csprlchuuu .gt_indent_2 {
+#hvsvuxgiui .gt_indent_2 {
   text-indent: 10px;
 }
 
-#csprlchuuu .gt_indent_3 {
+#hvsvuxgiui .gt_indent_3 {
   text-indent: 15px;
 }
 
-#csprlchuuu .gt_indent_4 {
+#hvsvuxgiui .gt_indent_4 {
   text-indent: 20px;
 }
 
-#csprlchuuu .gt_indent_5 {
+#hvsvuxgiui .gt_indent_5 {
   text-indent: 25px;
 }
 
-#csprlchuuu .katex-display {
+#hvsvuxgiui .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#csprlchuuu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hvsvuxgiui div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3223,10 +3257,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <col style="width: 12%">
 </colgroup>
 <thead>
-<tr class="header gt_heading">
+<tr class="gt_heading header">
 <th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Pairwise Comparisons of Snapper Occurrence</th>
 </tr>
-<tr class="odd gt_col_headings gt_spanner_row">
+<tr class="gt_col_headings gt_spanner_row even">
 <th rowspan="2" id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Comparison</th>
 <th rowspan="2" id="Location" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Location</th>
 <th colspan="5" id="Statistics" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
@@ -3234,7 +3268,7 @@ Statistics
 </div></th>
 <th rowspan="2" id="Common" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Common</th>
 </tr>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Difference</th>
 <th id="SE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
 <th id="df" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">df</th>
@@ -3243,10 +3277,10 @@ Statistics
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="8" id="Common" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Common</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" headers="Common  Comparison">Lane - Mahogany</td>
 <td class="gt_row gt_center" headers="Common  Location">M</td>
 <td class="gt_row gt_right" headers="Common  Estimate">1.962</td>
@@ -3446,10 +3480,10 @@ Statistics
 <td class="gt_row gt_right" headers="Common  p_value">1.000</td>
 <td class="gt_row gt_center" headers="Common  Common">NA</td>
 </tr>
-<tr class="even gt_group_heading_row">
+<tr class="gt_group_heading_row even">
 <td colspan="8" id="Location" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Location</td>
 </tr>
-<tr class="odd gt_row_group_first">
+<tr class="gt_row_group_first odd">
 <td class="gt_row gt_center" headers="Location  Comparison">M - T</td>
 <td class="gt_row gt_center" headers="Location  Location">NA</td>
 <td class="gt_row gt_right" headers="Location  Estimate">0.201</td>
@@ -3518,18 +3552,17 @@ Statistics
 </div>
 </div>
 </section>
-</section>
-<section id="grouper-2" class="level2">
-<h2 class="anchored" data-anchor-id="grouper-2">Grouper</h2>
-<section id="model-selection-2" class="level3">
-<h3 class="anchored" data-anchor-id="model-selection-2">Model Selection</h3>
+<section id="grouper-2" class="level3">
+<h3 class="anchored" data-anchor-id="grouper-2">Grouper</h3>
+<section id="model-selection-2" class="level4">
+<h4 class="anchored" data-anchor-id="model-selection-2">Model Selection</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a GLM including Location as an interaction</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>glm_grouper_occur_loc <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common <span class="sc">*</span> Location, </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> grouper_oc)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_grouper_occur_loc) <span class="co"># Model diagnostics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a GLM including Location as an interaction</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>glm_grouper_occur_loc <span class="ot">&lt;-</span> <span class="fu">glm</span>(PA <span class="sc">~</span> Common <span class="sc">*</span> Location, </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> grouper_oc)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(glm_grouper_occur_loc) <span class="co"># Model diagnostics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3537,8 +3570,8 @@ Statistics
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(glm_grouper_occur_loc)</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_grouper_occur_loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(glm_grouper_occur_loc)</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_grouper_occur_loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -3564,7 +3597,7 @@ AIC: 202.92
 
 Number of Fisher Scoring iterations: 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_grouper_occur_loc, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(glm_grouper_occur_loc, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table
 
@@ -3584,27 +3617,34 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section id="grouper-occurrence-by-location-pairwise" class="level3">
-<h3 class="anchored" data-anchor-id="grouper-occurrence-by-location-pairwise">Grouper Occurrence by Location Pairwise</h3>
+<section id="grouper-occurrence-by-location-pairwise" class="level4">
+<h4 class="anchored" data-anchor-id="grouper-occurrence-by-location-pairwise">Grouper Occurrence by Location Pairwise</h4>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ntajrvwdqv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ntajrvwdqv table {
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/-%20grouper%20occurence%20by%20location%20pairwise-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="vlywjrrirb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vlywjrrirb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ntajrvwdqv thead, #ntajrvwdqv tbody, #ntajrvwdqv tfoot, #ntajrvwdqv tr, #ntajrvwdqv td, #ntajrvwdqv th {
+#vlywjrrirb thead, #vlywjrrirb tbody, #vlywjrrirb tfoot, #vlywjrrirb tr, #vlywjrrirb td, #vlywjrrirb th {
   border-style: none;
 }
 
-#ntajrvwdqv p {
+#vlywjrrirb p {
   margin: 0;
   padding: 0;
 }
 
-#ntajrvwdqv .gt_table {
+#vlywjrrirb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3630,12 +3670,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_caption {
+#vlywjrrirb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ntajrvwdqv .gt_title {
+#vlywjrrirb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3647,7 +3687,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-width: 0;
 }
 
-#ntajrvwdqv .gt_subtitle {
+#vlywjrrirb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3659,7 +3699,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-width: 0;
 }
 
-#ntajrvwdqv .gt_heading {
+#vlywjrrirb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3671,13 +3711,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_bottom_border {
+#vlywjrrirb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_col_headings {
+#vlywjrrirb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3692,7 +3732,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_col_heading {
+#vlywjrrirb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3712,7 +3752,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#ntajrvwdqv .gt_column_spanner_outer {
+#vlywjrrirb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3724,15 +3764,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 4px;
 }
 
-#ntajrvwdqv .gt_column_spanner_outer:first-child {
+#vlywjrrirb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ntajrvwdqv .gt_column_spanner_outer:last-child {
+#vlywjrrirb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ntajrvwdqv .gt_column_spanner {
+#vlywjrrirb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3744,11 +3784,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   width: 100%;
 }
 
-#ntajrvwdqv .gt_spanner_row {
+#vlywjrrirb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ntajrvwdqv .gt_group_heading {
+#vlywjrrirb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3774,7 +3814,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   text-align: left;
 }
 
-#ntajrvwdqv .gt_empty_group_heading {
+#vlywjrrirb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3789,15 +3829,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: middle;
 }
 
-#ntajrvwdqv .gt_from_md > :first-child {
+#vlywjrrirb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ntajrvwdqv .gt_from_md > :last-child {
+#vlywjrrirb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ntajrvwdqv .gt_row {
+#vlywjrrirb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3816,7 +3856,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   overflow-x: hidden;
 }
 
-#ntajrvwdqv .gt_stub {
+#vlywjrrirb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3829,7 +3869,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ntajrvwdqv .gt_stub_row_group {
+#vlywjrrirb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3843,15 +3883,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   vertical-align: top;
 }
 
-#ntajrvwdqv .gt_row_group_first td {
+#vlywjrrirb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ntajrvwdqv .gt_row_group_first th {
+#vlywjrrirb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ntajrvwdqv .gt_summary_row {
+#vlywjrrirb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3861,16 +3901,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ntajrvwdqv .gt_first_summary_row {
+#vlywjrrirb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_first_summary_row.thick {
+#vlywjrrirb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ntajrvwdqv .gt_last_summary_row {
+#vlywjrrirb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3880,7 +3920,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_grand_summary_row {
+#vlywjrrirb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3890,7 +3930,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ntajrvwdqv .gt_first_grand_summary_row {
+#vlywjrrirb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3900,7 +3940,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_last_grand_summary_row_top {
+#vlywjrrirb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3910,11 +3950,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_striped {
+#vlywjrrirb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ntajrvwdqv .gt_table_body {
+#vlywjrrirb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3923,7 +3963,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_footnotes {
+#vlywjrrirb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3937,7 +3977,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_footnote {
+#vlywjrrirb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3946,7 +3986,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ntajrvwdqv .gt_sourcenotes {
+#vlywjrrirb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3960,7 +4000,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ntajrvwdqv .gt_sourcenote {
+#vlywjrrirb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3968,72 +4008,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   padding-right: 5px;
 }
 
-#ntajrvwdqv .gt_left {
+#vlywjrrirb .gt_left {
   text-align: left;
 }
 
-#ntajrvwdqv .gt_center {
+#vlywjrrirb .gt_center {
   text-align: center;
 }
 
-#ntajrvwdqv .gt_right {
+#vlywjrrirb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ntajrvwdqv .gt_font_normal {
+#vlywjrrirb .gt_font_normal {
   font-weight: normal;
 }
 
-#ntajrvwdqv .gt_font_bold {
+#vlywjrrirb .gt_font_bold {
   font-weight: bold;
 }
 
-#ntajrvwdqv .gt_font_italic {
+#vlywjrrirb .gt_font_italic {
   font-style: italic;
 }
 
-#ntajrvwdqv .gt_super {
+#vlywjrrirb .gt_super {
   font-size: 65%;
 }
 
-#ntajrvwdqv .gt_footnote_marks {
+#vlywjrrirb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ntajrvwdqv .gt_asterisk {
+#vlywjrrirb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ntajrvwdqv .gt_indent_1 {
+#vlywjrrirb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ntajrvwdqv .gt_indent_2 {
+#vlywjrrirb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ntajrvwdqv .gt_indent_3 {
+#vlywjrrirb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ntajrvwdqv .gt_indent_4 {
+#vlywjrrirb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ntajrvwdqv .gt_indent_5 {
+#vlywjrrirb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ntajrvwdqv .katex-display {
+#vlywjrrirb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ntajrvwdqv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vlywjrrirb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4050,10 +4090,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <col style="width: 12%">
 </colgroup>
 <thead>
-<tr class="header gt_heading">
+<tr class="gt_heading header">
 <th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Pairwise Comparisons of Grouper Occurrence</th>
 </tr>
-<tr class="odd gt_col_headings gt_spanner_row">
+<tr class="gt_col_headings gt_spanner_row even">
 <th rowspan="2" id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Comparison</th>
 <th rowspan="2" id="Location" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Location</th>
 <th colspan="5" id="Statistics" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
@@ -4061,7 +4101,7 @@ Statistics
 </div></th>
 <th rowspan="2" id="Common" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Common</th>
 </tr>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Difference</th>
 <th id="SE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
 <th id="df" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">df</th>
@@ -4070,10 +4110,10 @@ Statistics
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="8" id="Common (within Location)" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Common (within Location)</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" headers="Common (within Location)  Comparison">Coney - Graysby</td>
 <td class="gt_row gt_center" headers="Common (within Location)  Location">M</td>
 <td class="gt_row gt_right" headers="Common (within Location)  Estimate">−3.008</td>
@@ -4133,10 +4173,10 @@ Statistics
 <td class="gt_row gt_right" headers="Common (within Location)  p_value">0.042</td>
 <td class="gt_row gt_center" headers="Common (within Location)  Common">NA</td>
 </tr>
-<tr class="even gt_group_heading_row">
+<tr class="gt_group_heading_row even">
 <td colspan="8" id="Location (within Common)" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Location (within Common)</td>
 </tr>
-<tr class="odd gt_row_group_first">
+<tr class="gt_row_group_first odd">
 <td class="gt_row gt_center" headers="Location (within Common)  Comparison">M - T</td>
 <td class="gt_row gt_center" headers="Location (within Common)  Location">NA</td>
 <td class="gt_row gt_right" headers="Location (within Common)  Estimate">1.414</td>
@@ -4173,8 +4213,8 @@ Statistics
 </div>
 </div>
 </section>
-<section id="grouper-occurrence-by-location-plot" class="level3">
-<h3 class="anchored" data-anchor-id="grouper-occurrence-by-location-plot">Grouper Occurrence by Location Plot</h3>
+<section id="grouper-occurrence-by-location-plot" class="level4">
+<h4 class="anchored" data-anchor-id="grouper-occurrence-by-location-plot">Grouper Occurrence by Location Plot</h4>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -4184,6 +4224,7 @@ Statistics
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="panel-plot-2" class="level2">
@@ -4206,13 +4247,13 @@ Statistics
 <section id="snapper-abundance" class="level3">
 <h3 class="anchored" data-anchor-id="snapper-abundance">Snapper Abundance</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>snapper_abundance_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(snapper_abundance_r<span class="sc">$</span>Common)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Location was not necessary for the model after dredging</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>snapp_maxn_nb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> nbinom2,<span class="at">data =</span> snapper_abundance_r)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(snapp_maxn_nb) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>snapper_abundance_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(snapper_abundance_r<span class="sc">$</span>Common)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Location was not necessary for the model after dredging</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>snapp_maxn_nb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> nbinom2,<span class="at">data =</span> snapper_abundance_r)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(snapp_maxn_nb) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
 
@@ -4225,6 +4266,20 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>You are calculating adjusted predictions on the population-level (i.e.
+  `type = "fixed"`) for a *generalized* linear mixed model.
+  This may produce biased estimates due to Jensen's inequality. Consider
+  setting `bias_correction = TRUE` to correct for this bias.
+  See also the documentation of the `bias_correction` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/snap%20abun%20rugosity%20pred-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast                  estimate    SE  df z.ratio p.value
  Schoolmaster - Yellowtail    -1.33 0.177 Inf  -7.555  &lt;.0001
@@ -4234,7 +4289,7 @@ Results are given on the log (not the response) scale. </code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Markdown_20252204_files/figure-html/snap%20abun%20rugosity%20pred-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Markdown_20252204_files/figure-html/snap%20abun%20rugosity%20pred-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4244,18 +4299,18 @@ Results are given on the log (not the response) scale. </code></pre>
 <h3 class="anchored" data-anchor-id="grouper-abundance">Grouper Abundance</h3>
 <p>I had to switch to compois as there was some underdispersion. This made it a lot better. Then I dredged. The top two models were all the terms and without location. With all the terms rugosity had a minimal effect. Without location rugosity had a larger effect so I went with that since that is the focus of this section.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>grouper_abundance_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(grouper_abundance_r<span class="sc">$</span>Common)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>grouper_maxn_pois_r <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity  <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">compois</span>(), <span class="at">data =</span> grouper_abundance_r)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(grouper_maxn_pois_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>grouper_abundance_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(grouper_abundance_r<span class="sc">$</span>Common)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>grouper_maxn_pois_r <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity  <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">compois</span>(), <span class="at">data =</span> grouper_abundance_r)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(grouper_maxn_pois_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: compois  ( log )
 Formula:          MaxN ~ Avg_rugosity + Common + (1 | Site)
 Data: grouper_abundance_r
 
-     AIC      BIC   logLik deviance df.resid 
-   254.6    267.2   -122.3    244.6       87 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    254.6     267.2    -122.3     244.6        87 
 
 Random effects:
 
@@ -4274,7 +4329,7 @@ CommonRed Hind -0.52814    0.09354  -5.646 1.64e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(grouper_maxn_pois_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(grouper_maxn_pois_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
 
@@ -4308,17 +4363,17 @@ Results are given on the log (not the response) scale. </code></pre>
 <section id="snapper-occurrence" class="level3">
 <h3 class="anchored" data-anchor-id="snapper-occurrence">Snapper Occurrence</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>snapper_occurrence_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(snapper_occurrence_r<span class="sc">$</span>Common)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>snapp_occur_binom <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity  <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> snapper_occurrence_r)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(snapp_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>snapper_occurrence_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(snapper_occurrence_r<span class="sc">$</span>Common)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>snapp_occur_binom <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity  <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> snapper_occurrence_r)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(snapp_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: binomial  ( logit )
 Formula:          PA ~ Avg_rugosity + Common + (1 | Site)
 Data: snapper_occurrence_r
 
-     AIC      BIC   logLik deviance df.resid 
-    65.6     76.8    -28.8     57.6      118 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+     65.6      76.8     -28.8      57.6       118 
 
 Random effects:
 
@@ -4335,7 +4390,7 @@ CommonYellowtail    26.815  18078.811   0.002   0.9988
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(snapp_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(snapp_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
 
@@ -4348,6 +4403,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/snap%20occur%20rugosity%20pred-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast                  estimate    SE  df z.ratio p.value
  Schoolmaster - Yellowtail    -26.8 18100 Inf  -0.001  0.9988
@@ -4357,7 +4419,7 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Markdown_20252204_files/figure-html/snap%20occur%20rugosity%20pred-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Markdown_20252204_files/figure-html/snap%20occur%20rugosity%20pred-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4406,7 +4468,7 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Markdown_20252204_files/figure-html/snap%20occur%20rugosity%20pred-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Markdown_20252204_files/figure-html/snap%20occur%20rugosity%20pred-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4415,16 +4477,16 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 <section id="grouper-occurrence" class="level3">
 <h3 class="anchored" data-anchor-id="grouper-occurrence">Grouper Occurrence</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>grouper_occurrence_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(grouper_occurrence_r<span class="sc">$</span>Common)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>grouper_occur_binom <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> grouper_occurrence_r)</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(grouper_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>grouper_occurrence_r<span class="sc">$</span>Common <span class="ot">=</span> <span class="fu">as.factor</span>(grouper_occurrence_r<span class="sc">$</span>Common)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>grouper_occur_binom <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Common  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> grouper_occurrence_r)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(grouper_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: binomial  ( logit )
 Formula:          PA ~ Avg_rugosity + Common + (1 | Site)
 Data: grouper_occurrence_r
 
-     AIC      BIC   logLik deviance df.resid 
-   131.4    142.7    -61.7    123.4      118 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    131.4     142.7     -61.7     123.4       118 
 
 Random effects:
 
@@ -4441,7 +4503,7 @@ CommonRed Hind  -1.1864     0.4748  -2.499   0.0125 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(grouper_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(grouper_occur_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
 
@@ -4454,6 +4516,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Markdown_20252204_files/figure-html/grouper%20occur%20rugosity%20pred-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast           estimate    SE  df z.ratio p.value
  Graysby - Red Hind     1.19 0.475 Inf   2.499  0.0125
@@ -4463,14 +4532,14 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Markdown_20252204_files/figure-html/grouper%20occur%20rugosity%20pred-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Markdown_20252204_files/figure-html/grouper%20occur%20rugosity%20pred-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Markdown_20252204_files/figure-html/grouper%20occur%20rugosity%20pred-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Markdown_20252204_files/figure-html/grouper%20occur%20rugosity%20pred-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4483,8 +4552,8 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 <p>Lots of issues with this. Only showing grouper abundance, specifically Graysby</p>
 <p>First for rugosity, location and %covers</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>grayA1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Location <span class="sc">+</span>  coral <span class="sc">+</span> gorgonian <span class="sc">+</span> sand <span class="sc">+</span> sponge <span class="sc">+</span> algae  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_gray_O)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayA1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>grayA1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Location <span class="sc">+</span>  coral <span class="sc">+</span> gorgonian <span class="sc">+</span> sand <span class="sc">+</span> sponge <span class="sc">+</span> algae  <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_gray_O)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayA1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -4495,24 +4564,24 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">na.action =</span> <span class="st">"na.fail"</span>) <span class="co"># Set na.action to fail for dredge</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>dr_invT <span class="ot">=</span> <span class="fu">dredge</span>(grayA1) <span class="sc">|&gt;</span> </span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delta <span class="sc">&lt;</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">na.action =</span> <span class="st">"na.fail"</span>) <span class="co"># Set na.action to fail for dredge</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>dr_invT <span class="ot">=</span> <span class="fu">dredge</span>(grayA1) <span class="sc">|&gt;</span> </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delta <span class="sc">&lt;</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Fixed terms are "cond((Int))" and "disp((Int))"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="fu">which.min</span>(dr_invT<span class="sc">$</span>df)</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>top_invT <span class="ot">=</span> <span class="fu">get.models</span>(dr_invT, <span class="at">subset =</span> top)[[<span class="dv">1</span>]]</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(top_invT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="fu">which.min</span>(dr_invT<span class="sc">$</span>df)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>top_invT <span class="ot">=</span> <span class="fu">get.models</span>(dr_invT, <span class="at">subset =</span> top)[[<span class="dv">1</span>]]</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(top_invT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: poisson  ( log )
 Formula:          MaxN ~ sand + (1 | Site)
 Data: df_gray_O
 
-     AIC      BIC   logLik deviance df.resid 
-   169.2    175.0    -81.6    163.2       48 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    169.2     175.0     -81.6     163.2        48 
 
 Random effects:
 
@@ -4528,14 +4597,14 @@ sand        -0.015685   0.005155  -3.043  0.00234 **
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>grayA1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_gray_O) <span class="co">#only good one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>grayA1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_gray_O) <span class="co">#only good one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now for pland - landscape metrics, didnt use pd cause it was too correlated with pland</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>grayA2 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayA2) <span class="co"># Model diagnostics, looks okayish</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>grayA2 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayA2) <span class="co"># Model diagnostics, looks okayish</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -4546,23 +4615,23 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>dr_invT <span class="ot">=</span> <span class="fu">dredge</span>(grayA2) <span class="sc">|&gt;</span> </span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delta <span class="sc">&lt;</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>dr_invT <span class="ot">=</span> <span class="fu">dredge</span>(grayA2) <span class="sc">|&gt;</span> </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delta <span class="sc">&lt;</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Fixed terms are "cond((Int))" and "disp((Int))"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="fu">which.min</span>(dr_invT<span class="sc">$</span>df)</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>top_invT <span class="ot">=</span> <span class="fu">get.models</span>(dr_invT, <span class="at">subset =</span> top)[[<span class="dv">1</span>]]</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(top_invT)<span class="co">#None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="fu">which.min</span>(dr_invT<span class="sc">$</span>df)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>top_invT <span class="ot">=</span> <span class="fu">get.models</span>(dr_invT, <span class="at">subset =</span> top)[[<span class="dv">1</span>]]</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(top_invT)<span class="co">#None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: poisson  ( log )
 Formula:          MaxN ~ (1 | Site)
 Data: df_gray_O
 
-     AIC      BIC   logLik deviance df.resid 
-   176.3    180.2    -86.1    172.3       49 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    176.3     180.2     -86.1     172.3        49 
 
 Random effects:
 
@@ -4580,8 +4649,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Now using distance tos hore, mangrove, inlket and mpa</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>grayA3 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> mpa_distance <span class="sc">+</span> mang <span class="sc">+</span> land <span class="sc">+</span> inlet, <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">nbinom2</span>())</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayA3) <span class="co"># Model diagnostics, looks okayish</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>grayA3 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> mpa_distance <span class="sc">+</span> mang <span class="sc">+</span> land <span class="sc">+</span> inlet, <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">nbinom2</span>())</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayA3) <span class="co"># Model diagnostics, looks okayish</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -4592,49 +4661,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>dr_invT <span class="ot">=</span> <span class="fu">dredge</span>(grayA3) <span class="sc">|&gt;</span> </span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delta <span class="sc">&lt;</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>dr_invT <span class="ot">=</span> <span class="fu">dredge</span>(grayA3) <span class="sc">|&gt;</span> </span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(delta <span class="sc">&lt;</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Fixed terms are "cond((Int))" and "disp((Int))"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
+problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')
 Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
 problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in sqrt(diag(vcovs)): NaNs produced</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
 problem; false convergence (8). See vignette('troubleshooting'),
 help('diagnose')</code></pre>
 </div>
@@ -4648,78 +4687,62 @@ problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')</
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
 problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
 help('diagnose')</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
 problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in sqrt(diag(vcovs)): NaNs produced</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
+problem; false convergence (8). See vignette('troubleshooting'),
+help('diagnose')</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
+problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')
+Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
 problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')
-Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="fu">which.min</span>(dr_invT<span class="sc">$</span>df)</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>top_invT <span class="ot">=</span> <span class="fu">get.models</span>(dr_invT, <span class="at">subset =</span> top)[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence
-problem; false convergence (8). See vignette('troubleshooting'),
-help('diagnose')</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(top_invT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="fu">which.min</span>(dr_invT<span class="sc">$</span>df)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>top_invT <span class="ot">=</span> <span class="fu">get.models</span>(dr_invT, <span class="at">subset =</span> top)[[<span class="dv">1</span>]]</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(top_invT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: nbinom2  ( log )
 Formula:          MaxN ~ mang + 1
 Data: df_gray_O
 
-     AIC      BIC   logLik deviance df.resid 
-   171.8    177.6    -82.9    165.8       48 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    171.8     177.6     -82.9     165.8        48 
 
 
-Dispersion parameter for nbinom2 family (): 2.57e+10 
+Dispersion parameter for nbinom2 family (): 4.49e+07 
 
 Conditional model:
-             Estimate Std. Error z value Pr(&gt;|z|)  
-(Intercept) 0.4488275  0.2489956   1.803   0.0715 .
-mang        0.0005076  0.0002060   2.464   0.0137 *
+             Estimate Std. Error z value Pr(&gt;|z|)   
+(Intercept) 0.4488275  0.2558346   1.754  0.07937 . 
+mang        0.0005076  0.0001835   2.766  0.00567 **
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co">#using mangroves only </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#using mangroves only </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now the Global Model</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>grayAF1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> mang , <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">nbinom2</span>(<span class="at">link =</span> <span class="st">"sqrt"</span>))</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>grayAF2 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> mang  <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">nbinom2</span>(<span class="at">link =</span> <span class="st">"sqrt"</span>))</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(grayAF1, grayAF2) <span class="co"># AIC comparison, grayAF2 is better</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>grayAF1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> mang , <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">nbinom2</span>(<span class="at">link =</span> <span class="st">"sqrt"</span>))</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>grayAF2 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> mang  <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">nbinom2</span>(<span class="at">link =</span> <span class="st">"sqrt"</span>))</span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(grayAF1, grayAF2) <span class="co"># AIC comparison, grayAF2 is better</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        df      AIC
 grayAF1  4 357.4804
 grayAF2  5 345.3959</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayAF2) <span class="co"># Model diagnostics, looks okayish</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(grayAF2) <span class="co"># Model diagnostics, looks okayish</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`check_outliers()` does not yet support models of class `glmmTMB`.</code></pre>
 </div>
@@ -4730,14 +4753,14 @@ grayAF2  5 345.3959</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(grayAF2) <span class="co"># Model coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(grayAF2) <span class="co"># Model coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: nbinom2  ( sqrt )
 Formula:          MaxN ~ sand + mang + (1 | Site)
 Data: df_gray_O
 
-     AIC      BIC   logLik deviance df.resid 
-   345.4    355.1   -167.7    335.4       46 
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    345.4     355.1    -167.7     335.4        46 
 
 Random effects:
 
@@ -4843,8 +4866,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -4955,7 +4976,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

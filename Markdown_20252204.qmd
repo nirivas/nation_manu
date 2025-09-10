@@ -85,6 +85,7 @@ pcover = read_csv("data/old/pcover.csv")
 
 ```{r - Model Comparison}
 #| echo: TRUE
+#| include: TRUE
 
 glm_snap_MaxN.nb <- glmmTMB(MaxN ~ Common, data = snapper, family = nbinom2)
 
@@ -92,7 +93,7 @@ glmm_nb <- glmmTMB(MaxN ~ Common + (1 | Site), data = snapper, family = nbinom2)
 
 glm_snap_MaxN.poi <- glmmTMB(MaxN ~ Common, family = poisson(link = "log"), data = snapper)
 
-
+AICc(glm_snap_MaxN.nb, glm_snap_MaxN.poi, glmm_nb)
 ```
 
 ```{r - Model checks1}
@@ -131,9 +132,9 @@ rm(glm_snap_MaxN.poi,glm_snap_MaxN.nb)
 #| include: TRUE
 
 
-gg.snapper.MaxN = ggpredict(glmm_nb, terms = c("Common")) |> 
+gg.snapper.MaxN = ggpredict(glmm_nb, terms = c("Common"),bias_correction = TRUE) |> 
   rename(Common = x, MaxN = predicted)
-
+plot(ggpredict(glmm_nb, terms = c("Common"),bias_correction = TRUE))
 
 em_snapper_MaxN = emmeans(glmm_nb, "Common")
 pairwise_snapper = pairs(em_snapper_MaxN, simple = "Common") |> 
@@ -231,23 +232,16 @@ snapper_MaxN
 
 grouper$Common = as.factor(grouper$Common)
 
-glm_grp_MaxN.nb <- glm.nb(MaxN ~ Common, 
-                           data = grouper)
 
 glm_grp_MaxN.poi <- glmmTMB(MaxN ~ Common , 
                         family = poisson(link = "log"), 
                         data = grouper)
 
-glmm_grp_MaxN_nb <- glmmTMB(MaxN ~ Common + (1 | Site), 
-                             family = nbinom2(), 
-                             data = grouper)
-
 glmm_grp_MaxN_poi <- glmmTMB(MaxN ~ Common + (1 | Site), 
                               family = poisson(link = "log"), 
                               data = grouper)
 
-compare_performance(glm_grp_MaxN.poi,glmm_grp_MaxN_poi, 
-                    glm_grp_MaxN.nb, glmm_grp_MaxN_nb)
+compare_performance(glm_grp_MaxN.poi,glmm_grp_MaxN_poi)
 
 check_model(glm_grp_MaxN.poi) # Model diagnostics
 
@@ -266,6 +260,7 @@ car::Anova(glm_grp_MaxN.poi, test = "Chisq")
 gg.grouper.MaxN = ggpredict(glm_grp_MaxN.poi, terms = c("Common"))  %>% 
   rename(Common = x, MaxN = predicted)
 
+plot(ggpredict(glm_grp_MaxN.poi, terms = c("Common"))) 
 
 em_grouper_MaxN = emmeans(glm_grp_MaxN.poi, "Common")
 
@@ -402,6 +397,8 @@ anova(glm_snap_occur, test = "Chisq")
 gg.snapper.occ = ggpredict(glm_snap_occur, terms = "Common") |>
   rename(Common = x, Occurrence = predicted)
 
+plot(ggpredict(glm_snap_occur, terms = "Common"))
+
 em_snapper_occ = emmeans(glm_snap_occur, "Common")
 
 pairwise_snapper_occ = pairs(em_snapper_occ, simple = "Common") |> 
@@ -516,6 +513,8 @@ anova(glm_grouper_occur, test = "Chisq")
 
 gg.grouper.occ <- ggpredict(glm_grouper_occur, terms = "Common") |>
   rename(Common = x, Occurrence = predicted)
+
+plot(ggpredict(glm_grouper_occur, terms = "Common"))
 
 # Pairwise comparisons for grouper occurrence
 em_grouper_occ = emmeans(glm_grouper_occur, "Common")
@@ -649,6 +648,8 @@ anova(glm_snap_occur_loc, test = "Chisq")
 gg.snapper.occ_loc <- ggpredict(glm_snap_occur_loc, terms = c("Common", "Location")) |>
   rename(Common = x, Occurrence = predicted, Location = group)
 
+plot(ggpredict(glm_snap_occur_loc, terms = c("Common", "Location")))
+
 em_snap_occur_loc <- emmeans(glm_snap_occur_loc, ~ Common | Location)
 
 
@@ -773,9 +774,9 @@ snapper_occ_loc_plot
 
 ```
 
-## Grouper
+### Grouper
 
-### Model Selection
+#### Model Selection
 
 ```{r - grouper occurence by location}
 #| echo: TRUE
@@ -794,7 +795,7 @@ anova(glm_grouper_occur_loc, test = "Chisq")
 
 ```
 
-### Grouper Occurrence by Location Pairwise
+#### Grouper Occurrence by Location Pairwise
 
 ```{r - grouper occurence by location pairwise}
 #| echo: FALSE
@@ -804,6 +805,8 @@ anova(glm_grouper_occur_loc, test = "Chisq")
 # Generate predictions
 gg.grouper.occ_loc <- ggpredict(glm_grouper_occur_loc, terms = c("Common", "Location"))|>
   rename(Common = x, Occurrence = predicted, Location = group)
+
+plot(ggpredict(glm_grouper_occur_loc, terms = c("Common", "Location")))
 
 # Pairwise comparisons within each Location
 em_grouper_occur_loc <- emmeans(glm_grouper_occur_loc, ~ Common | Location)
@@ -880,7 +883,7 @@ pairwise_grouper_combined %>%
 ```
 
 
-### Grouper Occurrence by Location Plot
+#### Grouper Occurrence by Location Plot
 
 ```{r - grouper occurence by location plot}
 #| echo: FALSE
@@ -965,6 +968,8 @@ car::Anova(snapp_maxn_nb)
 #| include: TRUE
 snapp_maxn_commonpreds <- ggpredict(snapp_maxn_nb, terms = c("Common")) %>% 
   rename(Common = x, MaxN = predicted) 
+
+plot(ggpredict(snapp_maxn_nb, terms = c("Common")))
 
 em_snapp_maxn <- emmeans(snapp_maxn_nb, ~ Common)
 pairs(em_snapp_maxn, simple = "Common")
@@ -1092,6 +1097,8 @@ car::Anova(snapp_occur_binom)
 snapp_paoccur_preds = ggpredict(snapp_occur_binom, terms = c("Common")) %>% 
   rename(Common = x, Occurrence = predicted)
 
+plot(ggpredict(snapp_occur_binom, terms = c("Common")))
+
 em_snapp_paoccur = emmeans(snapp_occur_binom, ~ Common)
 pairs(em_snapp_paoccur, simple = "Common")
 
@@ -1168,6 +1175,8 @@ car::Anova(grouper_occur_binom)
 
 grouper_paoccur_preds = ggpredict(grouper_occur_binom, terms = c("Common")) %>% 
   rename(Common = x, Occurrence = predicted)
+
+plot(ggpredict(grouper_occur_binom, terms = c("Common")))
 
 em_grouper_paoccur = emmeans(grouper_occur_binom, ~ Common)
 pairs(em_grouper_paoccur, simple = "Common")
