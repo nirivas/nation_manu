@@ -8,6 +8,10 @@ format:
 editor: visual
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = T, cache = T)
+```
+
 ```{r - load libraries}
 #| include: false
 #| echo: false
@@ -1272,7 +1276,7 @@ df_gray_O = dft_wide |>
 
 ```
 
-First for rugosity, location and %covers
+## with %cover data
 
 ```{r - cover seascape metrics model}
 #| echo: TRUE
@@ -1296,7 +1300,7 @@ grayA1 = glmmTMB(MaxN ~ sand + (1 | Site), family = poisson(), data = df_gray_O)
 
 ```
 
-Now for pland - landscape metrics, didnt use pd cause it was too correlated with pland
+## Landscape metrics
 
 ```{r - cover seascape metrics model pland}
 #| echo: TRUE
@@ -1318,7 +1322,7 @@ summary(top_invT)#None
 
 ```
 
-Now using distance tos hore, mangrove, inlket and mpa
+## Distances
 
 ```{r - distances}
 #| echo: TRUE
@@ -1340,6 +1344,8 @@ summary(top_invT)
 #using mangroves only 
 ```
 
+## Rugosity
+
 ```{r - rugosity}
 #| echo: TRUE
 #| include: TRUE
@@ -1359,7 +1365,7 @@ summary(top_invT)
 
 ```
 
-Now the Global Model
+## Global Model
 
 ```{r - global model}
 #| echo: TRUE
