@@ -1378,3 +1378,4 @@ check_model(grayAF5) # Model diagnostics, looks okayish
 summary(grayAF5) # Model coefficients
 
 ```
+
