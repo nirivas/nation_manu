@@ -1352,6 +1352,8 @@ df_school_O = dft_widesnapperO |>
 
 ##### % Cover
 
+For percent cover of benthic functional groups I first checkef for the use of site as a random factor. Site was not a better model and then I had to remove one of the benthic categories because of collinearity. In the end for Graysbys only SAND was relevant.
+
 ```{r - cover seascape metrics model}
 #| echo: TRUE
 #| include: TRUE
@@ -1385,6 +1387,8 @@ grayA1 = glmmTMB(MaxN ~ sand, family = poisson(), data = df_gray_A) #only good o
 
 ##### Landscape metrics
 
+I did the same thing testing site as a random factor. Again did not improve model so I removed it. None of the landscape metrics were relevant.
+
 ```{r - cover seascape metrics model pland}
 #| echo: TRUE
 #| include: TRUE
@@ -1411,6 +1415,8 @@ summary(top_invT)#None
 ```
 
 ##### Distances
+
+Again site did not improve the model. I scaled all the variables to help with convergence. Then i removed a variable due to collinearity. The top model only had distance to mangroves.
 
 ```{r - distances}
 #| echo: TRUE
@@ -1444,6 +1450,8 @@ summary(top_invT)
 
 ##### Rugosity
 
+did the same with site as a random factor. It did not improve the model so I removed it. Only Avg_rugosity was relevant.
+
 ```{r - rugosity}
 #| echo: TRUE
 #| include: TRUE
@@ -1472,6 +1480,8 @@ summary(top_invT)
 
 ##### Global Model
 
+One again checked for site as a random factor. It did not improve the model so I removed it. The top model had sand, mangroves and rugosity.
+
 ```{r - global model}
 #| echo: TRUE
 #| include: TRUE
@@ -1493,6 +1503,7 @@ check_model(grayAF5)
 summary(grayAF5) 
 
 ```
+
 ##### Predictions
 
 ```{r - gray abundance pred}
@@ -1539,12 +1550,13 @@ ggarrange(gray_sand_pred, gray_mang_pred, gray_rugo_pred,
 
   
   
-```  
+```
 
 #### Red Hind
 
 ##### % Cover
 
+Same process for red hind. Site was not relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.
 ```{r - cover seascape metrics model red hind}
 #| echo: TRUE
 #| include: TRUE
@@ -1569,7 +1581,11 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT) 
 
 ```
+
 ##### Landscape metrics
+
+None were relevant here either
+
 ```{r - cover seascape metrics model pland red hind}
 #| echo: TRUE
 #| include: TRUE
@@ -1597,6 +1613,9 @@ summary(top_invT)#None
 ```
 
 ##### Distances
+
+Nothing was relevant
+
 ```{r - distances red hind}
 #| echo: TRUE
 #| include: TRUE
@@ -1630,6 +1649,8 @@ summary(top_invT)#none
 
 ##### Rugosity
 
+Nothing was relevant here either
+
 ```{r - rugosity red hind}
 #| echo: TRUE
 #| include: TRUE
@@ -1657,6 +1678,7 @@ summary(top_invT)
 ```
 
 ##### Global Model
+
 ```{r - global model red hind}
 #| echo: TRUE
 #| include: TRUE
@@ -1675,7 +1697,13 @@ summary(top_invT)
 ### Occurrence
 
 #### Graysby
+
 ##### % Cover
+
+Same workflow. Site did not improve anything.
+
+No benthic category improved model
+
 ```{r - cover seascape metrics model gray occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -1703,6 +1731,9 @@ summary(top_invT)
 ```
 
 ##### Landscape metrics
+
+Only pland_SandwithScatteredCoralandRock improved model
+
 ```{r - cover seascape metrics model pland gray occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -1726,6 +1757,8 @@ summary(top_invT)#pland_SandwithScatteredCoralandRock
 ```
 
 ##### Distances
+
+None were relevant here
 
 ```{r - distances gray occurrence}
 #| echo: TRUE
@@ -1757,6 +1790,8 @@ summary(top_invT)
 ```
 
 ##### Rugosity
+
+Avg_rugosity was a good model fit
 
 ```{r - rugosity gray occurrence}
 #| echo: TRUE
@@ -1827,9 +1862,12 @@ ggarrange(gray_pland_pred, gray_rugo_pred,
           ncol = 2, vjust = 1, align = "v")
           
 ```
+
 #### Red Hind
 
 ##### % Cover
+
+Again site was not relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.
 
 ```{r - cover seascape metrics model red hind occurrence}
 #| echo: TRUE
@@ -1857,6 +1895,8 @@ summary(top_invT)
 
 ##### Landscape metrics
 
+Again none were relevant
+
 ```{r - cover seascape metrics model pland red hind occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -1880,6 +1920,8 @@ summary(top_invT)
 ```
 
 ##### Distances
+
+Again none were relevant
 
 ```{r - distances red hind occurrence}
 
@@ -1909,6 +1951,8 @@ summary(top_invT)#none
 
 ##### Rugosity
 
+Non relevant
+
 ```{r - rugosity red hind occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -1930,12 +1974,15 @@ summary(top_invT)
 ```
 
 ##### Global Model
+
 ```{r - global model red hind occurrence}
 #| echo: TRUE
 #| include: TRUE
 #none
 ```
+
 ##### Predictions
+
 ```{r - red hind occurrence pred}
 #| echo: FALSE
 #| include: TRUE
@@ -1944,9 +1991,17 @@ summary(top_invT)
 ```
 
 ## Snappers
+
+Snappers were different as in some site was good for the model
+
 ### Abundance
+
 #### Yellowtail
+
 ##### % Cover
+
+Sponge and site as a random factor improve model 
+
 ```{r - cover seascape metrics model yellowtail}
 
 #| echo: TRUE
@@ -1971,6 +2026,9 @@ summary(top_invT)
 ```
 
 ##### Landscape metrics
+
+Site was included and pland_AggregateReef
+
 ```{r - cover seascape metrics model pland yellowtail}
 #| echo: TRUE
 #| include: TRUE
@@ -1996,6 +2054,9 @@ summary(top_invT)
 ```
 
 ##### Distances
+
+Only site as a random factor and distance to land was helpfil
+
 ```{r - distances yellowtail}
 #| echo: TRUE
 #| include: TRUE
@@ -2024,6 +2085,9 @@ summary(top_invT)
 ```
 
 ##### Rugosity
+
+Sadly none were a better fit except for site
+
 ```{r - rugosity yellowtail}
 #| echo: TRUE
 #| include: TRUE
@@ -2046,6 +2110,7 @@ summary(top_invT)
 ```
 
 ##### Global Model
+
 ```{r - global model yellowtail}
 #| echo: TRUE
 #| include: TRUE
@@ -2060,6 +2125,7 @@ summary(yellowAF2) # Model coefficients
 ```
 
 ##### Predictions
+
 ```{r - yellow abundance pred}
 #| echo: FALSE
 #| include: TRUE
@@ -2106,8 +2172,9 @@ ggarrange(yellow_sponge_pred, yellow_pland_pred, yellow_land_pred,
 ```
 
 #### Schoolmaster
-##### % Cover
 
+##### % Cover
+Same process for schoolmaster. Site though WAS NOT relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.
 ```{r - cover seascape metrics model schoolmaster}
 #| echo: TRUE
 #| include: TRUE
@@ -2131,6 +2198,9 @@ summary(top_invT)
 ```
 
 ##### Landscape metrics
+
+again none were relevant
+
 ```{r - cover seascape metrics model pland schoolmaster}
 #| echo: TRUE
 #| include: TRUE
@@ -2156,6 +2226,9 @@ summary(top_invT)
 ```
 
 ##### Distances
+
+again none were relevant
+
 ```{r - distances schoolmaster}
 #| echo: TRUE
 #| include: TRUE
@@ -2181,7 +2254,11 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 #none
 ```
+
 ##### Rugosity
+
+In this case VARIANCE of rugosity was important
+
 ```{r - rugosity schoolmaster}
 #| echo: TRUE
 #| include: TRUE
@@ -2203,6 +2280,9 @@ summary(top_invT)
 ```
 
 ##### Global Model
+
+Not the best fitting model
+
 ```{r - global model schoolmaster}
 #| echo: TRUE
 #| include: TRUE
@@ -2214,6 +2294,7 @@ summary(schoolAF1) # Model coefficients
 ```
 
 ##### Predictions
+
 ```{r - schoolmaster abundance pred}
 #| echo: FALSE
 #| include: TRUE
@@ -2232,11 +2313,14 @@ school_rugo_pred
 
 ```
 
-
 ### Occurrence
 
 #### Yellowtail
+
 ##### % Cover
+
+again none were relevant
+
 ```{r - cover seascape metrics model yellowtail occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2264,6 +2348,9 @@ summary(top_invT)
 ```
 
 ##### Landscape metrics
+
+again none were relevant
+
 ```{r - cover seascape metrics model pland yellowtail occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2289,6 +2376,9 @@ summary(top_invT)
 ```
 
 ##### Distances
+
+again none were relevant
+
 ```{r - distances yellowtail occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2333,6 +2423,9 @@ summary(top_invT)
 ```
 
 ##### Rugosity
+
+again none were relevant
+
 ```{r - rugosity yellowtail occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2371,6 +2464,7 @@ summary(top_invT)
 ```
 
 ##### Global Model
+
 ```{r - global model yellowtail occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2378,15 +2472,19 @@ summary(top_invT)
 ```
 
 ##### Predictions
+
 ```{r - yellowtail occurrence pred}
 #| echo: FALSE
 #| include: TRUE
 # No significant predictors
 ```
 
-
 #### Schoolmaster
+
 ##### % Cover
+
+ONLY SAND
+
 ```{r - cover seascape metrics model schoolmaster occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2410,6 +2508,9 @@ summary(top_invT)
 ```
 
 ##### Landscape metrics
+
+ONLY RANDOM FACTOR
+
 ```{r - cover seascape metrics model pland schoolmaster occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2434,6 +2535,9 @@ summary(top_invT)
 ```
 
 ##### Distances
+
+DISTANCE TO MPA...WHICH IS COOL
+
 ```{r - distances schoolmaster occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2461,6 +2565,9 @@ summary(top_invT)
 ```
 
 ##### Rugosity
+
+AVG RUGOSITTY AND SITE
+
 ```{r - rugosity schoolmaster occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2481,6 +2588,9 @@ summary(top_invT)
 ```
 
 ##### Global Model
+
+AICc comparisons almost identical. So removed site as a random factor
+
 ```{r - global model schoolmaster occurrence}
 #| echo: TRUE
 #| include: TRUE
@@ -2494,6 +2604,7 @@ summary(schoolOF2) # Model coefficients
 ```
 
 ##### Predictions
+
 ```{r - schoolmaster occurrence pred}
 #| echo: FALSE
 #| include: TRUE
@@ -2536,7 +2647,3 @@ ggarrange(school_sand_pred, school_dist_pred, school_rugo_pred,
 
 
 ```
-
-
-
-

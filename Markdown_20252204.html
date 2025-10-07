@@ -4600,6 +4600,7 @@ Statistics
 <h4 class="anchored" data-anchor-id="graysby">Graysby</h4>
 <section id="cover" class="level5">
 <h5 class="anchored" data-anchor-id="cover">% Cover</h5>
+<p>For percent cover of benthic functional groups I first checkef for the use of site as a random factor. Site was not a better model and then I had to remove one of the benthic categories because of collinearity. In the end for Graysbys only SAND was relevant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>grayA11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_gray_A)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>grayA12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_gray_A)</span>
@@ -4667,6 +4668,7 @@ Statistics
 </section>
 <section id="landscape-metrics" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics">Landscape metrics</h5>
+<p>I did the same thing testing site as a random factor. Again did not improve model so I removed it. None of the landscape metrics were relevant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>grayA21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>grayA22 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass, <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
@@ -4715,6 +4717,7 @@ Statistics
 </section>
 <section id="distances" class="level5">
 <h5 class="anchored" data-anchor-id="distances">Distances</h5>
+<p>Again site did not improve the model. I scaled all the variables to help with convergence. Then i removed a variable due to collinearity. The top model only had distance to mangroves.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>grayA31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>grayA32 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) , <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
@@ -4798,6 +4801,7 @@ Statistics
 </section>
 <section id="rugosity" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity">Rugosity</h5>
+<p>did the same with site as a random factor. It did not improve the model so I removed it. Only Avg_rugosity was relevant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>grayA41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>grayA42 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">nbinom2</span>())</span>
@@ -4850,6 +4854,7 @@ Statistics
 </section>
 <section id="global-model" class="level5">
 <h5 class="anchored" data-anchor-id="global-model">Global Model</h5>
+<p>One again checked for site as a random factor. It did not improve the model so I removed it. The top model had sand, mangroves and rugosity.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>grayAF1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> sand <span class="sc">+</span> mang <span class="sc">+</span> Avg_rugosity <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in (function (start, objective, gradient = NULL, hessian = NULL, :</span></span>
@@ -4956,6 +4961,7 @@ Statistics
 <h4 class="anchored" data-anchor-id="red-hind">Red Hind</h4>
 <section id="cover-1" class="level5">
 <h5 class="anchored" data-anchor-id="cover-1">% Cover</h5>
+<p>Same process for red hind. Site was not relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>redA11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_red_A)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>redA12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_red_A)</span>
@@ -5012,6 +5018,7 @@ Statistics
 </section>
 <section id="landscape-metrics-1" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-1">Landscape metrics</h5>
+<p>None were relevant here either</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>redA21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_red_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -5061,6 +5068,7 @@ Statistics
 </section>
 <section id="distances-1" class="level5">
 <h5 class="anchored" data-anchor-id="distances-1">Distances</h5>
+<p>Nothing was relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>redA31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_red_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -5141,6 +5149,7 @@ Statistics
 </section>
 <section id="rugosity-1" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-1">Rugosity</h5>
+<p>Nothing was relevant here either</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>redA41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_red_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -5207,6 +5216,8 @@ Statistics
 <h4 class="anchored" data-anchor-id="graysby-1">Graysby</h4>
 <section id="cover-2" class="level5">
 <h5 class="anchored" data-anchor-id="cover-2">% Cover</h5>
+<p>Same workflow. Site did not improve anything.</p>
+<p>No benthic category improved model</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>grayO11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> df_gray_O)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>grayO12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> binomial, <span class="at">data =</span> df_gray_O)</span>
@@ -5265,6 +5276,7 @@ Statistics
 </section>
 <section id="landscape-metrics-2" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-2">Landscape metrics</h5>
+<p>Only pland_SandwithScatteredCoralandRock improved model</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>grayO21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>grayO22 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span></span>
@@ -5321,6 +5333,7 @@ Statistics
 </section>
 <section id="distances-2" class="level5">
 <h5 class="anchored" data-anchor-id="distances-2">Distances</h5>
+<p>None were relevant here</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>grayO31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -5402,6 +5415,7 @@ Statistics
 </section>
 <section id="rugosity-2" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-2">Rugosity</h5>
+<p>Avg_rugosity was a good model fit</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>grayO41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_gray_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence</span></span>
@@ -5527,6 +5541,7 @@ Statistics
 <h4 class="anchored" data-anchor-id="red-hind-1">Red Hind</h4>
 <section id="cover-3" class="level5">
 <h5 class="anchored" data-anchor-id="cover-3">% Cover</h5>
+<p>Again site was not relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>redO11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> df_red_O)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>redO12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> binomial, <span class="at">data =</span> df_red_O)</span>
@@ -5582,6 +5597,7 @@ Statistics
 </section>
 <section id="landscape-metrics-3" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-3">Landscape metrics</h5>
+<p>Again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>redO21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_red_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>redO22 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span></span>
@@ -5629,6 +5645,7 @@ Statistics
 </section>
 <section id="distances-3" class="level5">
 <h5 class="anchored" data-anchor-id="distances-3">Distances</h5>
+<p>Again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: TRUE</span></span>
@@ -5709,6 +5726,7 @@ Statistics
 </section>
 <section id="rugosity-3" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-3">Rugosity</h5>
+<p>Non relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>redO41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_red_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>redO42 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location , <span class="at">data =</span> df_red_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
@@ -5765,12 +5783,14 @@ Statistics
 </section>
 <section id="snappers" class="level2">
 <h2 class="anchored" data-anchor-id="snappers">Snappers</h2>
+<p>Snappers were different as in some site was good for the model</p>
 <section id="abundance-1" class="level3">
 <h3 class="anchored" data-anchor-id="abundance-1">Abundance</h3>
 <section id="yellowtail" class="level4">
 <h4 class="anchored" data-anchor-id="yellowtail">Yellowtail</h4>
 <section id="cover-4" class="level5">
 <h5 class="anchored" data-anchor-id="cover-4">% Cover</h5>
+<p>Sponge and site as a random factor improve model</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: TRUE</span></span>
@@ -5836,6 +5856,7 @@ Statistics
 </section>
 <section id="landscape-metrics-4" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-4">Landscape metrics</h5>
+<p>Site was included and pland_AggregateReef</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>yellowA21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_yellow_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a> </span>
@@ -5899,6 +5920,7 @@ Statistics
 </section>
 <section id="distances-4" class="level5">
 <h5 class="anchored" data-anchor-id="distances-4">Distances</h5>
+<p>Only site as a random factor and distance to land was helpfil</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>yellowA31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_yellow_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>yellowA32 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) , <span class="at">data =</span> df_yellow_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
@@ -5971,6 +5993,7 @@ Statistics
 </section>
 <section id="rugosity-4" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-4">Rugosity</h5>
+<p>Sadly none were a better fit except for site</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>yellowA41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_yellow_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>yellowA42 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location , <span class="at">data =</span> df_yellow_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
@@ -6086,6 +6109,7 @@ Statistics
 <h4 class="anchored" data-anchor-id="schoolmaster">Schoolmaster</h4>
 <section id="cover-5" class="level5">
 <h5 class="anchored" data-anchor-id="cover-5">% Cover</h5>
+<p>Same process for schoolmaster. Site though WAS NOT relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>schoolA11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_school_A)</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>schoolA12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> df_school_A)</span>
@@ -6140,6 +6164,7 @@ Statistics
 </section>
 <section id="landscape-metrics-5" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-5">Landscape metrics</h5>
+<p>again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>schoolA21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>schoolA22 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass, <span class="at">data =</span> df_school_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
@@ -6188,6 +6213,7 @@ Statistics
 </section>
 <section id="distances-5" class="level5">
 <h5 class="anchored" data-anchor-id="distances-5">Distances</h5>
+<p>again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>schoolA31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>schoolA32 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) , <span class="at">data =</span> df_school_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
@@ -6266,6 +6292,7 @@ Statistics
 </section>
 <section id="rugosity-5" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-5">Rugosity</h5>
+<p>In this case VARIANCE of rugosity was important</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>schoolA41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -6312,6 +6339,7 @@ Statistics
 </section>
 <section id="global-model-5" class="level5">
 <h5 class="anchored" data-anchor-id="global-model-5">Global Model</h5>
+<p>Not the best fitting model</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>schoolAF1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(MaxN <span class="sc">~</span> Rugosity_variance, <span class="at">data =</span> df_school_A, <span class="at">family =</span> <span class="fu">poisson</span>())</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(schoolAF1) <span class="co"># Model diagnostics, looks okayish</span></span>
@@ -6360,6 +6388,7 @@ Statistics
 <h4 class="anchored" data-anchor-id="yellowtail-1">Yellowtail</h4>
 <section id="cover-6" class="level5">
 <h5 class="anchored" data-anchor-id="cover-6">% Cover</h5>
+<p>again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>yellowO11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> df_yellow_O)</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>yellowO12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> binomial, <span class="at">data =</span> df_yellow_O)</span>
@@ -6434,6 +6463,7 @@ Statistics
 </section>
 <section id="landscape-metrics-6" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-6">Landscape metrics</h5>
+<p>again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>yellowO21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_yellow_O, <span class="at">family =</span> <span class="fu">binomial</span>()) </span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old): Model convergence</span></span>
@@ -6556,6 +6586,7 @@ Statistics
 </section>
 <section id="distances-6" class="level5">
 <h5 class="anchored" data-anchor-id="distances-6">Distances</h5>
+<p>again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>yellowO31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_yellow_O, <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">glmmTMBControl</span>(</span>
@@ -6650,6 +6681,7 @@ Statistics
 </section>
 <section id="rugosity-6" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-6">Rugosity</h5>
+<p>again none were relevant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>yellowO41 <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(</span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  PA <span class="sc">~</span> <span class="fu">scale</span>(Avg_rugosity) <span class="sc">+</span> <span class="fu">scale</span>(Rugosity_variance) <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site),</span>
@@ -6721,6 +6753,7 @@ Statistics
 <h4 class="anchored" data-anchor-id="schoolmaster-1">Schoolmaster</h4>
 <section id="cover-7" class="level5">
 <h5 class="anchored" data-anchor-id="cover-7">% Cover</h5>
+<p>ONLY SAND</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>schoolO11 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Site), <span class="at">family =</span> binomial, <span class="at">data =</span> df_school_O)</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>schoolO12 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> coral <span class="sc">+</span> sand <span class="sc">+</span> algae  <span class="sc">+</span> sponge, <span class="at">family =</span> binomial, <span class="at">data =</span> df_school_O)</span>
@@ -6776,6 +6809,7 @@ Statistics
 </section>
 <section id="landscape-metrics-7" class="level5">
 <h5 class="anchored" data-anchor-id="landscape-metrics-7">Landscape metrics</h5>
+<p>ONLY RANDOM FACTOR</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>schoolO21 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>schoolO22 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> pland_AggregateReef <span class="sc">+</span> pland_AggregatedPatchReefs <span class="sc">+</span> pland_SandwithScatteredCoralandRock <span class="sc">+</span> pland_Seagrass, <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
@@ -6854,6 +6888,7 @@ Statistics
 </section>
 <section id="distances-7" class="level5">
 <h5 class="anchored" data-anchor-id="distances-7">Distances</h5>
+<p>DISTANCE TO MPA…WHICH IS COOL</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>schoolO31 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>schoolO32 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> <span class="fu">scale</span>(mpa_distance)  <span class="sc">+</span> <span class="fu">scale</span>(land)  <span class="sc">+</span><span class="fu">scale</span>(inlet) <span class="sc">+</span> <span class="fu">scale</span>(mang) , <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
@@ -6927,6 +6962,7 @@ Statistics
 </section>
 <section id="rugosity-7" class="level5">
 <h5 class="anchored" data-anchor-id="rugosity-7">Rugosity</h5>
+<p>AVG RUGOSITTY AND SITE</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>schoolO41 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>schoolO42 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> Avg_rugosity <span class="sc">+</span> Rugosity_variance <span class="sc">+</span> Location , <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
@@ -6986,6 +7022,7 @@ Statistics
 </section>
 <section id="global-model-7" class="level5">
 <h5 class="anchored" data-anchor-id="global-model-7">Global Model</h5>
+<p>AICc comparisons almost identical. So removed site as a random factor</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>schoolOF1 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> sand <span class="sc">+</span> <span class="fu">scale</span>(mpa_distance) <span class="sc">+</span> Avg_rugosity <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Site), <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>schoolOF2 <span class="ot">=</span> <span class="fu">glmmTMB</span>(PA <span class="sc">~</span> sand <span class="sc">+</span> <span class="fu">scale</span>(mpa_distance) <span class="sc">+</span> Avg_rugosity, <span class="at">data =</span> df_school_O, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
