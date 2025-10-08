@@ -1362,18 +1362,16 @@ NOTE THE SWITH TO COMPOISSON
 
 grayA11 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = poisson(), data = df_gray_A)
 grayA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_gray_A)
+grayA13 = glmmTMB(MaxN ~ coral + sand + algae + sponge, family = nbinom2(), data = df_gray_A)
+grayA14 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), data = df_gray_A)
+grayA15 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = compois(), data = df_gray_A)
+grayA16 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = nbinom2(), data = df_gray_A)
 
-AICc(grayA11, grayA12)
+AICc(grayA11, grayA12, grayA13, grayA14, grayA15, grayA16)
 
-
-grayA1 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_gray_A)
-grayA12 = glmmTMB(MaxN ~ coral + sand + algae + sponge, family = nbinom2(), data = df_gray_A)
-grayA13 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), data = df_gray_A)
-
-AICc(grayA1, grayA12,grayA13)
 
 #We can also come to the same conclusion with DHARMa. MODEL SEEMS TO BE OVERDISPERSED BASED ON THE DIFFERENT TESTS
-SimulationOutput1 <- simulateResiduals(fittedModel = grayA13, 
+SimulationOutput1 <- simulateResiduals(fittedModel = grayA14, 
                                        refit = FALSE, 
                                        seed = 12345)
 testDispersion(SimulationOutput1, type = "PearsonChisq", alternative = 'greater')
@@ -1382,7 +1380,6 @@ testDispersion(SimulationOutput1, type = "PearsonChisq", alternative = 'greater'
 testDispersion(SimulationOutput1, 
                type = "DHARMa",
                plot = TRUE)
-check_zeroinflation(grayA1)
 
 check_collinearity(grayA13)
 check_model(grayA13)
@@ -1411,19 +1408,33 @@ grayA1 = glmmTMB(MaxN ~ sand, family = compois(), data = df_gray_A) #only good o
 
 ##### Landscape metrics
 
-I did the same thing testing site as a random factor. Again did not improve model so I removed it. None of the landscape metrics were relevant.
+I did the same thing testing site as a random factor. Again did not improve model so I removed it. pland_AggregatedPatchReefs and site  was relevant.
 
 ```{r - cover seascape metrics model pland}
 #| echo: TRUE
 #| include: TRUE
 
 grayA21 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_gray_A, family = poisson())
-grayA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_gray_A, family = poisson())
+grayA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_gray_A, family = nbinom2())
+grayA23 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_gray_A, family = compois())
+grayA24 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass , data = df_gray_A, family = poisson())
+grayA25 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass , data = df_gray_A, family = nbinom2())
+grayA26 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass , data = df_gray_A, family = compois())
 
-AICc(grayA21, grayA22)
+
+AICc(grayA21, grayA22,grayA23, grayA24, grayA25, grayA26)
+
+SimulationOutput1 <- simulateResiduals(fittedModel = grayA23, 
+                                       refit = FALSE, 
+                                       seed = 12345)
+
+testDispersion(SimulationOutput1, 
+               type = "DHARMa",
+               plot = TRUE)
 
 
-grayA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_gray_A, family = poisson())
+
+grayA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_gray_A, family = compois())
 check_model(grayA2) # Model diagnostics, looks okayish
 
 
@@ -1434,31 +1445,39 @@ top = which.min(dr_invT$df)
 
 top_invT = get.models(dr_invT, subset = top)[[1]]
 
-summary(top_invT)#None
+summary(top_invT)
+
+#pland_AggregatedPatchReefs and site
 
 ```
 
 ##### Distances
 
-Again site did not improve the model. I scaled all the variables to help with convergence. Then i removed a variable due to collinearity. The top model only had distance to mangroves.
+Again site did not improve the model. I scaled all the variables to help with convergence. Then i removed a variable due to collinearity but tested both. Independently both distance to mangroves and distance to MPA is relevant
 
 ```{r - distances}
 #| echo: TRUE
 #| include: TRUE
 
-grayA31 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_gray_A, family = poisson())
-grayA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_gray_A, family = poisson())
+grayA31 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_gray_A, family = nbinom2())
+grayA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_gray_A, family = poisson())
+grayA33 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_gray_A, family = compois())
+grayA34 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_gray_A, family = nbinom2())
+grayA35 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_gray_A, family = poisson())
+grayA36 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_gray_A, family = compois())
 
-AICc(grayA31, grayA32)
+AICc(grayA31, grayA32,grayA33,grayA34,grayA35,grayA36)
 
-grayA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang), data = df_gray_A, family = poisson())
+grayA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang), data = df_gray_A, family = compois())
 
 check_model(grayA3) # Model diagnostics, looks okayish
 check_collinearity(grayA3)
 
-grayA3 = glmmTMB(MaxN ~ scale(mang)  + scale(land), data = df_gray_A, family = poisson())
+grayA3 = glmmTMB(MaxN ~ scale(land)  + scale(mpa_distance), data = df_gray_A, family = compois())
 check_model(grayA3) # Model diagnostics, looks okayish
 check_collinearity(grayA3)
+grayA3_2 = glmmTMB(MaxN ~ scale(land)  + scale(mang), data = df_gray_A, family = compois())
+check_model(grayA3_2) # Model diagnostics, looks okayish
 
 dr_invT = dredge(grayA3) |> 
   filter(delta < 4)
@@ -1469,7 +1488,16 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT)
 
-#using mangroves only 
+dr_invT = dredge(grayA3_2) |> 
+  filter(delta < 4)
+
+top = which.min(dr_invT$df)
+
+top_invT = get.models(dr_invT, subset = top)[[1]]
+
+summary(top_invT)
+
+#using mpa_distance & mangroves only 
 ```
 
 ##### Rugosity
@@ -1482,11 +1510,14 @@ did the same with site as a random factor. It did not improve the model so I rem
 
 grayA41 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_gray_A, family = poisson())
 grayA42 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_gray_A, family = nbinom2())
-grayA43 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_gray_A, family = poisson())
-grayA44 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_gray_A, family = nbinom2())
-AICc(grayA41, grayA42, grayA43, grayA44)
+grayA43 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_gray_A, family = compois())
+grayA44 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_gray_A, family = poisson())
+grayA45 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_gray_A, family = nbinom2())
+grayA46 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_gray_A, family = compois())
 
-grayA4 = glmmTMB(MaxN ~ Avg_rugosity + + Rugosity_variance + Location, data = df_gray_A, family = poisson())
+AICc(grayA41, grayA42, grayA43, grayA44, grayA45,grayA46)
+
+grayA4 = glmmTMB(MaxN ~ Avg_rugosity  + Rugosity_variance + Location + (1|Site), data = df_gray_A, family = compois())
 
 check_model(grayA4) 
 
@@ -1500,47 +1531,54 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT)
 
+#Avg_Rugosity
 ```
 
 ##### Global Model
 
-One again checked for site as a random factor. It did not improve the model so I removed it. The top model had sand, mangroves and rugosity.
+One again checked for site as a random factor. It did not improve the model so I removed it. The top model had sand, distance to mangroves and mpa, pland_AggregatedPatchReefs and rugosity. Due to collinearity I removed distance to mangroves
 
 ```{r - global model}
 #| echo: TRUE
 #| include: TRUE
 
-grayAF1 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity + (1|Site), data = df_gray_A, family = poisson())
+grayAF1 = glmmTMB(MaxN ~ sand + pland_AggregatedPatchReefs + mang + mpa_distance + Avg_rugosity + (1|Site), data = df_gray_A, family = poisson())
 grayAF2 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity + (1|Site), data = df_gray_A, family = nbinom2())
-grayAF3 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity + (1|Site), data = df_gray_A, family = nbinom1())
-grayAF4 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity , data = df_gray_A, family = poisson())
-grayAF5 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity , data = df_gray_A, family = nbinom2())
-grayAF6 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity , data = df_gray_A, family = nbinom1())
+grayAF3 = glmmTMB(MaxN ~ sand + pland_AggregatedPatchReefs + mang + mpa_distance + Avg_rugosity + (1|Site), data = df_gray_A, family = nbinom1())
+grayAF4 = glmmTMB(MaxN ~ sand + pland_AggregatedPatchReefs + mang + mpa_distance + Avg_rugosity , data = df_gray_A, family = poisson())
+grayAF5 = glmmTMB(MaxN ~ sand + pland_AggregatedPatchReefs + mang + mpa_distance + Avg_rugosity , data = df_gray_A, family = nbinom2())
+grayAF6 = glmmTMB(MaxN ~ sand + pland_AggregatedPatchReefs + mang + mpa_distance + Avg_rugosity , data = df_gray_A, family = nbinom1())
+grayAF7 = glmmTMB(MaxN ~ sand + pland_AggregatedPatchReefs + scale(mang) + scale(mpa_distance) + Avg_rugosity , data = df_gray_A, family = compois())
 
-AICc(grayAF1, grayAF2, grayAF3, grayAF4, grayAF5, grayAF6)
+AICc(grayAF1, grayAF2, grayAF3, grayAF4, grayAF5, grayAF6, grayAF7)
 
-check_model(grayAF5) # Model diagnostics, looks okayish
+check_model(grayAF7) # Model diagnostics, looks okayish
 summary(grayAF5) # Model coefficients
 
-grayAF5 = glmmTMB(MaxN ~ sand + mang + Avg_rugosity , data = df_gray_A, family = nbinom2())
-check_model(grayAF5)
-summary(grayAF5) 
+grayAF7 = glmmTMB(MaxN ~ sand + scale(mpa_distance) + Avg_rugosity + pland_AggregatedPatchReefs, data = df_gray_A, family = compois())
+check_model(grayAF7)
+summary(grayAF7) 
 
 ```
 
 ##### Predictions
 
+Sand is interesting. I was talking to Christine, we think it may be because coralnet is not classifying hard substrate as a functional category and such the % cover of sand and hard (possibly rugose) structure is inversely related. More sand means less structure/crevices/hardbottom and just open sandy substrate that isnt great grouper habitat
+
 ```{r - gray abundance pred}
 #| echo: FALSE
 #| include: TRUE
 
-grayA_sandpreds = ggpredict(grayAF5, terms = c("sand [0:50 by = 1]")) |> 
+grayA_sandpreds = ggpredict(grayAF7, terms = c("sand [0:100 by = 5]")) |> 
   rename(sand = x, MaxN = predicted)
   
-grayA_mangpreds = ggpredict(grayAF5, terms = c("mang [0:500 by = 1]")) |>
-  rename(mang = x, MaxN = predicted)
+grayA_mpapreds = ggpredict(grayAF7, terms = c("mpa_distance [0:500 by = 1]")) |>
+  rename(mpa_distance = x, MaxN = predicted)
+
+grayA_patchpreds = ggpredict(grayAF7, terms = c("pland_AggregatedPatchReefs [0:100 by = 5]")) |>
+  rename(pland_AggregatedPatchReefs = x, MaxN = predicted)
   
-grayA_rugopreds = ggpredict(grayAF5, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |>
+grayA_rugopreds = ggpredict(grayAF7, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |>
   rename(Rugosity = x, MaxN = predicted)
   
 gray_sand_pred = ggplot(grayA_sandpreds, aes(x = sand, y = MaxN)) +
@@ -1550,15 +1588,25 @@ gray_sand_pred = ggplot(grayA_sandpreds, aes(x = sand, y = MaxN)) +
   labs(title = "Predicted Graysby Abundance (MaxN) by % Sand Cover",
        x = "% Sand Cover",
        y = "MaxN")
-gray_mang_pred = ggplot(grayA_mangpreds, aes(x = mang, y = MaxN)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill =
+
+grayA_mpa_preds = ggplot(grayA_mpapreds, aes(x = mpa_distance, y = MaxN)) +  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill =
  "#66C2A5", alpha = 0.3) +
   geom_line( linewidth = 1) +
   theme_classic() +
   labs(title = "Predicted Graysby Abundance (MaxN) by Distance to
- Mangroves",
+ MPA",
+       x = "Distance to MPA (m)",
+       y = "MaxN")
+
+grayA_apr_preds = ggplot(grayA_patchpreds, aes(x = pland_AggregatedPatchReefs, y = MaxN)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill =
+ "#66C2A5", alpha = 0.3) +
+  geom_line( linewidth = 1) +
+  theme_classic() +
+  labs(title = "Predicted Graysby Abundance (MaxN) by cover of Aggregated Patch Reef",
        x = "Distance to Mangroves (m)",
        y = "MaxN")
+
 gray_rugo_pred = ggplot(grayA_rugopreds, aes(x = Rugosity
 , y = MaxN)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
@@ -1568,9 +1616,9 @@ gray_rugo_pred = ggplot(grayA_rugopreds, aes(x = Rugosity
        x = "Rugosity",
        y = "MaxN")
 
-ggarrange(gray_sand_pred, gray_mang_pred, gray_rugo_pred,
-          labels = c('a)', 'b)', 'c)'),
-          ncol = 3, vjust = 1, align = "v")
+ggarrange(gray_sand_pred, grayA_mpa_preds, grayA_apr_preds, gray_rugo_pred,
+          labels = c('a)', 'b)', 'c)','D)'),
+          ncol = 2, vjust = 2, align = "v")
 
   
   
@@ -1580,20 +1628,33 @@ ggarrange(gray_sand_pred, gray_mang_pred, gray_rugo_pred,
 
 ##### % Cover
 
-Same process for red hind. Site was not relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.
+Same process for red hind Had to remove algae due to collinearity. No benthic category was relevant.
 
 ```{r - cover seascape metrics model red hind}
 #| echo: TRUE
 #| include: TRUE
 
 redA11 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = poisson(), data = df_red_A)
-redA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_red_A)
+redA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = nbinom2(), data = df_red_A)
+redA13 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = compois(), data = df_red_A)
+redA14 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), data = df_red_A)
+redA15 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_red_A)
+redA16 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = nbinom2(), data = df_red_A)
 
-AICc(redA11, redA12)
-check_model(redA12)
 
-redA1 = glmmTMB(MaxN ~ coral + sand  + sponge, family = poisson(), data = df_red_A)
+AICc(redA11, redA12,redA13,redA14,redA15,redA16)
+check_model(redA13)
+
+redA1 = glmmTMB(MaxN ~ coral + sand  + sponge + (1 | Site), family = compois(), data = df_red_A)
 check_model(redA1)
+SimulationOutput1 <- simulateResiduals(fittedModel = redA1, 
+                                       refit = FALSE, 
+                                       seed = 12345)
+
+testDispersion(SimulationOutput1, 
+               type = "DHARMa",
+               plot = TRUE)
+
 
 options(na.action = "na.fail") # Set na.action to fail for dredge
 dr_invT = dredge(redA1) |>
@@ -1605,24 +1666,30 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT) 
 
+#none
 ```
 
 ##### Landscape metrics
 
-None were relevant here either
+pland_seagrass is relevant but model check looks iffy?
 
 ```{r - cover seascape metrics model pland red hind}
 #| echo: TRUE
 #| include: TRUE
 
 redA21 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_red_A, family = poisson())
+redA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_red_A, family = compois())
+redA23 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_red_A, family = nbinom2())
 
-redA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock +
- pland_Seagrass, data = df_red_A, family = poisson())
+redA24 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_red_A, family = poisson())
+redA25 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass , data = df_red_A, family = compois())
+redA26 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_red_A, family = nbinom2())
 
-AICc(redA21, redA22)
 
-redA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_red_A, family = poisson())
+
+AICc(redA21, redA22,redA23,redA24,redA25,redA26)
+
+redA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_red_A, family = compois())
 
 check_model(redA2) 
 
@@ -1633,7 +1700,9 @@ top = which.min(dr_invT$df)
 
 top_invT = get.models(dr_invT, subset = top)[[1]]
 
-summary(top_invT)#None
+summary(top_invT)
+
+#pland_Seagrass
 
 ```
 
@@ -1646,30 +1715,38 @@ Nothing was relevant
 #| include: TRUE
 
 redA31 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_red_A, family = poisson())
+redA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_red_A, family = compois())
+redA33 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_red_A, family = nbinom2())
 
-redA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_red_A, family = poisson())
+redA34 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_red_A, family = poisson())
+redA35 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_red_A, family = compois())
+redA36 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_red_A, family = nbinom2())
 
-AICc(redA31, redA32)
+AICc(redA31, redA32,redA33,redA34,redA35,redA36)
 
-redA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang), data = df_red_A, family = poisson())
+redA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang), data = df_red_A, family = compois())
 
 check_model(redA3) 
 
 check_collinearity(redA3)
 
-redA3 = glmmTMB(MaxN ~ scale(mpa_distance), data = df_red_A, family = poisson())
+redA3_1 = glmmTMB(MaxN ~ scale(mpa_distance) + scale(land), data = df_red_A, family = compois())
+redA3_2 = glmmTMB(MaxN ~ scale(mang) + scale(land), data = df_red_A, family = compois())
 
-check_model(redA3) 
+check_model(redA3_1) 
+check_model(redA3_2) 
 
 
-dr_invT = dredge(redA3) |>
+dr_invT = dredge(redA3_2) |>
   filter(delta < 4)
 
 top = which.min(dr_invT$df)
 
 top_invT = get.models(dr_invT, subset = top)[[1]]
 
-summary(top_invT)#none
+summary(top_invT)
+
+#none
 ```
 
 ##### Rugosity
@@ -1684,13 +1761,17 @@ redA41 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), 
 
 redA42 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_red_A, family = nbinom2())
 
-redA43 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_red_A, family = poisson())
+redA43 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_red_A, family = compois())
 
-redA44 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_red_A, family = nbinom2())
+redA44 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_red_A, family = poisson())
 
-AICc(redA41, redA42, redA43, redA44)
+redA45 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_red_A, family = nbinom2())
 
-redA4 = glmmTMB(MaxN ~ Avg_rugosity +  Rugosity_variance + Location, data = df_red_A, family = poisson())
+redA46 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_red_A, family = compois())
+
+AICc(redA41, redA42, redA43, redA44,redA45,redA46)
+
+redA4 = glmmTMB(MaxN ~ Avg_rugosity +  Rugosity_variance + Location + (1|Site), data = df_red_A, family = compois())
 
 check_model(redA4)
 #, rank = "AIC"
@@ -1700,6 +1781,7 @@ top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 
+#none but site
 ```
 
 ##### Global Model
@@ -1708,6 +1790,18 @@ summary(top_invT)
 #| echo: TRUE
 #| include: TRUE
 
+redAF1 = glmmTMB(MaxN ~ pland_Seagrass + (1|Site), data = df_red_A, family = poisson())
+redAF2 = glmmTMB(MaxN ~ pland_Seagrass + (1|Site), data = df_red_A, family = nbinom2())
+redAF3 = glmmTMB(MaxN ~ pland_Seagrass + (1|Site), data = df_red_A, family = compois())
+redAF4 = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = poisson())
+redAF5 = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = nbinom2())
+redAF6 = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = compois())
+
+AICc(redAF1,redAF2,redAF3,redAF4,redAF5,redAF6)
+
+redAF = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = compois())
+check_model(redAF)
+summary(redAF)
 #none
 ```
 
@@ -1716,7 +1810,20 @@ summary(top_invT)
 ```{r - red abundance pred}
 #| echo: FALSE
 #| include: TRUE
-# No significant predictors
+
+redA_seagrasspreds = ggpredict(redAF, terms = c("pland_Seagrass [1:100 by = 5]")) |>
+  rename(pland_Seagrass = x, MaxN = predicted)
+  
+gray_seagrass_pred = ggplot(redA_seagrasspreds, aes(x = pland_Seagrass, y = MaxN)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
+  geom_line( linewidth = 1) +  
+  theme_classic() +
+  labs(title = "Predicted Graysby Abundance (MaxN) by % Seagrass Cover",
+       x = "% Sand Cover",
+       y = "MaxN")
+
+gray_seagrass_pred
+
 ```
 
 ### Occurrence
@@ -2017,7 +2124,7 @@ summary(top_invT)
 
 ## Snappers
 
-Snappers were different as in some site was good for the model
+Snappers were different as in some site was good for the model, some used poisson and some were negative binomials
 
 ### Abundance
 
@@ -2033,13 +2140,27 @@ Sponge and site as a random factor improve model
 #| include: TRUE
 
 yellowA11 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = poisson(), data = df_yellow_A)
-yellowA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_yellow_A)  
+yellowA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = nbinom2(), data = df_yellow_A)
+yellowA13 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = compois(), data = df_yellow_A)
+yellowA14 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_yellow_A)  
+yellowA15 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = nbinom2(), data = df_yellow_A)  
+yellowA16 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), data = df_yellow_A)  
 
-AICc(yellowA11, yellowA12)
+AICc(yellowA11, yellowA12,yellowA13,yellowA14,yellowA15,yellowA16)
 check_model(yellowA11)
 
 yellowA1 = glmmTMB(MaxN ~ coral + sand  + sponge + (1 | Site), family = poisson(), data = df_yellow_A)
+
+SimulationOutput1 <- simulateResiduals(fittedModel = yellowA1, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
+
+
 check_model(yellowA1)
+
 
 options(na.action = "na.fail") # Set na.action to fail for dredge
 dr_invT = dredge(yellowA1) |>
@@ -2059,16 +2180,25 @@ Site was included and pland_AggregateReef
 #| include: TRUE
 
 yellowA21 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_yellow_A, family = poisson())
+yellowA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_yellow_A, family = nbinom2())
+yellowA23 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_yellow_A, family = compois())
+yellowA24 = glmmTMB(MaxN ~ pland_AggregateReef +  pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_yellow_A, family = poisson())
+yellowA25 = glmmTMB(MaxN ~ pland_AggregateReef +  pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_yellow_A, family = nbinom2())
+yellowA26 = glmmTMB(MaxN ~ pland_AggregateReef +  pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_yellow_A, family = compois()) 
  
-yellowA22 = glmmTMB(MaxN ~ pland_AggregateReef +  pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_yellow_A, family = poisson()) 
- 
-AICc(yellowA21, yellowA22)
-check_model(yellowA21)
+AICc(yellowA21, yellowA22,yellowA23,yellowA24,yellowA25,yellowA26)
+check_model(yellowA22)
 
-yellowA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock +
- pland_Seagrass + (1 | Site), data = df_yellow_A, family = poisson())
+yellowA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock +pland_Seagrass + (1 | Site), data = df_yellow_A, family = nbinom2())
 
 check_model(yellowA2)
+
+SimulationOutput1 <- simulateResiduals(fittedModel = yellowA2, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
 
 dr_invT = dredge(yellowA2) |>
   filter(delta < 4)
@@ -2080,32 +2210,47 @@ summary(top_invT)
 
 ##### Distances
 
-Only site as a random factor and distance to land was helpfil
+None
 
 ```{r - distances yellowtail}
 #| echo: TRUE
 #| include: TRUE
 
 yellowA31 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_yellow_A, family = poisson())
-yellowA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_yellow_A, family = poisson())
+yellowA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_yellow_A, family = nbinom2())
+yellowA33 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_yellow_A, family = compois())
+yellowA34 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_yellow_A, family = poisson())
+yellowA35 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_yellow_A, family = nbinom2())
+yellowA36 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_yellow_A, family = compois())
 
-AICc(yellowA31, yellowA32)
+AICc(yellowA31, yellowA32,yellowA33,yellowA34,yellowA35,yellowA36)
 
-yellowA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_yellow_A, family = poisson())
+yellowA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_yellow_A, family = nbinom2())
 
 check_model(yellowA3)
-check_collinearity(yellowA3)
 
-yellowA3 = glmmTMB(MaxN ~ scale(mang)  + scale(land), data = df_yellow_A, family = poisson())
-check_model(yellowA3)
+SimulationOutput1 <- simulateResiduals(fittedModel = yellowA3, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
 
-dr_invT = dredge(yellowA3) |>
+yellowA3_1 = glmmTMB(MaxN ~ scale(mang)  + scale(land), data = df_yellow_A, family = nbinom2())
+yellowA3_2 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land), data = df_yellow_A, family = nbinom2())
+
+
+check_model(yellowA3_1)
+
+
+
+dr_invT = dredge(yellowA3_2) |>
   filter(delta < 4)
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 
-#land
+#none
 
 ```
 
@@ -2118,11 +2263,24 @@ Sadly none were a better fit except for site
 #| include: TRUE
 
 yellowA41 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_yellow_A, family = poisson())
-yellowA42 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_yellow_A, family = poisson())
+yellowA42 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_yellow_A, family = nbinom2())
+yellowA43 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_yellow_A, family = compois())
+yellowA44 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_yellow_A, family = poisson())
+yellowA45 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_yellow_A, family = nbinom2())
+yellowA46 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_yellow_A, family = compois())
 
-AICc(yellowA41, yellowA42)
+AICc(yellowA41, yellowA42,yellowA43,yellowA44,yellowA45,yellowA46)
 
-yellowA4 = glmmTMB(MaxN ~ Avg_rugosity + + Rugosity_variance + Location + (1|Site), data = df_yellow_A, family = poisson())
+
+SimulationOutput1 <- simulateResiduals(fittedModel = yellowA42, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
+
+yellowA4 = glmmTMB(MaxN ~ Avg_rugosity + + Rugosity_variance + Location + (1|Site), data = df_yellow_A, family = nbinom2())
+
 check_model(yellowA4)
 #, rank = "AIC"
 dr_invT = dredge(yellowA4) |>
@@ -2140,9 +2298,14 @@ summary(top_invT)
 #| echo: TRUE
 #| include: TRUE
  
-yellowAF1 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + scale(land), data = df_yellow_A, family = poisson())
-yellowAF2 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + scale(land) + (1|Site), data = df_yellow_A, family = poisson())
-AICc(yellowAF1, yellowAF2)
+yellowAF1 = glmmTMB(MaxN ~ sponge + pland_AggregateReef, data = df_yellow_A, family = poisson())
+yellowAF2 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + (1|Site), data = df_yellow_A, family = poisson())
+yellowAF3 = glmmTMB(MaxN ~ sponge + pland_AggregateReef, data = df_yellow_A, family = nbinom2())
+yellowAF4 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + (1|Site), data = df_yellow_A, family = nbinom2())
+yellowAF5 = glmmTMB(MaxN ~ sponge + pland_AggregateReef, data = df_yellow_A, family = compois())
+yellowAF6 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + (1|Site), data = df_yellow_A, family = compois())
+
+AICc(yellowAF1, yellowAF2,yellowAF3,yellowAF4,yellowAF5,yellowAF6)
 
 check_model(yellowAF2) # Model diagnostics, looks okayish
 summary(yellowAF2) # Model coefficients
@@ -2161,9 +2324,7 @@ yellowA_spongepreds = ggpredict(yellowAF2, terms = c("sponge [0:50 by = 1]")) |>
 yellowA_plandpreds = ggpredict(yellowAF2, terms = c("pland_AggregateReef [0:50 by = 1]")) |> 
   rename(pland_AggregateReef = x, MaxN = predicted)
   
-yellowA_landpreds = ggpredict(yellowAF2, terms = c("land[0:500 by = 1]")) |>
-  rename(land = x, MaxN = predicted)
-  
+
 yellow_sponge_pred = ggplot(yellowA_spongepreds, aes(x = sponge, y = MaxN)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill ="#FC8D62", alpha = 0.3) +
   geom_line( linewidth = 1) +
@@ -2180,17 +2341,11 @@ yellow_pland_pred = ggplot(yellowA_plandpreds, aes(x = pland_AggregateReef, y = 
        x = "% Aggregate Reef Cover",
        y = "MaxN")
        
-yellow_land_pred = ggplot(yellowA_landpreds, aes(x = land, y = MaxN)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#FC8D62", alpha = 0.3) +
-  geom_line( linewidth = 1) +  
-  theme_classic() +
-  labs(title = "Predicted Yellowtail Abundance (MaxN) by Distance to Land",
-       x = "Distance to Land (m)",
-       y = "MaxN")
+
        
-ggarrange(yellow_sponge_pred, yellow_pland_pred, yellow_land_pred,
+ggarrange(yellow_sponge_pred, yellow_pland_pred,
           labels = c('a)', 'b)', 'c)'),
-          ncol = 3, vjust = 1, align = "v")
+          ncol = 2, vjust = 1, align = "v")
           
 
 
@@ -2207,10 +2362,24 @@ Same process for schoolmaster. Site though WAS NOT relevant as a random factor. 
 #| include: TRUE
  
 schoolA11 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = poisson(), data = df_school_A)
-schoolA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_school_A)
-AICc(schoolA11, schoolA12)
+schoolA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = nbinom2(), data = df_school_A)
+schoolA13 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = compois(), data = df_school_A)
+schoolA14 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_school_A)
+schoolA15 = glmmTMB(MaxN ~ coral + sand + algae  + sponge , family = nbinom2(), data = df_school_A)
+schoolA16 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), data = df_school_A)
 
-check_model(schoolA12)
+
+AICc(schoolA11, schoolA12,schoolA13,schoolA14,schoolA15,schoolA16)
+
+check_model(schoolA14)
+
+SimulationOutput1 <- simulateResiduals(fittedModel = schoolA14, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
+
 
 schoolA1 = glmmTMB(MaxN ~ coral + sand  + sponge, family = poisson(), data = df_school_A)
 check_model(schoolA1)
@@ -2233,11 +2402,21 @@ again none were relevant
 #| include: TRUE
  
 schoolA21 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_school_A, family = poisson())
-schoolA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_school_A, family = poisson())
+schoolA22 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_school_A, family = nbinom2())
+schoolA23 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass + (1|Site), data = df_school_A, family = compois())
+schoolA24 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_school_A, family = poisson())
+schoolA25 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_school_A, family = nbinom2())
+schoolA26 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_school_A, family = compois())
 
-AICc(schoolA21, schoolA22)
+AICc(schoolA21, schoolA22,schoolA23,schoolA24,schoolA25,schoolA26)
 
-#check_model(schoolA22)
+check_model(schoolA24)
+SimulationOutput1 <- simulateResiduals(fittedModel = schoolA24, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
 
 schoolA2 = glmmTMB(MaxN ~ pland_AggregateReef + pland_AggregatedPatchReefs + pland_SandwithScatteredCoralandRock + pland_Seagrass, data = df_school_A, family = poisson())
 
@@ -2261,19 +2440,32 @@ again none were relevant
 #| include: TRUE
  
 schoolA31 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_school_A, family = poisson())
-schoolA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_school_A, family = poisson())
+schoolA32 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_school_A, family = nbinom2())
+schoolA33 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) + (1|Site), data = df_school_A, family = compois())
+schoolA34 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_school_A, family = poisson())
+schoolA35 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_school_A, family = nbinom2())
+schoolA36 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang) , data = df_school_A, family = compois())
 
-AICc(schoolA31, schoolA32)
+
+AICc(schoolA31, schoolA32,schoolA33,schoolA34,schoolA35,schoolA36)
 
 schoolA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land)  +scale(inlet) + scale(mang), data = df_school_A, family = poisson())
 
 check_model(schoolA3)
-check_collinearity(schoolA3)
+SimulationOutput1 <- simulateResiduals(fittedModel = schoolA3, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
+
+
 
 schoolA3 = glmmTMB(MaxN ~ scale(mpa_distance)  + scale(land), data = df_school_A, family = poisson())
 check_model(schoolA3)
 check_collinearity(schoolA3)
 
+options(na.action = "na.fail")
 dr_invT = dredge(schoolA3) |>
   filter(delta < 4)
 top = which.min(dr_invT$df)
@@ -2290,13 +2482,25 @@ In this case VARIANCE of rugosity was important
 #| echo: TRUE
 #| include: TRUE
 schoolA41 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_school_A, family = poisson())
+schoolA42 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_school_A, family = nbinom2())
+schoolA43 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location + (1|Site), data = df_school_A, family = compois())
+schoolA44 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_school_A, family = poisson())
+schoolA45 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_school_A, family = nbinom2())
+schoolA46 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_school_A, family = compois())
 
-schoolA42 = glmmTMB(MaxN ~ Avg_rugosity + Rugosity_variance + Location , data = df_school_A, family = poisson())
-
-AICc(schoolA41, schoolA42)
+AICc(schoolA41, schoolA42,schoolA43,schoolA44,schoolA45,schoolA46)
 
 schoolA4 = glmmTMB(MaxN ~ Avg_rugosity + + Rugosity_variance + Location, data = df_school_A, family = poisson())
 check_model(schoolA4)
+
+SimulationOutput1 <- simulateResiduals(fittedModel = schoolA4, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
+
+
 #, rank = "AIC"
 dr_invT = dredge(schoolA4) |>
   filter(delta < 4)
@@ -2314,9 +2518,26 @@ Not the best fitting model
 #| echo: TRUE
 #| include: TRUE
  
-schoolAF1 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = poisson())
-check_model(schoolAF1) # Model diagnostics, looks okayish
-summary(schoolAF1) # Model coefficients
+schoolAF1 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_school_A, family = poisson())
+schoolAF2 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_school_A, family = nbinom2())
+schoolAF3 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_school_A, family = compois())
+schoolAF4 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = poisson())
+schoolAF5 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = nbinom2())
+schoolAF6 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = compois())
+
+AICc(schoolAF1,schoolAF2,schoolAF3,schoolAF4,schoolAF5,schoolAF6)
+
+schoolAF = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = poisson())
+check_model(schoolAF)
+
+SimulationOutput1 <- simulateResiduals(fittedModel = schoolAF, 
+                                        refit = FALSE, 
+                                        seed = 12345)
+testDispersion(SimulationOutput1, 
+                type = "DHARMa",
+                plot = TRUE)
+
+summary(schoolAF)
 
 ```
 
@@ -2631,7 +2852,7 @@ summary(schoolOF2) # Model coefficients
 
 ```
 
-\##### Predictions
+##### Predictions
 
 ```{r - schoolmaster occurrence pred}
 #| echo: FALSE
