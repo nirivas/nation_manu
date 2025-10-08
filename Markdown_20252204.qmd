@@ -1236,7 +1236,7 @@ ggplot(test3, aes(x = Rugosity, y = Occurrence, color = Common, fill = Common)) 
 
 # %Cover & Seascape Metrics
 
-Lots of issues with this. Only showing grouper abundance, specifically Graysby
+Began rerunning models to check for over/underdispersion. It seems some are UNDERdispered so will try using compois() family in glmmTMB that can account for both over and underdispersion.
 
 ```{r - cover seascape metrics data}
 #| echo: FALSE
@@ -1354,18 +1354,42 @@ df_school_O = dft_widesnapperO |>
 
 For percent cover of benthic functional groups I first checkef for the use of site as a random factor. Site was not a better model and then I had to remove one of the benthic categories because of collinearity. In the end for Graysbys only SAND was relevant.
 
+NOTE THE SWITH TO COMPOISSON
+
 ```{r - cover seascape metrics model}
 #| echo: TRUE
 #| include: TRUE
 
 grayA11 = glmmTMB(MaxN ~ coral + sand + algae  + sponge + (1 | Site), family = poisson(), data = df_gray_A)
 grayA12 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_gray_A)
+
 AICc(grayA11, grayA12)
 
 
 grayA1 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = poisson(), data = df_gray_A)
-check_collinearity(grayA1)
-grayA1 = glmmTMB(MaxN ~ coral + sand + algae, family = poisson(), data = df_gray_A)
+grayA12 = glmmTMB(MaxN ~ coral + sand + algae + sponge, family = nbinom2(), data = df_gray_A)
+grayA13 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), data = df_gray_A)
+
+AICc(grayA1, grayA12,grayA13)
+
+#We can also come to the same conclusion with DHARMa. MODEL SEEMS TO BE OVERDISPERSED BASED ON THE DIFFERENT TESTS
+SimulationOutput1 <- simulateResiduals(fittedModel = grayA13, 
+                                       refit = FALSE, 
+                                       seed = 12345)
+testDispersion(SimulationOutput1, type = "PearsonChisq", alternative = 'greater')
+ 
+#' DHARMa can also assess over/under dispersion via simulation.
+testDispersion(SimulationOutput1, 
+               type = "DHARMa",
+               plot = TRUE)
+check_zeroinflation(grayA1)
+
+check_collinearity(grayA13)
+check_model(grayA13)
+
+
+
+grayA1 = glmmTMB(MaxN ~ coral + sand + algae, family = compois(), data = df_gray_A)
 check_model(grayA1)
 
 
@@ -1380,7 +1404,7 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT)
 
-grayA1 = glmmTMB(MaxN ~ sand, family = poisson(), data = df_gray_A) #only good one
+grayA1 = glmmTMB(MaxN ~ sand, family = compois(), data = df_gray_A) #only good one
 
 
 ```
@@ -1557,6 +1581,7 @@ ggarrange(gray_sand_pred, gray_mang_pred, gray_rugo_pred,
 ##### % Cover
 
 Same process for red hind. Site was not relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.
+
 ```{r - cover seascape metrics model red hind}
 #| echo: TRUE
 #| include: TRUE
@@ -2000,7 +2025,7 @@ Snappers were different as in some site was good for the model
 
 ##### % Cover
 
-Sponge and site as a random factor improve model 
+Sponge and site as a random factor improve model
 
 ```{r - cover seascape metrics model yellowtail}
 
@@ -2174,7 +2199,9 @@ ggarrange(yellow_sponge_pred, yellow_pland_pred, yellow_land_pred,
 #### Schoolmaster
 
 ##### % Cover
+
 Same process for schoolmaster. Site though WAS NOT relevant as a random factor. Had to remove algae due to collinearity. No benthic category was relevant.
+
 ```{r - cover seascape metrics model schoolmaster}
 #| echo: TRUE
 #| include: TRUE
@@ -2492,6 +2519,7 @@ ONLY SAND
 schoolO11 = glmmTMB(PA ~ coral + sand + algae  + sponge + (1 | Site), family = binomial, data = df_school_O)
 schoolO12 = glmmTMB(PA ~ coral + sand + algae  + sponge, family = binomial, data = df_school_O)
 
+
 AICc(schoolO11, schoolO12)
 check_model(schoolO12)
 
@@ -2603,7 +2631,7 @@ summary(schoolOF2) # Model coefficients
 
 ```
 
-##### Predictions
+\##### Predictions
 
 ```{r - schoolmaster occurrence pred}
 #| echo: FALSE
