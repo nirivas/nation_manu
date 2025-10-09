@@ -1401,8 +1401,8 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT)
 
-grayA1 = glmmTMB(MaxN ~ sand, family = compois(), data = df_gray_A) #only good one
-
+grayA1 = glmmTMB(MaxN ~ sand, family = compois(), data = df_gray_A) 
+#only good one
 
 ```
 
@@ -1556,8 +1556,20 @@ check_model(grayAF7) # Model diagnostics, looks okayish
 summary(grayAF5) # Model coefficients
 
 grayAF7 = glmmTMB(MaxN ~ sand + scale(mpa_distance) + Avg_rugosity + pland_AggregatedPatchReefs, data = df_gray_A, family = compois())
-check_model(grayAF7)
-summary(grayAF7) 
+
+
+dr_invT = dredge(grayAF7) |> 
+  filter(delta < 4)
+
+top = which.min(dr_invT$df)
+
+top_invT = get.models(dr_invT, subset = top)[[1]]
+
+summary(top_invT)
+
+grayAF = glmmTMB(MaxN ~ sand, data = df_gray_A, family = compois())
+summary(grayAF)
+
 
 ```
 
@@ -1569,17 +1581,9 @@ Sand is interesting. I was talking to Christine, we think it may be because cora
 #| echo: FALSE
 #| include: TRUE
 
-grayA_sandpreds = ggpredict(grayAF7, terms = c("sand [0:100 by = 5]")) |> 
+grayA_sandpreds = ggpredict(grayAF, terms = c("sand [0:100 by = 5]")) |> 
   rename(sand = x, MaxN = predicted)
   
-grayA_mpapreds = ggpredict(grayAF7, terms = c("mpa_distance [0:500 by = 1]")) |>
-  rename(mpa_distance = x, MaxN = predicted)
-
-grayA_patchpreds = ggpredict(grayAF7, terms = c("pland_AggregatedPatchReefs [0:100 by = 5]")) |>
-  rename(pland_AggregatedPatchReefs = x, MaxN = predicted)
-  
-grayA_rugopreds = ggpredict(grayAF7, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |>
-  rename(Rugosity = x, MaxN = predicted)
   
 gray_sand_pred = ggplot(grayA_sandpreds, aes(x = sand, y = MaxN)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
@@ -1589,39 +1593,8 @@ gray_sand_pred = ggplot(grayA_sandpreds, aes(x = sand, y = MaxN)) +
        x = "% Sand Cover",
        y = "MaxN")
 
-grayA_mpa_preds = ggplot(grayA_mpapreds, aes(x = mpa_distance, y = MaxN)) +  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill =
- "#66C2A5", alpha = 0.3) +
-  geom_line( linewidth = 1) +
-  theme_classic() +
-  labs(title = "Predicted Graysby Abundance (MaxN) by Distance to
- MPA",
-       x = "Distance to MPA (m)",
-       y = "MaxN")
+gray_sand_pred
 
-grayA_apr_preds = ggplot(grayA_patchpreds, aes(x = pland_AggregatedPatchReefs, y = MaxN)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill =
- "#66C2A5", alpha = 0.3) +
-  geom_line( linewidth = 1) +
-  theme_classic() +
-  labs(title = "Predicted Graysby Abundance (MaxN) by cover of Aggregated Patch Reef",
-       x = "Distance to Mangroves (m)",
-       y = "MaxN")
-
-gray_rugo_pred = ggplot(grayA_rugopreds, aes(x = Rugosity
-, y = MaxN)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
-  geom_line( linewidth = 1) +  
-  theme_classic() +
-  labs(title = "Predicted Graysby Abundance (MaxN) by Rugosity",
-       x = "Rugosity",
-       y = "MaxN")
-
-ggarrange(gray_sand_pred, grayA_mpa_preds, grayA_apr_preds, gray_rugo_pred,
-          labels = c('a)', 'b)', 'c)','D)'),
-          ncol = 2, vjust = 2, align = "v")
-
-  
-  
 ```
 
 #### Red Hind
@@ -1666,7 +1639,12 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT) 
 
-#none
+redA1 = glmmTMB(MaxN ~  sand + (1 | Site), family = compois(), data = df_red_A)
+check_model(redA1)
+summary(redA1)
+
+
+#
 ```
 
 ##### Landscape metrics
@@ -1737,7 +1715,7 @@ check_model(redA3_1)
 check_model(redA3_2) 
 
 
-dr_invT = dredge(redA3_2) |>
+dr_invT = dredge(redA3_1) |>
   filter(delta < 4)
 
 top = which.min(dr_invT$df)
@@ -1746,12 +1724,16 @@ top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT)
 
-#none
+redA3 = glmmTMB(MaxN ~ scale(land), data = df_red_A, family = compois())
+check_model(redA3)
+summary(redA3)
+
+
+#scale(land)
 ```
 
 ##### Rugosity
 
-Nothing was relevant here either
 
 ```{r - rugosity red hind}
 #| echo: TRUE
@@ -1781,7 +1763,11 @@ top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 
-#none but site
+redA4 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_red_A, family = compois())
+check_model(redA4)
+summary(redA4)
+
+#none but site but using Rugosity_variance
 ```
 
 ##### Global Model
@@ -1790,16 +1776,21 @@ summary(top_invT)
 #| echo: TRUE
 #| include: TRUE
 
-redAF1 = glmmTMB(MaxN ~ pland_Seagrass + (1|Site), data = df_red_A, family = poisson())
-redAF2 = glmmTMB(MaxN ~ pland_Seagrass + (1|Site), data = df_red_A, family = nbinom2())
-redAF3 = glmmTMB(MaxN ~ pland_Seagrass + (1|Site), data = df_red_A, family = compois())
-redAF4 = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = poisson())
-redAF5 = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = nbinom2())
-redAF6 = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = compois())
+redAF1 =glmmTMB(MaxN ~ pland_Seagrass + sand + scale(land) + Rugosity_variance + (1|Site), data = df_red_A, family = compois())
+redAF2 = glmmTMB(MaxN ~ pland_Seagrass + sand + scale(land) + Rugosity_variance , data = df_red_A, family = compois())
+AICc(redAF1,redAF2)
 
-AICc(redAF1,redAF2,redAF3,redAF4,redAF5,redAF6)
+redAF2 = glmmTMB(MaxN ~ pland_Seagrass + sand + scale(land) + Rugosity_variance , data = df_red_A, family = compois())
+
+dr_invT = dredge(redAF2) |>
+  filter(delta < 4)
+top = which.min(dr_invT$df)
+top_invT = get.models(dr_invT, subset = top)[[1]]
+summary(top_invT)
+
 
 redAF = glmmTMB(MaxN ~ pland_Seagrass , data = df_red_A, family = compois())
+
 check_model(redAF)
 summary(redAF)
 #none
@@ -1859,6 +1850,9 @@ top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 
+grayO1 = glmmTMB(PA ~ sand, family = binomial, data = df_gray_O)
+
+
 #none
 ```
 
@@ -1885,7 +1879,9 @@ dr_invT = dredge(grayO2) |>
   filter(delta < 4)
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
-summary(top_invT)#pland_SandwithScatteredCoralandRock
+summary(top_invT)
+
+#pland_SandwithScatteredCoralandRock
 ```
 
 ##### Distances
@@ -1910,14 +1906,16 @@ check_collinearity(grayO3)
 grayO3 = glmmTMB(PA ~ scale(mpa_distance)  + scale(land), data = df_gray_O, family = binomial())
 
 check_model(grayO3)
-check_collinearity(grayO3)
 
 dr_invT = dredge(grayO3) |>
   filter(delta < 4)
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+
+grayO3 = glmmTMB(PA ~ scale(mpa_distance), data = df_gray_O, family = binomial())
+
+#none but using mpa_distance
 
 ```
 
@@ -1951,9 +1949,17 @@ summary(top_invT)
 #| echo: TRUE
 #| include: TRUE
 
-grayOF1 = glmmTMB(PA ~ pland_SandwithScatteredCoralandRock + Avg_rugosity, data = df_gray_O, family = binomial())
+grayOF1 = glmmTMB(PA ~ sand + scale(mpa_distance) + pland_SandwithScatteredCoralandRock + Avg_rugosity, data = df_gray_O, family = binomial())
+
+dr_invT = dredge(grayOF1) |>
+  filter(delta < 4)
+top = which.min(dr_invT$df)
+top_invT = get.models(dr_invT, subset = top)[[1]]
+summary(top_invT)
 
 check_model(grayOF1) # Model diagnostics, looks okayish
+
+grayOF1 = glmmTMB(PA ~ Avg_rugosity, data = df_gray_O, family = binomial())
 
 summary(grayOF1) # Model coefficients
 
@@ -1966,20 +1972,9 @@ summary(grayOF1) # Model coefficients
 #| echo: FALSE
 #| include: TRUE
 
-grayO_plandpreds = ggpredict(grayOF1, terms = c("pland_SandwithScatteredCoralandRock [0:50 by = 1]")) |> 
-  rename(pland_SandwithScatteredCoralandRock = x, Occurrence = predicted)
+
 grayO_rugopreds = ggpredict(grayOF1, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |>
   rename(Rugosity = x, Occurrence = predicted)
-  
-gray_pland_pred = ggplot(grayO_plandpreds, aes(x = pland_SandwithScatteredCoralandRock, y = Occurrence)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill =
- "#66C2A5", alpha = 0.3) +
-  geom_line( linewidth = 1) +
-  theme_classic() +
-  labs(title = "Predicted Graysby Occurrence by % Sand with Scattered Coral
-       and Rock Cover",
-       x = "% Sand with Scattered Coral and Rock Cover",
-       y = "Occurrence")
        
 gray_rugo_pred = ggplot(grayO_rugopreds, aes(x = Rugosity, y = Occurrence)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
@@ -1989,10 +1984,8 @@ gray_rugo_pred = ggplot(grayO_rugopreds, aes(x = Rugosity, y = Occurrence)) +
        x = "Rugosity",
        y = "Occurrence")
 
-ggarrange(gray_pland_pred, gray_rugo_pred,
-          labels = c('a)', 'b)'),
-          ncol = 2, vjust = 1, align = "v")
-          
+gray_rugo_pred
+
 ```
 
 #### Red Hind
@@ -2021,7 +2014,8 @@ dr_invT = dredge(redO1) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+
+#none but sand
 
 ```
 
@@ -2048,7 +2042,7 @@ dr_invT = dredge(redO2) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but pland_SandwithScatteredCoralandRock
 ```
 
 ##### Distances
@@ -2070,6 +2064,7 @@ check_model(redO3)
 check_collinearity(redO3)
 
 redO3 = glmmTMB(PA ~ scale(mpa_distance)  + scale(land), data = df_red_O, family = binomial())
+redO3 = glmmTMB(PA ~ scale(mang)  + scale(land), data = df_red_O, family = binomial())
 check_model(redO3)
 check_collinearity(redO3)
 
@@ -2077,7 +2072,9 @@ dr_invT = dredge(redO3) |>
   filter(delta < 4)
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
-summary(top_invT)#none
+summary(top_invT)
+
+#none but land
 
 ```
 
@@ -2102,15 +2099,27 @@ dr_invT = dredge(redO4) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but Average_rugosity
 ```
 
 ##### Global Model
 
+NONE
+
 ```{r - global model red hind occurrence}
 #| echo: TRUE
 #| include: TRUE
-#none
+
+redOF = glmmTMB(PA ~ sand + Avg_rugosity + scale(land) + pland_SandwithScatteredCoralandRock, data = df_red_O, family = binomial())
+
+dr_invT = dredge(redOF) |>
+  filter(delta < 4)
+top = which.min(dr_invT$df)
+top_invT = get.models(dr_invT, subset = top)[[1]]
+summary(top_invT)
+
+
+#none...
 ```
 
 ##### Predictions
@@ -2149,7 +2158,7 @@ yellowA16 = glmmTMB(MaxN ~ coral + sand + algae  + sponge, family = compois(), d
 AICc(yellowA11, yellowA12,yellowA13,yellowA14,yellowA15,yellowA16)
 check_model(yellowA11)
 
-yellowA1 = glmmTMB(MaxN ~ coral + sand  + sponge + (1 | Site), family = poisson(), data = df_yellow_A)
+yellowA1 = glmmTMB(MaxN ~ coral + sand  + sponge + (1 | Site), family = nbinom2(), data = df_yellow_A)
 
 SimulationOutput1 <- simulateResiduals(fittedModel = yellowA1, 
                                         refit = FALSE, 
@@ -2168,7 +2177,7 @@ dr_invT = dredge(yellowA1) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#sponge
+#none but sponge
 ```
 
 ##### Landscape metrics
@@ -2250,7 +2259,7 @@ top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 
-#none
+#none but land
 
 ```
 
@@ -2288,7 +2297,7 @@ dr_invT = dredge(yellowA4) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but average rugosity
 
 ```
 
@@ -2298,17 +2307,21 @@ summary(top_invT)
 #| echo: TRUE
 #| include: TRUE
  
-yellowAF1 = glmmTMB(MaxN ~ sponge + pland_AggregateReef, data = df_yellow_A, family = poisson())
-yellowAF2 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + (1|Site), data = df_yellow_A, family = poisson())
-yellowAF3 = glmmTMB(MaxN ~ sponge + pland_AggregateReef, data = df_yellow_A, family = nbinom2())
-yellowAF4 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + (1|Site), data = df_yellow_A, family = nbinom2())
-yellowAF5 = glmmTMB(MaxN ~ sponge + pland_AggregateReef, data = df_yellow_A, family = compois())
-yellowAF6 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + (1|Site), data = df_yellow_A, family = compois())
+yellowAF1 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + Avg_rugosity + scale(land), data = df_yellow_A, family = nbinom2())
+yellowAF2 = glmmTMB(MaxN ~ sponge + pland_AggregateReef + Avg_rugosity + scale(land) +  (1|Site), data = df_yellow_A, family = nbinom2())
 
-AICc(yellowAF1, yellowAF2,yellowAF3,yellowAF4,yellowAF5,yellowAF6)
+AICc(yellowAF1, yellowAF2)
 
-check_model(yellowAF2) # Model diagnostics, looks okayish
-summary(yellowAF2) # Model coefficients
+dr_invT = dredge(yellowAF2) |>
+  filter(delta < 4)
+top = which.min(dr_invT$df)
+top_invT = get.models(dr_invT, subset = top)[[1]]
+summary(top_invT)
+
+yellowAF = glmmTMB(MaxN ~ sponge + pland_AggregateReef + Avg_rugosity +  (1|Site), data = df_yellow_A, family = nbinom2())
+
+check_model(yellowAF) # Model diagnostics, looks okayish
+summary(yellowAF) # Model coefficients
 
 ```
 
@@ -2321,8 +2334,11 @@ summary(yellowAF2) # Model coefficients
 yellowA_spongepreds = ggpredict(yellowAF2, terms = c("sponge [0:50 by = 1]")) |> 
   rename(sponge = x, MaxN = predicted)
     
-yellowA_plandpreds = ggpredict(yellowAF2, terms = c("pland_AggregateReef [0:50 by = 1]")) |> 
+yellowA_plandpreds = ggpredict(yellowAF2, terms = c("pland_AggregateReef [0:50 by = 1]")) |>
   rename(pland_AggregateReef = x, MaxN = predicted)
+  
+yellowA_rugopreds = ggpredict(yellowAF2, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |>
+  rename(Avg_rugosity = x, MaxN = predicted)
   
 
 yellow_sponge_pred = ggplot(yellowA_spongepreds, aes(x = sponge, y = MaxN)) +
@@ -2341,11 +2357,17 @@ yellow_pland_pred = ggplot(yellowA_plandpreds, aes(x = pland_AggregateReef, y = 
        x = "% Aggregate Reef Cover",
        y = "MaxN")
        
-
+yellow_rugo_pred = ggplot(yellowA_rugopreds, aes(x = Avg_rugosity, y = MaxN)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#FC8D62", alpha = 0.3) +
+  geom_line( linewidth = 1) +
+  theme_classic() +
+  labs(title = "Predicted Yellowtail Abundance (MaxN) by % Aggregate Reef Cover",
+       x = "Average rugosity",
+       y = "MaxN")
        
-ggarrange(yellow_sponge_pred, yellow_pland_pred,
+ggarrange(yellow_sponge_pred, yellow_pland_pred,yellow_rugo_pred,
           labels = c('a)', 'b)', 'c)'),
-          ncol = 2, vjust = 1, align = "v")
+          ncol = 3, vjust = 1, align = "v")
           
 
 
@@ -2390,7 +2412,7 @@ dr_invT = dredge(schoolA1) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but sponge
 ```
 
 ##### Landscape metrics
@@ -2428,7 +2450,7 @@ top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
 
-#none
+#none but pland_AggregateReef and pland_Seagrass
 ```
 
 ##### Distances
@@ -2471,7 +2493,7 @@ dr_invT = dredge(schoolA3) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but mpa
 ```
 
 ##### Rugosity
@@ -2518,24 +2540,26 @@ Not the best fitting model
 #| echo: TRUE
 #| include: TRUE
  
-schoolAF1 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_school_A, family = poisson())
-schoolAF2 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_school_A, family = nbinom2())
-schoolAF3 = glmmTMB(MaxN ~ Rugosity_variance + (1|Site), data = df_school_A, family = compois())
-schoolAF4 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = poisson())
-schoolAF5 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = nbinom2())
-schoolAF6 = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = compois())
+schoolAF1 = glmmTMB(MaxN ~ Rugosity_variance + sponge + scale(mpa_distance) + pland_AggregateReef + pland_Seagrass+ (1|Site), data = df_school_A, family = poisson())
+schoolAF2 = glmmTMB(MaxN ~ Rugosity_variance + sponge + scale(mpa_distance) + pland_AggregateReef + pland_Seagrass, data = df_school_A, family = poisson())
 
-AICc(schoolAF1,schoolAF2,schoolAF3,schoolAF4,schoolAF5,schoolAF6)
+AICc(schoolAF1,schoolAF2)
 
-schoolAF = glmmTMB(MaxN ~ Rugosity_variance, data = df_school_A, family = poisson())
+schoolAF = glmmTMB(MaxN ~ Rugosity_variance + sponge + scale(mpa_distance) + pland_AggregateReef + pland_Seagrass, data = df_school_A, family = poisson())
+
+
+dr_invT = dredge(schoolAF) |>
+  filter(delta < 4)
+top = which.min(dr_invT$df)
+top_invT = get.models(dr_invT, subset = top)[[1]]
+summary(top_invT)
+
+
+schoolAF = glmmTMB(MaxN ~ Rugosity_variance , data = df_school_A, family = poisson())
+
 check_model(schoolAF)
 
-SimulationOutput1 <- simulateResiduals(fittedModel = schoolAF, 
-                                        refit = FALSE, 
-                                        seed = 12345)
-testDispersion(SimulationOutput1, 
-                type = "DHARMa",
-                plot = TRUE)
+
 
 summary(schoolAF)
 
@@ -2592,7 +2616,7 @@ top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 
 summary(top_invT)
-#none
+#none but coral
 ```
 
 ##### Landscape metrics
@@ -2620,7 +2644,7 @@ dr_invT = dredge(yellowO2) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but pland_AggregateReef
 ```
 
 ##### Distances
@@ -2667,7 +2691,7 @@ dr_invT = dredge(yellowO3) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none butland
 ```
 
 ##### Rugosity
@@ -2708,7 +2732,7 @@ dr_invT = dredge(yellowO4) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#none
+#none but average rugosity
 ```
 
 ##### Global Model
@@ -2716,7 +2740,9 @@ summary(top_invT)
 ```{r - global model yellowtail occurrence}
 #| echo: TRUE
 #| include: TRUE
-#none
+
+#none help
+
 ```
 
 ##### Predictions
@@ -2780,7 +2806,7 @@ dr_invT = dredge(schoolO2) |>
 top = which.min(dr_invT$df)
 top_invT = get.models(dr_invT, subset = top)[[1]]
 summary(top_invT)
-#1|Site
+#1|Site pland_SandwithScatteredCoralandRock
 ```
 
 ##### Distances
@@ -2844,9 +2870,20 @@ AICc comparisons almost identical. So removed site as a random factor
 #| echo: TRUE
 #| include: TRUE
 
-schoolOF1 = glmmTMB(PA ~ sand + scale(mpa_distance) + Avg_rugosity + (1|Site), data = df_school_O, family = binomial())
-schoolOF2 = glmmTMB(PA ~ sand + scale(mpa_distance) + Avg_rugosity, data = df_school_O, family = binomial())
+schoolOF1 = glmmTMB(PA ~ sand + scale(mpa_distance) + Avg_rugosity + pland_SandwithScatteredCoralandRock + (1|Site), data = df_school_O, family = binomial())
+schoolOF2 = glmmTMB(PA ~ sand + scale(mpa_distance) + Avg_rugosity + pland_SandwithScatteredCoralandRock, data = df_school_O, family = binomial())
 AICc(schoolOF1, schoolOF2)
+
+
+dr_invT = dredge(schoolOF2) |>
+  filter(delta < 4)
+top = which.min(dr_invT$df)
+top_invT = get.models(dr_invT, subset = top)[[1]]
+summary(top_invT)
+
+
+schoolOF2 = glmmTMB(PA ~  Avg_rugosity, data = df_school_O, family = binomial())
+
 check_model(schoolOF1) # Model diagnostics, looks okayish
 summary(schoolOF2) # Model coefficients
 
@@ -2859,28 +2896,10 @@ summary(schoolOF2) # Model coefficients
 #| include: TRUE
 
 
-schoolO_sandpreds = ggpredict(schoolOF2, terms = c("sand [0:50 by = 1]")) |> 
-  rename(sand = x, Occurrence = predicted)
-schoolO_distpreds = ggpredict(schoolOF2, terms = c("mpa_distance [0:500 by = 1]")) |> 
-  rename(mpa_distance = x, Occurrence = predicted)
 schoolO_rugopreds = ggpredict(schoolOF2, terms = c("Avg_rugosity [1:2.5 by = 0.05]")) |>
   rename(Avg_rugosity = x, Occurrence = predicted)
   
-school_sand_pred = ggplot(schoolO_sandpreds, aes(x = sand, y = Occurrence)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
-  geom_line( linewidth = 1) +
-  theme_classic() +
-  labs(title = "Predicted Schoolmaster Occurrence by % Sand Cover",
-       x = "% Sand Cover",
-       y = "Occurrence")
-       
-school_dist_pred = ggplot(schoolO_distpreds, aes(x = mpa_distance, y = Occurrence)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
-  geom_line( linewidth = 1) +
-  theme_classic() +
-  labs(title = "Predicted Schoolmaster Occurrence by Distance to MPA Boundary",
-       x = "Distance to MPA Boundary (m)",
-       y = "Occurrence")
+
        
 school_rugo_pred = ggplot(schoolO_rugopreds, aes(x = Avg_rugosity, y = Occurrence)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), fill = "#66C2A5", alpha = 0.3) +
@@ -2890,9 +2909,7 @@ school_rugo_pred = ggplot(schoolO_rugopreds, aes(x = Avg_rugosity, y = Occurrenc
        x = "Rugosity",
        y = "Occurrence")
        
-ggarrange(school_sand_pred, school_dist_pred, school_rugo_pred,
-          labels = c('a)', 'b)', 'c)'),
-          ncol = 3, vjust = 1, align = "v")
 
+school_rugo_pred
 
 ```
